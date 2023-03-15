@@ -30,7 +30,7 @@
       <h1>Contact us</h1>
       <article class="form">
         <h2>Product Enquire Form</h2>
-        <form  method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+        <form  method="post" action="process_order.php" novalidate>
           <fieldset class="part">
   <!-- first row for contact: Name (crucial) -->
             <div class="row_01">
@@ -44,7 +44,7 @@
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
-                  <input class="input_text_2  in_range_stuff" id="lName" type="text" name="uname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2  in_range_stuff" id="lName" type="text" name="lname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
   <!-- second row for contact: info to sell away :) (crucial) -->
@@ -60,7 +60,7 @@
             <div class="column2">
               <label class="text_Float_left" for="Pnumb">Phone number</label>
               <br>
-              <input class="input_text_2  in_range_stuff" id="Pnumb" type="text" name="phone number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
+              <input class="input_text_2  in_range_stuff" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
             </div>
           </div>
   <!-- Less crucial contact info: Address in general -->
@@ -68,11 +68,11 @@
             <fieldset class="part" id="fieldSet2">
               <label class="text_Float_left" for="sAdr">Street Address</label>
               <input class="input_text in_range_stuff" id="sAdr" type="text"
-                name="uname" placeholder="Your Address" maxlength="40" required>
+                name="street" placeholder="Your Address" maxlength="40" required>
   
               <label class="text_Float_left" for="dAdr">Suburb/Town</label>
               <input class="input_text in_range_stuff" id="dAdr" type="text"
-                name="uname" placeholder="What District" maxlength="20" required>
+                name="suburb" placeholder="What District" maxlength="20" required>
   
               <label class="text_Float_left" for="cAdr">State</label>
               <select name="state" id="cAdr" required>
