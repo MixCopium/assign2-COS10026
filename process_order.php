@@ -133,6 +133,7 @@
         $errMsg .= "<p>Your phone number should be no longer than 10 digits.";
     }
 
+    // redirect to proper page after checking 
     if (strlen($errMsg ) != 0) {
         header ("location:fix_order.php");
     } else {
@@ -141,6 +142,7 @@
         header ("location:receipt.php");
     }
 
+    // transfer data to other pages
     session_start();
     $_SESSION['err'] = $errMsg;
     $_SESSION['state'] = $state
