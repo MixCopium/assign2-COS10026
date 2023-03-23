@@ -33,52 +33,44 @@
         <form  method="post" action="process_order.php" novalidate>
           <fieldset class="part">
   <!-- first row for contact: Name (crucial) -->
-            <div class="row">
+            <div class="row_01">
   
               <div class="column">
-                  <label class="text_Float_left" for="Name">Name</label>
+                  <label class="text_Float_left" for="fName">First name</label>
                   <br>
-                  <input class="input_text" id="Name" type="text" name="name" placeholder="e.g: Nguyen Gia Beo" maxlength="25" pattern="[a-zA-Z\s]*" required>
-
-                  <label class="text_Float_left" for="email">Email</label>
-                  <br>
-                  <input class="input_text" type="email" id="email"
-                    name="email" placeholder="lmao@lalaland.com" required>
-
-                  <label class="text_Float_left" for="Pnumb">Phone number</label>
-                  <br>
-                  <input class="input_text" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
-
-                  <label class="text_Float_left" for="sAdr">Home Address</label>
-                  <input class="input_text" id="sAdr" type="text"
-                    name="address" placeholder="Your Address" maxlength="40" required>
-
-                  <label class="text_Float_left" for="pAdr">Postcode</label>
-                  <input class="input_text" id="pAdr" type="text"
-                    name="postcode" placeholder="Bet you need to look it up online!!!"
-                    maxlength="4" pattern="\d{4}" required>
-
+                  <input class="input_text_2  in_range_stuff" id="fName" type="text" name="uname" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
-              <div class="column">
-               <label class="text_Float_left" for="pAdr">Postcode</label>
-               <input class="input_text" id="pAdr" type="text"
-                name="postcode" placeholder="Bet you need to look it up online!!!"
-                maxlength="4" pattern="\d{4}" required>
-
+              <div class="column2">
+                  <label class="text_Float_left" for="lName">Last name</label>
+                  <br>
+                  <input class="input_text_2  in_range_stuff" id="lName" type="text" name="lname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
-
-              <div class="column">
-               <label class="text_Float_left" for="sAdr">Home Address</label>
-                  <input class="input_text" id="sAdr" type="text"
-                    name="address" placeholder="Your Address" maxlength="40" required>
-              </div>
-            </div>
            </div>
-
-  <!-- Less crucial contact info: Address in general -->
+  <!-- second row for contact: info to sell away :) (crucial) -->
+          <div class="row2">
   
-              <!-- <label class="text_Float_left" for="dAdr">Suburb/Town</label>
+            <div class="column">
+              <label class="text_Float_left" for="email">Email</label>
+              <br>
+              <input class="input_text_2  in_range_stuff" type="email" id="email"
+                name="email" placeholder="lmao@lalaland.com" required>
+            </div>
+  
+            <div class="column2">
+              <label class="text_Float_left" for="Pnumb">Phone number</label>
+              <br>
+              <input class="input_text_2  in_range_stuff" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
+            </div>
+          </div>
+  <!-- Less crucial contact info: Address in general -->
+          <div>
+            <fieldset class="part" id="fieldSet2">
+              <label class="text_Float_left" for="sAdr">Street Address</label>
+              <input class="input_text in_range_stuff" id="sAdr" type="text"
+                name="street" placeholder="Your Address" maxlength="40" required>
+  
+              <label class="text_Float_left" for="dAdr">Suburb/Town</label>
               <input class="input_text in_range_stuff" id="dAdr" type="text"
                 name="suburb" placeholder="What District" maxlength="20" required>
   
@@ -93,18 +85,18 @@
                 <option value="SA">SA</option>
                 <option value="TAS">TAS</option>
                 <option value="ACT">ACT</option>
-              </select> -->
+              </select>
   
-              <!-- <label class="text_Float_left" for="pAdr">Postcode</label>
+              <label class="text_Float_left" for="pAdr">Postcode</label>
               <input class="input_text in_range_stuff" id="pAdr" type="text"
                 name="postcode" placeholder="Bet you need to look it up online!!!"
                 maxlength="4" pattern="\d{4}" required>
   
             </fieldset>
   
-          </div> -->
+          </div>
   <!-- Radio and checkbox and select for choosing what the customer want to ask or whatever -->
-          <!-- <div class="part flex">
+          <div class="part flex">
   
             <label class="choice_label">Preferred Contact</label>
   
@@ -122,9 +114,9 @@
   
   
   
-          </div> -->
+          </div>
   
-          <!-- <div class="part product_option">
+          <div class="part product_option">
             <label class="choice_label ">Which book do you want to order:</label>
   
             <select name="book">
@@ -132,9 +124,9 @@
               <option class="select_text" value="book_1">Linear Algebra</option>
               <option class="select_text" value="book_1">Calculus</option>
             </select>
-          </div> -->
+          </div>
   
-          <!-- <div class="part">
+          <div class="part">
   
             <label class="choice_label">choose order types:</label>
   
@@ -159,8 +151,15 @@
                 </li>
               </ul>
             </div>
-          </div> -->
+          </div>
+  
+          <br>
+          <br>
   <!-- Simple text area for customer to express -->
+          <div>
+            <textarea name="comment"
+              placeholder="What do you want to say?"></textarea>
+          </div>
         </fieldset>
  <!-- Submit button  -->
         <div class="submit">
