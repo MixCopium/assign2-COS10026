@@ -8,11 +8,7 @@
         return $data;
     }
 
-    // ensure that this page cannot be access directly
-    if(!(isset($_POST["uname"]) && isset($_POST["lname"]) && isset($_POST["email"]) && isset($_POST["phone number"]) && isset($_POST["street"])&& isset($_POST["suburb"]) && isset($_POST["state"]) && isset($_POST["postcode"]) && isset($_POST["contact"])  && isset($_POST["book"]) && isset($_POST["type[]"]) && isset($_POST["comment"])    )) {
-        header ("location:enquire.php");
-    }
-
+    
 
     // get the input value
 
@@ -21,7 +17,13 @@
 
     if(isset($_POST["uname"])) {
         $firstname = sanitise_input($_POST["uname"]);
-    } else {
+    } 
+    
+    if (!preg_match('/^\pL+$/u', $firstname) && strlen($firstname)!=0) {
+        $errMsg .= "<p>Your name cannot have number inside it.";
+    }
+    else if(strlen($firstname)==0) {
+        
         $errMsg .= "<p>Your name must be entered.";
     }
 
@@ -92,9 +94,7 @@
 
     
 
-    if (!preg_match('/^\pL+$/u', $firstname)) {
-        $errMsg .= "<p>Your name cannot have number inside it.";
-    }
+    
 
     if(strlen($firstname)>=25) {
         $errMsg .= "<p>Your name should be <25 characters.";
@@ -134,13 +134,20 @@
     }
 
     // redirect to proper page after checking 
-    if (strlen($errMsg ) != 0) {
+    if (strlen($errMsg )) {
         header ("location:fix_order.php");
     } else {
 
 
         header ("location:receipt.php");
     }
+
+
+    // ensure that this page cannot be access directly
+    if(!(isset($_POST["uname"])) && !(isset($_POST["lname"])) && !(isset($_POST["email"])) && !(isset($_POST["phone number"])) && !(isset($_POST["street"]))&& !(isset($_POST["suburb"])) && !(isset($_POST["state"])) && !(isset($_POST["postcode"])) && !(isset($_POST["contact"]))  && !(isset($_POST["book"])) && !(isset($_POST["type[]"]))) {
+        header ("location:enquire.php");
+    }
+
 
     // transfer data to other pages
     session_start();
