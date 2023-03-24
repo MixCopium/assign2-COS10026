@@ -12,7 +12,7 @@
               <a class="nav-link" href="product.php">Main Products</a>
             </li>
             <li class="nav_item">
-              <a class="nav-link" href="enquire.php">Enquire</a>
+              <a class="nav-link" href="payment.php">Payment</a>
             </li>
             <li class="nav_item">
               <a class="nav-link" href="about.php">About Me</a>
