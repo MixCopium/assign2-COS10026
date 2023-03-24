@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": false,
+    "diffEditor.wordWrap": "on",
+    "editor.suggest.preview": true
+}
