@@ -27,24 +27,23 @@
 <body>
 <?php include 'includes/header.inc'; ?>     
     <main id="enquire">
-      <h1>Contact us</h1>
       <article class="form">
-        <h2>Product Enquire Form</h2>
+        <h2>Give us your money!!!</h2>
         <form  method="post" action="process_order.php" novalidate>
-        <fieldset class="part">
+          <fieldset class="part">
   <!-- first row for contact: Name (crucial) -->
             <div class="row_01">
   
               <div class="column">
                   <label class="text_Float_left" for="fName">First name</label>
                   <br>
-                  <input class="input_text_2  in_range_stuff" id="fName" type="text" name="uname" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="fName" type="text" name="First_Name" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
-                  <input class="input_text_2  in_range_stuff" id="lName" type="text" name="uname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="lName" type="text" name="Last_Name" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
   <!-- second row for contact: info to sell away :) (crucial) -->
@@ -53,82 +52,123 @@
             <div class="column">
               <label class="text_Float_left" for="email">Email</label>
               <br>
-              <input class="input_text_2  in_range_stuff" type="email" id="email"
-                name="email" placeholder="lmao@lalaland.com" required>
+              <input class="input_text_2" type="email" id="email"
+                name="Email" placeholder="lmao@lalaland.com" required>
             </div>
   
             <div class="column2">
               <label class="text_Float_left" for="Pnumb">Phone number</label>
               <br>
-              <input class="input_text_2  in_range_stuff" id="Pnumb" type="text" name="phone number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
+              <input class="input_text_2" id="Pnumb" type="text" name="Phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
             </div>
           </div>
   <!-- Less crucial contact info: Address in general -->
           <div>
             <fieldset class="part" id="fieldSet2">
-              <label class="text_Float_left" for="sAdr">Street Address</label>
-              <input class="input_text in_range_stuff" id="sAdr" type="text"
-                name="uname" placeholder="Your Address" maxlength="40" required>
-  
-              <label class="text_Float_left" for="dAdr">Suburb/Town</label>
-              <input class="input_text in_range_stuff" id="dAdr" type="text"
-                name="uname" placeholder="What District" maxlength="20" required>
-  
-              <label class="text_Float_left" for="cAdr">State</label>
-              <select name="state" id="cAdr" required>
-                <option value>Select one</option>
-                <option value="VIC">VIC</option>
-                <option value="NSW">NSW</option>
-                <option value="QLD">QLD</option>
-                <option value="NT">NT</option>
-                <option value="WA">WA</option>
-                <option value="SA">SA</option>
-                <option value="TAS">TAS</option>
-                <option value="ACT">ACT</option>
-              </select>
+              <label class="text_Float_left" for="Adr">Address</label>
+              <input class="input_text_2" id="Adr" type="text"
+                name="Address" placeholder="Your Address" maxlength="40" required>
   
               <label class="text_Float_left" for="pAdr">Postcode</label>
-              <input class="input_text in_range_stuff" id="pAdr" type="text"
-                name="postcode" placeholder="Bet you need to look it up online!!!"
-                maxlength="4" pattern="\d{4}" required>
+              <input class="input_text_2" id="pAdr" type="text"
+                name="Postcode" placeholder="Bet you need to look it up online!!!"
+                maxlength="4" pattern="\d{6}" required>
   
             </fieldset>
   
           </div>
-  <!-- Radio and checkbox and select for choosing what the customer want to ask or whatever -->
+  <!-- Radio select for choosing which type of card the customer want to use for payment -->
           <div class="part flex">
   
-            <label class="choice_label">Preferred Contact</label>
+            <label class="choice_label">Preferred Card</label>
   
             <div class="option_content">
-              <label class="precon_label" for="email2"> <input id="email2"
-                  type="radio" name="contact" value="Email" checked> Email
+              <label class="precon_label" for="visa"> <input id="visa"
+                  type="radio" name="card" value="Visa" checked> Visa
               </label>
   
-              <label class="precon_label" for="phone"> <input id="phone"
-                  type="radio" name="contact" value="Phone"> Phone </label>
+              <label class="precon_label" for="mastercard"> <input id="mastercard"
+                  type="radio" name="card" value="Mastercard"> Mastercard </label>
   
-              <label class="precon_label" for="post"> <input id="post"
-                  type="radio" name="contact" value="Post"> Post </label>
+              <label class="precon_label" for="jcb"> <input id="jcb"
+                  type="radio" name="card" value="JCB"> JCB </label>
             </div>
   
-  
-  
           </div>
+          <br>
+                                         <!-- Card information  -->
+          <div class="row_01">
   
-          <div class="part product_option">
-            <label class="choice_label ">Which book do you want to order:</label>
+              <div class="column">
+                  <label class="text_Float_left" for="cName">Card holder</label>
+                  <input class="input_text_2" id="cName" type="text" name="Card_name" placeholder="Nguyen Quang Bao Han" maxlength="25" pattern="[a-zA-Z\s]*" required>
+              </div>
   
-            <select name="book">
-              <option class="select_text" value="book_1">Harry Potter</option>
-              <option class="select_text" value="book_1">Linear Algebra</option>
-              <option class="select_text" value="book_1">Calculus</option>
-            </select>
-          </div>
+              <div class="column2">
+               <label class="text_Float_left" for="cNumb">Card number</label>
+               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
+            </div>
+           </div>
+
+           <div class="row2">
+  
+              <div class="column">
+               <label class="text_Float_left" for="ex_Date">Expire Date</label>
+               <input class="input_text_2" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
+              </div>
+
+              <div class="column2">
+               <label class="text_Float_left" for="cvv">CVV</label>
+               <input class="input_text_2" id="cvv" type="text" name="CVV" placeholder="e.g: 123" maxlength="3" pattern="\d{3}" required>
+              </div>
+            </div>
+
+<!-- List of product for customer to choose by inputing the quantity of what they want -->
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="header_product_1">Product</th>
+                  <th class="header_product_2">Price</th>
+                  <th class="header_product_3">Quantity</th>
+                </tr>
+              </thead>
+
+              <tbody>
+<!-- Product 1 -->
+                <tr>
+                  <td class="actual_product">Harry Potter and the Half-Blood Prince - J.K Rowling</td>
+                  <td class="actual_product_2">$99.99</td>
+                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="Harry-potter_THBP" maxlength="3" pattern="\d{3}"></td>
+                </tr>
+<!-- Product 2 -->
+                <tr>
+                  <td class="actual_product">Harry Potter and the Philosopher's Stone - J.K Rowling</td>
+                  <td class="actual_product_2">$99.99</td>
+                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="Harry-potter_TPS" maxlength="3" pattern="\d{3}"></td>
+                </tr>
+<!-- Product 3 -->
+                <tr>
+                  <td class="actual_product">Harry Potter and the Chamber of Secrets - J.K Rowling</td>
+                  <td class="actual_product_2">$99.99</td>
+                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="Harry-potter_TCOS" maxlength="3" pattern="\d{3}"></td>
+                </tr>
+<!-- Product 4 -->
+                <tr>
+                  <td class="actual_product">Harry Potter and the Order of the Phoenix - J.K Rowling</td>
+                  <td class="actual_product_2">$99.99</td>
+                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="Harry-potter_TOOTP" maxlength="3" pattern="\d{3}"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <br>
+
+<!-- List of extra free stuff we give out for every order -->
   
           <div class="part">
   
-            <label class="choice_label">choose order types:</label>
+            <label class="choice_label">Choose extra goody (FREE):</label>
   
             <div class="option_div">
   
@@ -141,7 +181,7 @@
   
                 <li class="Option">
                   <label for="Opt_2"> <input class="checkbox" type="checkbox"
-                      id="Opt_2" name="type[]" value="Hardback">Hardback</label>
+                      id="Opt_2" name="type[]" value="Hardback">Coupon included</label>
                 </li>
   
                 <li class="Option">
@@ -149,22 +189,24 @@
                       id="Opt_3" name="type[]" value="Merch included"> Merch
                     included</label>
                 </li>
+
+                <li class="Option">
+                  <label for="Opt_4"> <input class="checkbox" type="checkbox"
+                      id="Opt_4" name="type[]" value="none"> None</label>
+                </li>
               </ul>
             </div>
           </div>
   
           <br>
           <br>
-  <!-- Simple text area for customer to express -->
-          <div>
-            <textarea name="comment"
-              placeholder="What do you want to say?"></textarea>
+
           </div>
         </fieldset>
  <!-- Submit button  -->
         <div class="submit">
           <input type="submit" id="submit" class="btn" title="Send"
-            value="Submit">
+            value="Check out">
         </div>
       </form>
       </article>
