@@ -139,25 +139,25 @@
                 <tr>
                   <td class="actual_product">Harry Potter and the Half-Blood Prince - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="Harry-potter_THBP" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="Harry-potter_THBP" maxlength="3" pattern="\d{3}"></td>
                 </tr>
 <!-- Product 2 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Philosopher's Stone - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="Harry-potter_TPS" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="Harry-potter_TPS" maxlength="3" pattern="\d{3}"></td>
                 </tr>
 <!-- Product 3 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Chamber of Secrets - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="Harry-potter_TCOS" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="Harry-potter_TCOS" maxlength="3" pattern="\d{3}"></td>
                 </tr>
 <!-- Product 4 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Order of the Phoenix - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="Harry-potter_TOOTP" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="Harry-potter_TOOTP" maxlength="3" pattern="\d{3}"></td>
                 </tr>
               </tbody>
             </table>

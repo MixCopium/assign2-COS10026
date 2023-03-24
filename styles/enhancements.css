@@ -7,7 +7,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 */
 
 
-@media only screen and (min-width: 601px) and (max-width: 768px) {
+@media only screen and (min-width: 601px) and (max-width: 767px) {
   /* For tablets: */
 
 
@@ -429,40 +429,86 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     padding: 0px;
   }
 
+/* Make the border representing fieldset dissapear   */
+  #enquire .part {
+    border-style: none;
+  }
+
   #enquire fieldset input {
     border-radius: 10px;
   }
 
-  /* Selecttion of book */
-  #enquire .product_option {
-    margin-top: 4%;
+/* The text over each input is style here   */
+  #enquire .text_Float_left {
+    float: left;
+    font-size: 1.7em;
   }
 
-  /* Make the border representing fieldset dissapear   */
-  #enquire .part {
-    border-style: none;
+/* Increase font-size of placeholder   */
+  #enquire input::placeholder {
+    font-size: 1.4em;
   }
 
   /* Set the input field to look kinda opaque    */
   #enquire .input_text {
     opacity: 0.5;
     width: 100%;
+    height: 100%;
+    align-self: center;
+    border-style: none;
+    text-align: center;
+    font-size: 0.9em;
+  }
+
+  #enquire .input_text_2 {
+    opacity: 0.5;
+    width: 100%;
     padding: 1.5em;
     align-self: center;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
   }
 
-  /* The text over each input is style here   */
-  #enquire .text_Float_left {
-    float: left;
-    font-size: 1.7em;
-  }
+/* Table */
+#enquire table, th, td {
+  border: 1px solid black;
+}
 
-  /* Increase font-size of placeholder   */
-  #enquire input::placeholder {
-    font-size: 1.4em;
-  }
+ #enquire table th {
+  background-color: lightgrey;
+ }
 
+ #enquire table tr td {
+  height: 60px;
+  padding:0.5%;
+ }
+
+ #enquire table .header_product_1 {
+  width:75%;
+  font-size: 1.6em;
+  
+ }
+
+ #enquire table .header_product_2 {
+  width:10%;
+  font-size: 1.6em;
+  
+ }
+
+ #enquire table .header_product_3 {
+  padding: 1%;
+  width:14%;
+  font-size: 1.5em;
+  
+ }
+
+ #enquire .actual_product {
+  font-size: 1.5em;
+ }
+
+ #enquire .actual_product_2 {
+  font-size: 1.2em;
+  text-align: center;
+ }
 
   /*2 equal collums*/
 
@@ -502,66 +548,28 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     clear: both;
   }
 
-  /* Styling the Less crucial info namely border and input field   */
-  #enquire #fieldSet2 {
-    border-style: none;
-  }
-
-  #enquire .input_text_2 {
-    opacity: 0.5;
-    width: 100%;
-    padding: 1.5em;
-    align-self: center;
-    margin-bottom: 1%;
-  }
-
-  /* Disable arrow */
-
-  #enquire input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* ************** */
-
-  /* Preferred contact   */
+  /* Preferred Card type*/
   #enquire .precon_label {
     display: flex;
     align-items: center;
     padding-right: 2%;
   }
 
+  /* Changing radio size */
   #enquire input[type="radio"] {
     transform: scale(1.5);
   }
 
+/* Add display flex */
   #enquire .flex {
     display: flex;
     flex-direction: column;
   }
 
+ /* position adjustment for prefered Card */
   #enquire .option_content {
     display: flex;
     margin-top: 2%;
-  }
-
-  /* Select Book   */
-  #enquire select {
-    width: 15%;
-    padding: 0.5em;
-    border-radius: 10px;
-    margin-bottom: 4%;
-    margin-left: 2%;
-  }
-
-  /* State styling   */
-  #enquire #cAdr {
-    width: 100%;
-    padding: 1.5em;
-    border-radius: 10px;
-    opacity: 0.5;
-    margin: 0% 0% 2% 0%;
   }
 
   /* Book, preferred, order font styling    */
@@ -569,13 +577,10 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     font-size: 1.7em;
   }
 
+/* adjust the position of the label content */
   #enquire li label {
     display: flex;
     align-items: center;
-  }
-
-  #enquire .select_text {
-    font-size: 1.2em;
   }
 
   /* Choose order type styling   */
@@ -585,6 +590,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     padding: 0px;
   }
 
+/* checkbox option position settings */
   #enquire .Option {
     display: flex;
     list-style-type: none;
@@ -592,23 +598,13 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     margin-right: 2%;
   }
 
+/* checkbox shape adjust */
   #enquire .checkbox {
     height: 15px;
     width: 15px;
   }
 
-  /* Textarea   */
-  #enquire textarea {
-    line-height: 10vh;
-    width: 100%;
-    padding: 4%;
-    font-size: 1.3em;
-  }
-
-  #enquire textarea::placeholder {
-    font-size: 1.4em;
-  }
-
+/* attribute selector to adjust all text inputs font size */
   #enquire input [type="text"] {
     font-size: 1.5em;
   }
@@ -619,10 +615,12 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     margin-top: 5px;
   }
 
+/* submit button length adjust */
   #enquire #submit {
     width: 20%;
   }
 
+/* hover effect for submit button */
   #enquire #submit:hover {
     transform: scale(1.2);
   }
@@ -1495,27 +1493,13 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     padding: 0px;
   }
 
-  #enquire fieldset input {
-    border-radius: 10px;
-  }
-
-  /* Selecttion of book */
-  #enquire .product_option {
-    margin-top: 4%;
-  }
-
   /* Make the border representing fieldset dissapear   */
   #enquire .part {
     border-style: none;
   }
 
-  /* Set the input field to look kinda opaque    */
-  #enquire .input_text {
-    opacity: 0.5;
-    width: 100%;
-    padding: 1.5em;
-    align-self: center;
-    margin-bottom: 2%;
+  #enquire fieldset input {
+    border-radius: 10px;
   }
 
   /* The text over each input is style here   */
@@ -1529,7 +1513,68 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     font-size: 1.4em;
   }
 
+    /* Set the input field to look kinda opaque    */
+  #enquire .input_text {
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    border-style: none;
+    text-align: center;
+    font-size: 1.1em;
+  }
 
+  #enquire .input_text_2 {
+    opacity: 0.5;
+    width: 100%;
+    padding: 1.5em;
+    align-self: center;
+    margin-bottom: 1%;
+  }
+
+/* Table */
+#enquire table, th, td {
+  border: 1px solid black;
+}
+
+ #enquire table th {
+  background-color: lightgrey;
+ }
+
+ #enquire table tr td {
+  height: 50px;
+ }
+
+ #enquire table .header_product_1 {
+  width:75%;
+  font-size: 1em;
+  
+ }
+
+ #enquire table .header_product_2 {
+  width:10%;
+  font-size: 1em;
+  
+ }
+
+ #enquire table .header_product_3 {
+  padding: 1%;
+  width:14%;
+  font-size: 1em;
+  
+ }
+
+ #enquire .actual_product {
+  font-size: 1em;
+  padding: 1%;
+ }
+
+ #enquire .actual_product_2 {
+  font-size: 0.8em;
+  text-align: center;
+ }
+
+                                                  
   /*2 equal collums*/
 
   #enquire * {
@@ -1568,66 +1613,28 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     clear: both;
   }
 
-  /* Styling the Less crucial info namely border and input field   */
-  #enquire #fieldSet2 {
-    border-style: none;
-  }
-
-  #enquire .input_text_2 {
-    opacity: 0.5;
-    width: 100%;
-    padding: 1.5em;
-    align-self: center;
-    margin-bottom: 1%;
-  }
-
-  /* Disable arrow */
-
-  #enquire input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* ************** */
-
-  /* Preferred contact   */
+  /* Preferred Card type */
   #enquire .precon_label {
     display: flex;
     align-items: center;
     padding-right: 2%;
   }
 
+  /* Changing radio size */
   #enquire input[type="radio"] {
     transform: scale(1);
   }
 
+  /* Add display flex */
   #enquire .flex {
     display: flex;
     flex-direction: column;
   }
 
+  /* position adjustment for prefered Card */
   #enquire .option_content {
     display: flex;
     margin-top: 2%;
-  }
-
-  /* Select Book   */
-  #enquire select {
-    width: 25%;
-    padding: 0.3em;
-    border-radius: 10px;
-    margin-bottom: 4%;
-    margin-left: 2%;
-  }
-
-  /* State styling   */
-  #enquire #cAdr {
-    width: 100%;
-    padding: 1.5em;
-    border-radius: 10px;
-    opacity: 0.5;
-    margin: 0% 0% 2% 0%;
   }
 
   /* Book, preferred, order font styling    */
@@ -1635,13 +1642,11 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     font-size: 1.7em;
   }
 
+
+/* adjust the position of the label content */
   #enquire li label {
     display: flex;
     align-items: center;
-  }
-
-  #enquire .select_text {
-    font-size: 1.2em;
   }
 
   /* Choose order type styling   */
@@ -1651,6 +1656,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     padding: 0px;
   }
 
+/* checkbox option position settings */
   #enquire .Option {
     display: flex;
     list-style-type: none;
@@ -1658,23 +1664,13 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     margin-right: 2%;
   }
 
+/* checkbox shape adjust */
   #enquire .checkbox {
     height: 10px;
     width: 10px;
   }
 
-  /* Textarea   */
-  #enquire textarea {
-    line-height: 10vh;
-    width: 100%;
-    padding: 4%;
-    font-size: 1.3em;
-  }
-
-  #enquire textarea::placeholder {
-    font-size: 1.4em;
-  }
-
+/* attribute selector to adjust all text inputs font size */
   #enquire input [type="text"] {
     font-size: 1.5em;
   }
@@ -1685,10 +1681,12 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     margin-top: 5px;
   }
 
+/* submit button length adjust */
   #enquire #submit {
     width: 20%;
   }
 
+/* hover effect for submit button */
   #enquire #submit:hover {
     transform: scale(1.2);
   }
