@@ -37,13 +37,13 @@
               <div class="column">
                   <label class="text_Float_left" for="fName">First name</label>
                   <br>
-                  <input class="input_text_2" id="fName" type="text" name="uname" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="fName" type="text" name="First_Name" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
-                  <input class="input_text_2" id="lName" type="text" name="lname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="lName" type="text" name="Last_Name" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
   <!-- second row for contact: info to sell away :) (crucial) -->
@@ -53,13 +53,13 @@
               <label class="text_Float_left" for="email">Email</label>
               <br>
               <input class="input_text_2" type="email" id="email"
-                name="email" placeholder="lmao@lalaland.com" required>
+                name="Email" placeholder="lmao@lalaland.com" required>
             </div>
   
             <div class="column2">
               <label class="text_Float_left" for="Pnumb">Phone number</label>
               <br>
-              <input class="input_text_2" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
+              <input class="input_text_2" id="Pnumb" type="text" name="Phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
             </div>
           </div>
   <!-- Less crucial contact info: Address in general -->
@@ -67,17 +67,17 @@
             <fieldset class="part" id="fieldSet2">
               <label class="text_Float_left" for="Adr">Address</label>
               <input class="input_text_2" id="Adr" type="text"
-                name="street" placeholder="Your Address" maxlength="40" required>
+                name="Address" placeholder="Your Address" maxlength="40" required>
   
               <label class="text_Float_left" for="pAdr">Postcode</label>
               <input class="input_text_2" id="pAdr" type="text"
-                name="postcode" placeholder="Bet you need to look it up online!!!"
+                name="Postcode" placeholder="Bet you need to look it up online!!!"
                 maxlength="4" pattern="\d{6}" required>
   
             </fieldset>
   
           </div>
-  <!-- Radio and checkbox and select for choosing what the customer want to ask or whatever -->
+  <!-- Radio select for choosing which type of card the customer want to use for payment -->
           <div class="part flex">
   
             <label class="choice_label">Preferred Card</label>
@@ -94,11 +94,9 @@
                   type="radio" name="card" value="JCB"> JCB </label>
             </div>
   
-  
-  
           </div>
           <br>
-
+                                         <!-- Card information  -->
           <div class="row_01">
   
               <div class="column">
@@ -108,7 +106,7 @@
   
               <div class="column2">
                <label class="text_Float_left" for="cNumb">Card number</label>
-               <input class="input_text_2" id="cNumb" type="text" name="card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
+               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
             </div>
            </div>
 
@@ -125,6 +123,8 @@
               </div>
             </div>
 
+<!-- List of product for customer to choose by inputing the quantity of what they want -->
+
             <table class="table">
               <thead>
                 <tr>
@@ -135,37 +135,36 @@
               </thead>
 
               <tbody>
-
+<!-- Product 1 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Half-Blood Prince - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="purchase_book" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="Harry-potter_THBP" maxlength="2" pattern="\d{2}"></td>
                 </tr>
-
+<!-- Product 2 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Philosopher's Stone - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="purchase_book" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="Harry-potter_TPS" maxlength="2" pattern="\d{2}"></td>
                 </tr>
-
+<!-- Product 3 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Chamber of Secrets - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="purchase_book" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="Harry-potter_TCOS" maxlength="2" pattern="\d{2}"></td>
                 </tr>
-
+<!-- Product 4 -->
                 <tr>
                   <td class="actual_product">Harry Potter and the Order of the Phoenix - J.K Rowling</td>
                   <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="purchase_book" maxlength="2" pattern="\d{2}"></td>
+                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="Harry-potter_TOOTP" maxlength="2" pattern="\d{2}"></td>
                 </tr>
               </tbody>
             </table>
 
             <br>
 
-
-
+<!-- List of extra free stuff we give out for every order -->
   
           <div class="part">
   
