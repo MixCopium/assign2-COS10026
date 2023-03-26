@@ -19,8 +19,8 @@
 
 
     <!-- css style link -->
-    <link rel="stylesheet" href="./styles/enhancements.css">
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="styles/enhancements.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>Enquire</title>
 </head>
 
