@@ -310,19 +310,4 @@
     session_start();
     $_SESSION['err'] = $errMsg;
     $_SESSION['state'] = $state
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-?>
+    ?>

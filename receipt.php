@@ -22,40 +22,35 @@
     <?php include 'includes/header.inc'; ?>
 <!-- main content -->
 <main id="receipt">
-    <!-- Receipt  receive input from  proccess_order.php -->
-    <h1>Receipt</h1>
-    <p>Thank you for your order. Your order details are shown below.</p>
-    
-    <section>
-        <h2>Order Information</h2>
-        <p>Order Number: <?php echo $orderNum; ?></p>
-        <p>Order Date: <?php echo $orderDate; ?></p>
-        <p>Order Type: <?php echo $orderType; ?></p>
-    </section>
-
-    <section>
-        <h2>Customer Information</h2>
-        <p>First Name: <?php echo $firstname; ?></p>
-        <p>Last Name: <?php echo $lastname; ?></p>
-        <p>Street: <?php echo $street; ?></p>
-        <p>Suburb: <?php echo $suburb; ?></p>
-        <p>State: <?php echo $state; ?></p>
-        <p>Postcode: <?php echo $postcode; ?></p>
-    <p>Email: <?php echo $email; ?></p>
-    <p>Phone Number: <?php echo $phoneNum; ?></p>
-    <p>Preferred Contact: <?php echo $contact; ?></p>
-    </section>
-
-    <section>
-    <h2> Product Details</h2>
-    <p>Book: <?php echo $book; ?></p>
-    <p>Book Type: <?php echo $type; ?></p>
-    <p>Comment: <?php echo $comment; ?></p>
-    <p>Order Total: <?php echo $total; ?></p>
-    <p>Order Status: <?php echo $status; ?></p>
-    <p>Order Details: <?php echo $details; ?></p>
-    </section>
-    </main>
+<!-- // Retrieve order information from process_order.php data -->
+<?php
+    $firstname = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $phoneNum = $_POST["phone_number"];
+    $address = $_POST["address"];
+    $street = $_POST["street"];
+    $suburb = $_POST["suburb"];
+    $state = $_POST["state"];
+    $postcode = $_POST["postcode"];
+    $contact = $_POST["contact"];
+    $book = $_POST["book"];
+    $quantity = $_POST["quantity"];
+    $total = $_POST["total"];
+    $errMsg = "";
+  ?>
+  <!-- Print order information to the page -->
+  <h1>Thank you for your order!</h1>
+  <p>Order Details</p>
+  <p>Name: <?php echo $firstname . " " . $lastname; ?></p>
+  <p>Email: <?php echo $email; ?></p>
+  <p>Phone Number: <?php echo $phoneNum; ?></p>
+  <p>Address: <?php echo $address . " " . $street . " " . $suburb . " " . $state . " " . $postcode; ?></p>
+  <p>Contact: <?php echo $contact; ?></p>
+  <p>Book: <?php echo $book; ?></p>
+  <p>Quantity: <?php echo $quantity; ?></p>
+  <p>Total: <?php echo $total; ?></p>
+</main>
     <?php include 'includes/footer.inc'; ?>
     </body>
     </html>
