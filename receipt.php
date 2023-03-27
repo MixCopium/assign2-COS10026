@@ -20,42 +20,40 @@
   </head>
     <body>
     <?php include 'includes/header.inc'; ?>
-<!-- main content -->
-<main id="receipt">
-    <!-- Receipt  receive input from  proccess_order.php -->
-    <h1>Receipt</h1>
-    <p>Thank you for your order. Your order details are shown below.</p>
-    
-    <section>
-        <h2>Order Information</h2>
-        <p>Order Number: <?php echo $orderNum; ?></p>
-        <p>Order Date: <?php echo $orderDate; ?></p>
-        <p>Order Type: <?php echo $orderType; ?></p>
-    </section>
-
-    <section>
-        <h2>Customer Information</h2>
-        <p>First Name: <?php echo $firstname; ?></p>
-        <p>Last Name: <?php echo $lastname; ?></p>
-        <p>Street: <?php echo $street; ?></p>
-        <p>Suburb: <?php echo $suburb; ?></p>
-        <p>State: <?php echo $state; ?></p>
-        <p>Postcode: <?php echo $postcode; ?></p>
-    <p>Email: <?php echo $email; ?></p>
-    <p>Phone Number: <?php echo $phoneNum; ?></p>
-    <p>Preferred Contact: <?php echo $contact; ?></p>
-    </section>
-
-    <section>
-    <h2> Product Details</h2>
-    <p>Book: <?php echo $book; ?></p>
-    <p>Book Type: <?php echo $type; ?></p>
-    <p>Comment: <?php echo $comment; ?></p>
-    <p>Order Total: <?php echo $total; ?></p>
-    <p>Order Status: <?php echo $status; ?></p>
-    <p>Order Details: <?php echo $details; ?></p>
-    </section>
-    </main>
+    <div class="receipt">
+        <h1>Thank you for your order!</h1>
+        <p>Order date: <?php echo date("F j, Y, g:i a"); ?></p>
+      </div>
+      <div class="customer-details">
+        <h2>Customer Details</h2>
+        <p>Name: <?php echo $firstname . " " . $lastname; ?></p>
+        <p>Email: <?php echo $email; ?></p>
+        <p>Phone Number: <?php echo $phoneNum; ?></p>
+        <p>Address: <?php echo $address . " " . $street . " " . $suburb . " " . $state . " " . $postcode; ?></p>
+      </div>
+      <div class="order-details">
+        <h2>Order Details</h2>
+        <table>
+          <tr>
+            <td>Book:</td>
+            <td><?php echo $book; ?></td>
+          </tr>
+          <tr>
+            <td>Quantity:</td>
+            <td><?php echo $quantity; ?></td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td><?php echo $total; ?></td>
+          </tr>
+          <tr>
+            <td>Payment Method:</td>
+            <td>Credit Card</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</main>
     <?php include 'includes/footer.inc'; ?>
     </body>
     </html>
