@@ -744,6 +744,19 @@ h1,
     #enquire input [type="text"] {
       font-size: 2em;
     }
+
+  /* Textarea   */
+   #enquire textarea {
+    line-height: 10vh;
+    width: 100%;
+    padding: 4%;
+    font-size: 1.3em;
+  }
+
+  /* set font size for text area placeholder */
+  #enquire textarea::placeholder {
+    font-size: 1.4em;
+  }
  
     /* Submit button styling  */
     #enquire .submit {
