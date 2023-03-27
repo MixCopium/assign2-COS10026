@@ -62,6 +62,7 @@
               <input class="input_text_2" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
             </div>
           </div>
+          
   <!-- Less crucial contact info: Address in general -->
           <div>
             <fieldset class="part" id="fieldSet2">

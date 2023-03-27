@@ -625,11 +625,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     transform: scale(1.2);
   }
 
-  /* Validation of entered value in input  */
-  #enquire input:not(:placeholder-shown):invalid {
-    border: 5px solid red;
-  }
-
+  
   /* Sets the width and height of the banner image */
   #index .featured-banner img {
     width: 100%;
@@ -1691,10 +1687,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     transform: scale(1.2);
   }
 
-  /* Validation of entered value in input  */
-  #enquire input:not(:placeholder-shown):invalid {
-    border: 5px solid red;
-  }
+  
 
   /* Sets the width and height of the banner image */
   #index .featured-banner img {

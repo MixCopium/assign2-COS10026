@@ -13,42 +13,55 @@
     // get the input value
 
     $errMsg = "";
-
+    $errSpot=array();
 
     if(isset($_POST["uname"])) {
         $firstname = sanitise_input($_POST["uname"]);
     } 
     
     if (!preg_match('/^\pL+$/u', $firstname) && strlen($firstname)!=0) {
-        $errMsg .= "<p>Your name cannot have number inside it.</p>";
+        $errMsg .= "<p>Your firstname cannot have number inside it.</p>";
+        array_push($errSpot,"firstname");
     }
     else if(strlen($firstname)==0) {
         
-        $errMsg .= "<p>Your name must be entered.</p>";
+        $errMsg .= "<p>Your firstname must be entered.</p>";
+        array_push($errSpot,"firstname");
     }
 
     if(isset($_POST["lname"])) {
-        $lastname = sanitise_input($_POST["lname"]);
-    } else {
+        $lastname = sanitise_input($_POST["uname"]);
+    } 
+    
+    if (!preg_match('/^\pL+$/u', $lastname) && strlen($lastname)!=0) {
+        $errMsg .= "<p>Your lastname cannot have number inside it.</p>";
+        array_push($errSpot,"lastname");
+    }
+    else if(strlen($lastname)==0) {
+        
         $errMsg .= "<p>Your lastname must be entered.</p>";
+        array_push($errSpot,"lastname");
     }
 
-    if(isset($_POST["email"])) {
+    if(strlen($_POST["email"])!=0) {
         $email = sanitise_input($_POST["email"]);
     } else {
         $errMsg .= "<p>Your email must be entered.</p>";
+        array_push($errSpot,"email");
     }
 
-    if(isset($_POST["phone_number"])) {
+    if(strlen($_POST["phone_number"])!=0) {
         $phoneNum = sanitise_input($_POST["phone_number"]);
     } else {
         $errMsg .= "<p>Your phone number must be entered.</p>";
+        array_push($errSpot,"pnum");
     }
 
-    if(isset($_POST["address"])) {
+    if(strlen($_POST["address"])!=0) {
         $address = sanitise_input($_POST["address"]);
     } else {
         $errMsg .= "<p>Your address must be entered.</p>";
+        array_push($errSpot,"address");
     }
 
     // if(isset($_POST["street"])) {
@@ -69,8 +82,12 @@
     //     $errMsg .= "<p>Your state must be entered.</p>";
     // }
 
-    if(isset($_POST["postcode"])) {
+    if(strlen($_POST["postcode"])!=0) {
         $postcode = sanitise_input($_POST["postcode"]);
+        
+    } else {
+        $errMsg .= "<p>Your postcode must be entered.</p>";
+        array_push($errSpot,"postcode");
     }
 
     // if(isset($_POST["contact"])) {
@@ -90,6 +107,7 @@
         $type = implode(',', $_POST['type']);
     } else {
         $errMsg .= "<p>Your order type must be entered.</p>";
+        
     }
 
     if(isset($_POST["comment"])) {
@@ -101,51 +119,56 @@
         $card = sanitise_input($_POST["card"]);
     } else {
         $errMsg .= "<p>Your book must be choosen.</p>";
+        
     }
 
     if(strlen($_POST["Card_name"])!=0) {
         $cname = sanitise_input($_POST["Card_name"]);
     }else {
         $errMsg .= "<p>Your card name must be entered.</p>";
+        array_push($errSpot,"cname");
     }
 
     if(isset($_POST["Card_number"])) {
         $cnum = sanitise_input($_POST["Card_number"]);
     } else {
         $errMsg .= "<p>Your card numbers must be entered.</p>";
+        array_push($errSpot,"cnum");
     }
 
     if(isset($_POST["card_expire_date"])) {
         $cexpire = sanitise_input($_POST["card_expire_date"]);
     } else {
         $errMsg .= "<p>Your card expire date must be entered.</p>";
+        array_push($errSpot,"cexpire");
     }
 
-    if(isset($_POST["CVV"])) {
+    if(strlen($_POST["CVV"])!=0) {
         $cvv = sanitise_input($_POST["CVV"]);
     } else {
         $errMsg .= "<p>Your card CVV must be entered.</p>";
+        array_push($errSpot,"cvv");
     }
     
-    if(isset($_POST["Harry_potter_THBP"])) {
+    if(strlen($_POST["Harry_potter_THBP"])!=0) {
         $thbp = sanitise_input($_POST["Harry_potter_THBP"]);
     } else {
         $thbp=0;
     }
 
-    if(isset($_POST["Harry_potter_TCOS"])) {
+    if(strlen($_POST["Harry_potter_TCOS"])!=0) {
         $tcos = sanitise_input($_POST["Harry_potter_TCOS"]);
     }else {
         $tcos=0;
     }
 
-    if(isset($_POST["Harry_potter_TPS"])) {
+    if(strlen($_POST["Harry_potter_TPS"])!=0) {
         $tps = sanitise_input($_POST["Harry_potter_TPS"]);
     }else {
         $tps=0;
     }
 
-    if(isset($_POST["Harry_potter_TOOTP"])) {
+    if(strlen($_POST["Harry_potter_TOOTP"])!=0) {
         $tootp = sanitise_input($_POST["Harry_potter_TOOTP"]);
     }else {
         $tootp=0;
@@ -157,37 +180,44 @@
         case("Visa"):
             if(!preg_match('/^([4-4][0-9]{15})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 4 and have 16 characters.</p>";
+                array_push($errSpot,"cnum");
             }
             break;
 
         case("Mastercard"):
             if(!preg_match('/^([5-5][1-5][0-9]{14})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 51 to 55 and have 16 characters.</p>";
+                array_push($errSpot,"cnum");
             }
             break;
 
         case("AE"):
             if(!preg_match('/^([3-3][4-4][0-9]{13}|[3-3][7-7][0-9]{13})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 34 or 37 and have 15 characters.</p>";
+                array_push($errSpot,"cnum");
             }
             break;
     }
     
 
-    if(strlen($firstname)>=25) {
-        $errMsg .= "<p>Your name should be <25 characters.</p>";
-    }
+    // if(strlen($firstname)>=25) {
+    //     $errMsg .= "<p>Your name should be <25 characters.</p>";
+    //     array_push($errSpot,"firstname");
+    // }
 
-    if (!preg_match('/^\pL+$/u', $lastname)) {
-        $errMsg .= "<p>Your name cannot have number inside it.</p>";
-    }
+    // if (!preg_match('/^\pL+$/u', $lastname) && strlen($lastname)!=0) {
+    //     $errMsg .= "<p>Your name cannot have number inside it.</p>";
+    //     array_push($errSpot,"lastname");
+    // }
 
-    if(strlen($lastname)>=25) {
-        $errMsg .= "<p>Your name should be <25 characters.</p>";
-    }
+    // if(strlen($lastname)>=25) {
+    //     $errMsg .= "<p>Your name should be <25 characters.</p>";
+    //     array_push($errSpot,"lastname");
+    // }
 
     if(!preg_match("/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/", $cexpire)) {
         $errMsg .= "<p>Your must provide appropriate expire date.</p>";
+        array_push($errSpot,"cexpire");
     }
 
 
@@ -202,23 +232,29 @@
 
     
 
-    if (strlen($postcode) != 4){
+    if (strlen($postcode) != 4 && $postcode!=""){
         $errMsg .= "<p>Your postcode must be exactly 4 digits.</p>";
+        array_push($errSpot,"postcode");
     }
 
-    if(!is_numeric($phoneNum)) {
+    if(!is_numeric($phoneNum) && $phoneNum!="") {
         
         $errMsg .= "<p>Your phone number must be numeric.</p>";
+        array_push($errSpot,"pnum");
     }
     
-    if(!(is_numeric($tps)&&is_numeric($tootp)&&is_numeric($thbp)&&is_numeric($tcos)) ) {
+    if(!($tps == 0 && $tootp == 0 && $thbp ==0 && $tcos==0)){
+        if(!(is_numeric($tps)&&is_numeric($tootp)&&is_numeric($thbp)&&is_numeric($tcos)) )  {
+            $errMsg .= "<p>Your product quantity must be numeric.</p>";
+            array_push($errSpot,"quantity");
+        }
         
-        $errMsg .= "<p>Your product quantity must be numeric.</p>";
     }
 
 
     if(strlen($phoneNum)>10) {
         $errMsg .= "<p>Your phone number should be no longer than 10 digits.</p>";
+        array_push($errSpot,"pnum");
     }
 
     // redirect to proper page after checking 
@@ -308,13 +344,23 @@
 
     // transfer data to other pages
     session_start();
+    $_SESSION['espot'] = $errSpot;
     $_SESSION['err'] = $errMsg;
-    $_SESSION['state'] = $state
+    $_SESSION['state'] = $state;
+    $_SESSION['firstname'] = (isset($firstname) ? $firstname : "");
+    $_SESSION['lastname'] = (isset($lastname) ? $lastname : "");
 
-
-
-
-    
+    $_SESSION['lastname'] = (isset($lastname) ? $lastname : "");
+    $_SESSION['email'] = (isset($email) ? $email : "");
+    $_SESSION['pnum'] = (isset($phoneNum) ? $phoneNum : "");
+    $_SESSION['address'] = (isset($address)? $address: "");
+    $_SESSION['postcode'] = (isset($postcode)? $postcode: "");
+   
+    $_SESSION['thbp'] = (isset($thbp)? $thbp: "");
+    $_SESSION['tps'] = (isset($tps)? $tps: "");
+    $_SESSION['tcos'] = (isset($tcos)? $tcos: "");
+    $_SESSION['tootp'] = (isset($tootp)? $tootp: "");
+    $_SESSION['type'] = (isset($_POST['type'])? $_POST['type']: array());
     
 
 
