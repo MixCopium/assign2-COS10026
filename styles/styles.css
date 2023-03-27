@@ -1196,6 +1196,27 @@ h1,
      /* border: 1px solid black; */
    }
 
+   
+
+  #general_page article {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    padding-top: 5vh;
+    height: 80vh;
+    background: #fbfbf2;
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: 10% 30%;
+    margin-bottom: 5%;
+    overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    /* border: 1px solid black; */
+  }
+
    /* footer font size adjust for requirement */
    footer p {
      font-size: 0.75vw !important;

@@ -19,7 +19,8 @@
     <title>Receipt</title>
   </head>
     <body>
-    <main>
+    <?php include 'includes/header.inc'; ?>
+    <main id="general_page">
       <!-- get data from session of process_order.php -->
       <?php
       session_start();
@@ -35,8 +36,9 @@
       $total = $_SESSION['tootp'];
       ?>
       
-    <?php include 'includes/header.inc'; ?>
-    <div class="receipt">
+    
+    <article>
+      <div>
         <h1>Thank you for your order!</h1>
         <p>Order date: <?php echo date("F j, Y, g:i a"); ?></p>
       </div>
@@ -69,6 +71,7 @@
         </table>
       </div>
     </div>
+    </article>
 </main>
     <?php include 'includes/footer.inc'; ?>
     </body>
