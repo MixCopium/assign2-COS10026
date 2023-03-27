@@ -19,6 +19,24 @@
     <title>Receipt</title>
   </head>
     <body>
+    <main>
+      <!-- get data from session of process_order.php -->
+      <?php
+      session_start();
+      $firstname = $_SESSION['firstname'];
+      $lastname = $_SESSION['lastname'];
+      $email = $_SESSION['email'];
+      $phoneNum = $_SESSION['phoneNum'];
+      $address = $_SESSION['address'];
+      $street = $_SESSION['street'];
+      $suburb = $_SESSION['suburb'];
+      $state = $_SESSION['state'];
+      $postcode = $_SESSION['postcode'];
+      $book = $_SESSION['book'];
+      $quantity = $_SESSION['quantity'];
+      $total = $_SESSION['total'];
+      ?>
+      
     <?php include 'includes/header.inc'; ?>
     <div class="receipt">
         <h1>Thank you for your order!</h1>
