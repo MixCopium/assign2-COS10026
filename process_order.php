@@ -30,7 +30,7 @@
     }
 
     if(isset($_POST["lname"])) {
-        $lastname = sanitise_input($_POST["uname"]);
+        $lastname = sanitise_input($_POST["lname"]);
     } 
     
     if (!preg_match('/^\pL+$/u', $lastname) && strlen($lastname)!=0) {

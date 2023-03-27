@@ -26,15 +26,13 @@
       $firstname = $_SESSION['firstname'];
       $lastname = $_SESSION['lastname'];
       $email = $_SESSION['email'];
-      $phoneNum = $_SESSION['phoneNum'];
+      $phoneNum = $_SESSION['pnum'];
       $address = $_SESSION['address'];
-      $street = $_SESSION['street'];
-      $suburb = $_SESSION['suburb'];
       $state = $_SESSION['state'];
       $postcode = $_SESSION['postcode'];
       $book = $_SESSION['book'];
       $quantity = $_SESSION['quantity'];
-      $total = $_SESSION['total'];
+      $total = $_SESSION['tootp'];
       ?>
       
     <?php include 'includes/header.inc'; ?>
@@ -47,7 +45,7 @@
         <p>Name: <?php echo $firstname . " " . $lastname; ?></p>
         <p>Email: <?php echo $email; ?></p>
         <p>Phone Number: <?php echo $phoneNum; ?></p>
-        <p>Address: <?php echo $address . " " . $street . " " . $suburb . " " . $state . " " . $postcode; ?></p>
+        <p>Address: <?php echo $address . " " . $state . " " . $postcode; ?></p>
       </div>
       <div class="order-details">
         <h2>Order Details</h2>
