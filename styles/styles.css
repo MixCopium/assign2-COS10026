@@ -302,10 +302,10 @@ h1,
        rgba(0, 0, 0, 0.22) 0px 15px 12px;
      margin-bottom: 5%;
      /* pointer-events: none; */
-     transition: all 0.5s ease-in-out;
+     -webkit-transition: all 0.5s ease-in-out;
      -o-transition: all 0.5s ease-in-out;
      -moz-transition: all 0.5s ease-in-out;
-     -webkit-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
    }
 
    /* title of the float object 's settings */
@@ -333,10 +333,10 @@ h1,
      background-position: 10% 30%;
      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
      margin-bottom: 2.5%;
-     transition: all 0.3s ease-in-out;
+     -webkit-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
      -moz-transition: all 0.3s ease-in-out;
-     -webkit-transition: all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
    }
 
 
@@ -981,10 +981,10 @@ h1,
      overflow: auto;
      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
      border: 1px solid black;
-     transition: all 0.5s ease-in-out;
+     -webkit-transition: all 0.5s ease-in-out;
      -o-transition: all 0.5s ease-in-out;
      -moz-transition: all 0.5s ease-in-out;
-     -webkit-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
    }
 
    /* h2 member number  */

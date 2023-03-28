@@ -1,3 +1,4 @@
+<!-- Duc Thinh Nguyen's Database Information/Setting -->
 <?php
     $host = "feenix-mariadb.swin.edu.au";
     $user = "s103805486";
