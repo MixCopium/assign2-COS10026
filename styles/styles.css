@@ -573,6 +573,15 @@ h1,
       border-radius: 10px;
     }
 
+       /* State styling   */
+   #enquire #cAdr {
+    width: 100%;
+    padding: 1.5em;
+    border-radius: 10px;
+    opacity: 0.5;
+    margin: 0% 0% 2% 0%;
+  }
+
     /* The text over each input is style here   */
     #enquire .text_Float_left {
       float: left;
