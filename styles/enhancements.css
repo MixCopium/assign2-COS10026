@@ -630,6 +630,11 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
       font-size: 1.4em;
     }
 
+         /* Validation of entered value in input  */
+         #enquire .input_text_2:not(:placeholder-shown):invalid {
+          border: 5px solid #ff0000;
+        }
+
   /* Submit button styling  */
   #enquire .submit {
     text-align: center;
@@ -1731,6 +1736,11 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
   #enquire textarea::placeholder {
     font-size: 1.4em;
   }
+
+       /* Validation of entered value in input  */
+       #enquire .input_text_2:not(:placeholder-shown):invalid {
+        border: 5px solid #ff0000;
+      }
 
   /* Submit button styling  */
   #enquire .submit {
