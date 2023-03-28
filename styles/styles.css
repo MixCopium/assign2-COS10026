@@ -768,9 +768,9 @@ h1,
   }
 
      /* Validation of entered value in input  */
-     #enquire input:not(:placeholder-shown):invalid {
+     /* #enquire input:not(:placeholder-shown):invalid {
       border: 5px solid #ff0000;
-    }
+    } */
  
     /* Submit button styling  */
     #enquire .submit {

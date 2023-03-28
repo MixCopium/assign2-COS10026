@@ -37,13 +37,13 @@
               <div class="column">
                   <label class="text_Float_left" for="fName">First name</label>
                   <br>
-                  <input class="input_text_2" id="fName" type="text" name="First_Name" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="fName" type="text" name="uname" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
-                  <input class="input_text_2" id="lName" type="text" name="Last_Name" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="lName" type="text" name="lname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
   <!-- second row for contact: info to sell away :) (crucial) -->
@@ -53,13 +53,13 @@
               <label class="text_Float_left" for="email">Email</label>
               <br>
               <input class="input_text_2" type="email" id="email"
-                name="Email" placeholder="lmao@lalaland.com" required>
+                name="email" placeholder="lmao@lalaland.com" required>
             </div>
   
             <div class="column2">
               <label class="text_Float_left" for="Pnumb">Phone number</label>
               <br>
-              <input class="input_text_2" id="Pnumb" type="text" name="Phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
+              <input class="input_text_2" id="Pnumb" type="text" name="phone_number" placeholder="e.g: 09x xxx xxxx" maxlength="10"  pattern="\d{10}">
             </div>
           </div>
   <!-- Less crucial contact info: Address in general -->
@@ -67,7 +67,7 @@
             <fieldset class="part" id="fieldSet2">
               <label class="text_Float_left" for="sAdr"> Street Address</label>
               <input class="input_text_2" id="sAdr" type="text"
-                name="Street_Address" placeholder="Your Street Address" maxlength="40" required>
+                name="address" placeholder="Your Street Address" maxlength="40" required>
 
               <label class="text_Float_left" for="dAdr">Suburb/Town</label>
               <input class="input_text_2 in_range_stuff" id="dAdr" type="text"
@@ -88,7 +88,7 @@
   
               <label class="text_Float_left" for="pAdr">Postcode</label>
               <input class="input_text_2" id="pAdr" type="text"
-                name="Postcode" placeholder="Bet you need to look it up online!!!"
+                name="postcode" placeholder="Bet you need to look it up online!!!"
                 maxlength="4" pattern="\d{6}" required>
   
             </fieldset>
