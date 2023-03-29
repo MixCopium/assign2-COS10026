@@ -610,7 +610,7 @@ h1,
      width: 100%;
      padding: 1.5em;
      align-self: center;
-     margin-bottom: 1%;
+     margin-bottom: 2%;
     }
 
     /* Testing table */
@@ -665,7 +665,7 @@ h1,
     #enquire .column {
       float: left;
       width: 49%;
-      margin: 1% 0% 1% 0%;
+      margin: 1% 0% 0% 0%;
       text-align: center;
     }
  
@@ -673,7 +673,7 @@ h1,
     #enquire .column2 {
       float: left;
       width: 49%;
-      margin: 1% 0% 1% 1.9%;
+      margin: 1% 0% 0% 1.9%;
       text-align: center;
     }
  
@@ -698,6 +698,19 @@ h1,
     /* Preferred Card type */
     #enquire .precon_label {
       padding-right: 2%;
+    }
+
+    #enquire .book {
+      width: 10%;
+      padding: 0.5em;
+      border-radius: 10px;
+      margin-bottom: 2%;
+      margin-left: 2%;
+      max-width: 10%;
+    }
+
+    #enquire .select_test {
+      width: 100%;
     }
  
     /* attribute selector for all type ratio => adjust the ratio size */
@@ -1265,4 +1278,8 @@ h1,
  /* Validation of entered value in input  */
  #enquire .invalid {
   border: 4px solid #ff0000;
+  }
+
+  #enquire #comment {
+    margin-top: 2%;
   }

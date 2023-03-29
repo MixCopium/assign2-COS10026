@@ -94,94 +94,39 @@
             </fieldset>
   
           </div>
-  <!-- Radio select for choosing which type of card the customer want to use for payment -->
+
+          <br>
           <div class="part flex">
-  
-            <label class="choice_label">Preferred Card</label>
+            
+            <label class="choice_label">Preferred Contact</label>
   
             <div class="option_content">
-              <label class="precon_label" for="visa"> <input id="visa"
-                  type="radio" name="card" value="Visa" checked> Visa
+              <label class="precon_label" for="sp"> <input id="sp"
+                  type="radio" name="pcon" value="sphone" checked> Phone
               </label>
   
-              <label class="precon_label" for="mastercard"> <input id="mastercard"
-                  type="radio" name="card" value="Mastercard"> Mastercard </label>
+              <label class="precon_label" for="sm"> <input id="sm"
+                  type="radio" name="pcon" value="smail"> Email </label>
   
-              <label class="precon_label" for="jcb"> <input id="jcb"
-                  type="radio" name="card" value="JCB"> JCB </label>
+              <label class="precon_label" for="direct"> <input id="direct"
+                  type="radio" name="pcon" value="Direct"> Direct </label>
             </div>
   
           </div>
           <br>
-                                         <!-- Card information  -->
-          <div class="row_01">
+          <br>
+          <br>
+          <div class="part product_option">
+            <label class="choice_label ">Which book do you want to order:</label>
   
-              <div class="column">
-                  <label class="text_Float_left" for="cName">Card holder</label>
-                  <input class="input_text_2" id="cName" type="text" name="Card_name" placeholder="Nguyen Quang Bao Han" maxlength="25" pattern="[a-zA-Z\s]*" required>
-              </div>
-  
-              <div class="column2">
-               <label class="text_Float_left" for="cNumb">Card number</label>
-               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
-            </div>
-           </div>
-
-           <div class="row2">
-  
-              <div class="column">
-               <label class="text_Float_left" for="ex_Date">Expire Date</label>
-               <input class="input_text_2" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
-              </div>
-
-              <div class="column2">
-               <label class="text_Float_left" for="cvv">CVV</label>
-               <input class="input_text_2" id="cvv" type="text" name="CVV" placeholder="e.g: 123" maxlength="3" pattern="\d{3}" required>
-              </div>
-            </div>
-
-<!-- List of product for customer to choose by inputing the quantity of what they want -->
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="header_product_1">Product</th>
-                  <th class="header_product_2">Price</th>
-                  <th class="header_product_3">Quantity</th>
-                </tr>
-              </thead>
-
-              <tbody>
-<!-- Product 1 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Half-Blood Prince - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="THBP" type="text" name="Harry-potter_THBP" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 2 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Philosopher's Stone - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TPS" type="text" name="Harry-potter_TPS" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 3 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Chamber of Secrets - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TCOS" type="text" name="Harry-potter_TCOS" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 4 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Order of the Phoenix - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text" id="TOOTP" type="text" name="Harry-potter_TOOTP" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <br>
-
-<!-- List of extra free stuff we give out for every order -->
+            <select class="book" name="book">
+              <option class="select_text" value="book_1">Harry Potter</option>
+              <option class="select_text" value="book_1">Linear Algebra</option>
+              <option class="select_text" value="book_1">Calculus</option>
+            </select>
+          </div>
+          
+          <!-- List of extra free stuff we give out for every order -->
   
           <div class="part">
   
@@ -216,10 +161,63 @@
           </div>
   
           <br>
+
+  <!-- Radio select for choosing which type of card the customer want to use for payment -->
+          <br>
+          <div class="part flex">
+            
+            <label class="choice_label">Credit Card</label>
+  
+            <div class="option_content">
+              <label class="precon_label" for="visa"> <input id="visa"
+                  type="radio" name="card" value="Visa" checked> Visa
+              </label>
+  
+              <label class="precon_label" for="mastercard"> <input id="mastercard"
+                  type="radio" name="card" value="Mastercard"> Mastercard </label>
+  
+              <label class="precon_label" for="ae"> <input id="ae"
+                  type="radio" name="card" value="AE"> American Express </label>
+            </div>
+  
+          </div>
+          <br>
+          <!-- Card information  -->
+          <div class="row_01">
+  
+              <div class="column">
+                  <label class="text_Float_left" for="cName">Card holder</label>
+                  <input class="input_text_2" id="cName" type="text" name="Card_name" placeholder="Nguyen Quang Bao Han" maxlength="25" pattern="[a-zA-Z\s]*" required>
+              </div>
+  
+              <div class="column2">
+               <label class="text_Float_left" for="cNumb">Card number</label>
+               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
+            </div>
+           </div>
+
+           <div class="row2">
+  
+              <div class="column">
+               <label class="text_Float_left" for="ex_Date">Expire Date</label>
+               <input class="input_text_2" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
+              </div>
+
+              <div class="column2">
+               <label class="text_Float_left" for="cvv">CVV</label>
+               <input class="input_text_2" id="cvv" type="text" name="CVV" placeholder="e.g: 123" maxlength="3" pattern="\d{3}" required>
+              </div>
+            </div>
+
+
+
+
           <br>
 
           <div>
-            <textarea name="comment"
+            <label class="text_Float_left" for="comment">Comment</label>
+            
+            <textarea id="comment" name="comment"
               placeholder="What do you want to say?"></textarea>
           </div>
 

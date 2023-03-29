@@ -54,6 +54,7 @@ if(strlen($_SESSION['err'])==0) {
                   <input class="input_text_2 <?php echo (in_array("lastname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="lName" type="text" name="lname" value="<?php echo $_SESSION['lastname']?>" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
+           
   <!-- second row for contact: info to sell away :) (crucial) -->
           <div class="row2">
   
@@ -86,6 +87,7 @@ if(strlen($_SESSION['err'])==0) {
   
           </div>
   <!-- Radio select for choosing which type of card the customer want to use for payment -->
+          <br>
           <div class="part flex">
   
             <label class="choice_label">Preferred Card</label>
