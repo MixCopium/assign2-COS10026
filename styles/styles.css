@@ -62,56 +62,56 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 
  @media (min-width: 1200px) {
 
-  h1,
-  .h1 {
-    font-size: 2.5rem;
-  }
-}
+   h1,
+   .h1 {
+     font-size: 2.5rem;
+   }
+ }
 
-h2,
-.h2 {
-  font-size: calc(1.325rem + 0.9vw);
-}
+ h2,
+ .h2 {
+   font-size: calc(1.325rem + 0.9vw);
+ }
 
-@media (min-width: 1200px) {
+ @media (min-width: 1200px) {
 
-  h2,
-  .h2 {
-    font-size: 2rem;
-  }
-}
+   h2,
+   .h2 {
+     font-size: 2rem;
+   }
+ }
 
-h3,
-.h3 {
-  font-size: calc(1.3rem + 0.6vw);
-}
+ h3,
+ .h3 {
+   font-size: calc(1.3rem + 0.6vw);
+ }
 
-@media (min-width: 1200px) {
+ @media (min-width: 1200px) {
 
-  h3,
-  .h3 {
-    font-size: 1.75rem;
-  }
-}
+   h3,
+   .h3 {
+     font-size: 1.75rem;
+   }
+ }
 
-h6,
-.h6,
-h5,
-.h5,
-h4,
-.h4,
-h3,
-.h3,
-h2,
-.h2,
-h1,
-.h1 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
+ h6,
+ .h6,
+ h5,
+ .h5,
+ h4,
+ .h4,
+ h3,
+ .h3,
+ h2,
+ .h2,
+ h1,
+ .h1 {
+   margin-top: 0;
+   margin-bottom: 0.5rem;
+   font-weight: 500;
+   line-height: 1.2;
 
-}
+ }
 
 
 
@@ -123,7 +123,7 @@ h1,
 
  /* Style for all heading tags */
 
- 
+
 
  @media only screen and (min-width: 768px) {
 
@@ -157,6 +157,11 @@ h1,
    nav {
      display: flex;
      justify-content: flex-start;
+   }
+
+   /* Add highlight for current page on nav bar */
+   .nav-link.active {
+     border-bottom: 3px solid #F7E319;
    }
 
    /* margin setup for each name in nav bar */
@@ -531,285 +536,287 @@ h1,
      font-size: 175%;
    }
 
-     /* Form size and color   */
-     #enquire .form {
-      padding: 5%;
-      background: #fff;
-      width: 95%;
-      box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-        rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-        rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-    }
- 
-    #enquire .form h2 {
-      font-size: 2.5vw;
-      text-align: center;
-      font-weight: bold;
-      padding-bottom: 5%;
-      margin-bottom: 3%;
-      border-bottom: 1px dashed black;
- 
-    }
- 
-    /* Contact us heading at the start   */
-    #enquire #heading {
-      text-align: center;
-      font: 5em Arial;
-      margin: 0% 0% 5% 0%;
-    }
- 
-    /* How to fieldset behave   */
-    #enquire fieldset {
-      padding: 0px;
-    }
+   /* Form size and color   */
+   #enquire .form {
+     padding: 5%;
+     background: #fff;
+     width: 95%;
+     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+       rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+       rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+   }
 
-    /* Make the border representing fieldset dissapear   */
-    #enquire .part {
-      border-style: none;
-    } 
+   #enquire .form h2 {
+     font-size: 2.5vw;
+     text-align: center;
+     font-weight: bold;
+     padding-bottom: 5%;
+     margin-bottom: 3%;
+     border-bottom: 1px dashed black;
 
-    /* border radius for form elements */
-    #enquire fieldset input {
-      border-radius: 10px;
-    }
+   }
 
-       /* State styling   */
+   /* Contact us heading at the start   */
+   #enquire #heading {
+     text-align: center;
+     font: 5em Arial;
+     margin: 0% 0% 5% 0%;
+   }
+
+   /* How to fieldset behave   */
+   #enquire fieldset {
+     padding: 0px;
+   }
+
+   /* Make the border representing fieldset dissapear   */
+   #enquire .part {
+     border-style: none;
+   }
+
+   /* border radius for form elements */
+   #enquire fieldset input {
+     border-radius: 10px;
+   }
+
+   /* State styling   */
    #enquire #cAdr {
-    width: 100%;
-    padding: 1.5em;
-    border-radius: 10px;
-    opacity: 0.5;
-    margin: 0% 0% 2% 0%;
-  }
+     width: 100%;
+     padding: 1.5em;
+     border-radius: 10px;
+     opacity: 0.5;
+     margin: 0% 0% 2% 0%;
+   }
 
-    /* The text over each input is style here   */
-    #enquire .text_Float_left {
-      float: left;
-      font-size: 1.7em;
-    }
+   /* The text over each input is style here   */
+   #enquire .text_Float_left {
+     float: left;
+     font-size: 1.7em;
+   }
 
-    /* Increase font-size of placeholder   */
-    #enquire input::placeholder {
-      font-size: 1.4em;
-    }
- 
-    /* Set the input field to look kinda opaque    */
-    #enquire .input_text {
-    
-      width: 5%;
-      
-      align-self: center;
-      margin-left: 2%;
-      text-align: center;
-      font-size: 1.5em;
-    }
+   /* Increase font-size of placeholder   */
+   #enquire input::placeholder {
+     font-size: 1.4em;
+   }
 
-/* setting for the first personal detail section */
+   /* Set the input field to look kinda opaque    */
+   #enquire .input_text {
+
+     width: 5%;
+
+     align-self: center;
+     margin-left: 2%;
+     text-align: center;
+     font-size: 1.5em;
+   }
+
+   /* setting for the first personal detail section */
    #enquire .input_text_2 {
      opacity: 0.5;
      width: 100%;
      padding: 1.5em;
      align-self: center;
      margin-bottom: 2%;
-    }
+   }
 
-    #enquire .quantity_align {
-      margin-left: 4%;
-    }
+   #enquire .quantity_align {
+     margin-left: 4%;
+   }
 
-    
 
-    /* Testing table */
-#enquire table, th, td {
-  border: 1px solid black;
-}
 
- #enquire table th {
-  background-color: lightgrey;
- }
+   /* Testing table */
+   #enquire table,
+   th,
+   td {
+     border: 1px solid black;
+   }
 
- #enquire table tr td {
-  height: 90px;
-  padding: 1%;
- }
+   #enquire table th {
+     background-color: lightgrey;
+   }
 
- #enquire table .header_product_1 {
-  width:75%;
-  font-size: 2em;
-  
- }
+   #enquire table tr td {
+     height: 90px;
+     padding: 1%;
+   }
 
- #enquire table .header_product_2 {
-  width:10%;
-  font-size: 2em;
-  
- }
+   #enquire table .header_product_1 {
+     width: 75%;
+     font-size: 2em;
 
- #enquire table .header_product_3 {
-  width:14%;
-  font-size: 2em;
-  padding: 1%;
-  
- }
+   }
 
- #enquire .actual_product {
-  font-size: 1.5em;
- }
+   #enquire table .header_product_2 {
+     width: 10%;
+     font-size: 2em;
 
- #enquire .actual_product_2 {
-  font-size: 1.5em;
-  text-align: center;
- }                                                                
- 
-    /*2 equal collums*/
- 
-    #enquire * {
-      box-sizing: border-box;
-    }
- 
-    /* Create two equal columns that floats next to each other */
-    #enquire .column {
-      float: left;
-      width: 49%;
-      margin: 1% 0% 0% 0%;
-      text-align: center;
-    }
- 
-    /* setting for elements on the right */
-    #enquire .column2 {
-      float: left;
-      width: 49%;
-      margin: 1% 0% 0% 1.9%;
-      text-align: center;
-    }
- 
-    /* Clear floats after the columns */
-    #enquire .row_01:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
- 
-    /* separate row 2 and 1 */
-    #enquire .row2 {
-      margin-bottom: 1%;
-    }
- 
-    #enquire .row2:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
- 
-    /* Preferred Card type */
-    #enquire .precon_label {
-      padding-right: 2%;
-    }
+   }
 
-    #enquire .book {
-      width: 33%;
-      padding: 0.5em;
-      border-radius: 10px;
-      margin-bottom: 2%;
-      margin-left: 2%;
-     
-    }
+   #enquire table .header_product_3 {
+     width: 14%;
+     font-size: 2em;
+     padding: 1%;
 
-    #enquire .select_test {
-      width: 100%;
-    }
- 
-    /* attribute selector for all type ratio => adjust the ratio size */
-    #enquire input[type="radio"] {
-      transform: scale(1.5);
-    }
- 
-    /* add display flex */
-    #enquire .flex {
-      display: flex;
-      flex-direction: column;
-    }
- 
-    /* position adjustment for prefered Card */
-    #enquire .option_content {
-      display: flex;
-      margin-top: 2%;
-    }
- 
-    /* Book, preferred, order font styling    */
-    #enquire .choice_label {
-      font-size: 1.7em;
-    }
- 
-    /* adjust the position of the label content */
-    #enquire li label {
-      display: flex;
-      align-items: center;
-    }
- 
-    /* Choose order type styling   */
-    #enquire ul {
-      display: flex;
-      margin: 2% 0% 0% 0%;
-      padding: 0px;
-    }
- 
-    /* checkbox option position settings */
-    #enquire .Option {
-      display: flex;
-      list-style-type: none;
-      font-size: 1.2em;
-      margin-right: 2%;
-    }
- 
-    /* checkbox shape adjust */
-    #enquire .checkbox {
-      height: 20px;
-      width: 20px;
-    }
- 
-    /* attribute selector to adjust all text inputs font size */
-    #enquire input [type="text"] {
-      font-size: 2em;
-    }
+   }
 
-  /* Textarea   */
+   #enquire .actual_product {
+     font-size: 1.5em;
+   }
+
+   #enquire .actual_product_2 {
+     font-size: 1.5em;
+     text-align: center;
+   }
+
+   /*2 equal collums*/
+
+   #enquire * {
+     box-sizing: border-box;
+   }
+
+   /* Create two equal columns that floats next to each other */
+   #enquire .column {
+     float: left;
+     width: 49%;
+     margin: 1% 0% 0% 0%;
+     text-align: center;
+   }
+
+   /* setting for elements on the right */
+   #enquire .column2 {
+     float: left;
+     width: 49%;
+     margin: 1% 0% 0% 1.9%;
+     text-align: center;
+   }
+
+   /* Clear floats after the columns */
+   #enquire .row_01:after {
+     content: "";
+     display: table;
+     clear: both;
+   }
+
+   /* separate row 2 and 1 */
+   #enquire .row2 {
+     margin-bottom: 1%;
+   }
+
+   #enquire .row2:after {
+     content: "";
+     display: table;
+     clear: both;
+   }
+
+   /* Preferred Card type */
+   #enquire .precon_label {
+     padding-right: 2%;
+   }
+
+   #enquire .book {
+     width: 33%;
+     padding: 0.5em;
+     border-radius: 10px;
+     margin-bottom: 2%;
+     margin-left: 2%;
+
+   }
+
+   #enquire .select_test {
+     width: 100%;
+   }
+
+   /* attribute selector for all type ratio => adjust the ratio size */
+   #enquire input[type="radio"] {
+     transform: scale(1.5);
+   }
+
+   /* add display flex */
+   #enquire .flex {
+     display: flex;
+     flex-direction: column;
+   }
+
+   /* position adjustment for prefered Card */
+   #enquire .option_content {
+     display: flex;
+     margin-top: 2%;
+   }
+
+   /* Book, preferred, order font styling    */
+   #enquire .choice_label {
+     font-size: 1.7em;
+   }
+
+   /* adjust the position of the label content */
+   #enquire li label {
+     display: flex;
+     align-items: center;
+   }
+
+   /* Choose order type styling   */
+   #enquire ul {
+     display: flex;
+     margin: 2% 0% 0% 0%;
+     padding: 0px;
+   }
+
+   /* checkbox option position settings */
+   #enquire .Option {
+     display: flex;
+     list-style-type: none;
+     font-size: 1.2em;
+     margin-right: 2%;
+   }
+
+   /* checkbox shape adjust */
+   #enquire .checkbox {
+     height: 20px;
+     width: 20px;
+   }
+
+   /* attribute selector to adjust all text inputs font size */
+   #enquire input [type="text"] {
+     font-size: 2em;
+   }
+
+   /* Textarea   */
    #enquire textarea {
-    line-height: 10vh;
-    width: 100%;
-    padding: 4%;
-    font-size: 1.3em;
-  }
+     line-height: 10vh;
+     width: 100%;
+     padding: 4%;
+     font-size: 1.3em;
+   }
 
-  /* set font size for text area placeholder */
-  #enquire textarea::placeholder {
-    font-size: 1.4em;
-  }
+   /* set font size for text area placeholder */
+   #enquire textarea::placeholder {
+     font-size: 1.4em;
+   }
 
-     /* Validation of entered value in input  */
-     /* #enquire input:not(:placeholder-shown):invalid {
+   /* Validation of entered value in input  */
+   /* #enquire input:not(:placeholder-shown):invalid {
       border: 5px solid #ff0000;
     } */
- 
-    /* Submit button styling  */
-    #enquire .submit {
-      text-align: center;
-      margin-top: 5px;
-    }
- 
- 
-    /* submit button length adjust */
-    #enquire #submit {
-      width: 20%;
-    }
- 
- 
-    /* hover effect for submit button */
-    #enquire #submit:hover {
-      transform: scale(1.2);
-    }
- 
-    
+
+   /* Submit button styling  */
+   #enquire .submit {
+     text-align: center;
+     margin-top: 5px;
+   }
+
+
+   /* submit button length adjust */
+   #enquire #submit {
+     width: 20%;
+   }
+
+
+   /* hover effect for submit button */
+   #enquire #submit:hover {
+     transform: scale(1.2);
+   }
+
+
 
    /* Sets the width and height of the banner image */
    #index .featured_banner img {
@@ -1242,26 +1249,26 @@ h1,
      /* border: 1px solid black; */
    }
 
-   
 
-  #general_page article {
-    float: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    padding-top: 5vh;
-    height: 80vh;
-    background: #fbfbf2;
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-position: 10% 30%;
-    margin-bottom: 5%;
-    overflow: auto;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    /* border: 1px solid black; */
-  }
+
+   #general_page article {
+     float: left;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 95%;
+     padding-top: 5vh;
+     height: 80vh;
+     background: #fbfbf2;
+     background-repeat: no-repeat;
+     background-size: 200%;
+     background-position: 10% 30%;
+     margin-bottom: 5%;
+     overflow: auto;
+     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+     /* border: 1px solid black; */
+   }
 
    /* footer font size adjust for requirement */
    footer p {
@@ -1270,21 +1277,21 @@ h1,
  }
 
  #enquire .warning {
-  background-color: pink !important; 
-  border: red solid 1px;
-  text-align: center;
-  margin-bottom: 2%;
+   background-color: pink !important;
+   border: red solid 1px;
+   text-align: center;
+   margin-bottom: 2%;
  }
 
  #enquire .warning h2 {
-  border: none;
-  padding-bottom: 0%;
+   border: none;
+   padding-bottom: 0%;
  }
 
  /* Validation of entered value in input  */
  #enquire .invalid {
-  border: 4px solid #ff0000;
-  }
+   border: 4px solid #ff0000;
+ }
 
  #enquire #comment {
    margin-top: 2%;
