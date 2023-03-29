@@ -201,7 +201,7 @@
   
               <div class="column2">
                <label class="text_Float_left" for="cNumb">Card number</label>
-               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="12"  pattern="\d{12}">
+               <input class="input_text_2" id="cNumb" type="text" name="Card_number" placeholder="e.g: 42xx xxxx xxxx" maxlength="16"  pattern="\d{16}">
             </div>
            </div>
 
