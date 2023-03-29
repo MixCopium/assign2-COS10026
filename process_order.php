@@ -328,6 +328,7 @@
                 if(!$add_result ) {
                     echo "<p class=\"wrong\">something is wrong with ",$add_query,"</p>";
                 } else {
+                    $last_id = mysqli_insert_id($conn);
                     echo "<p class\"ok\">Successfully added new order record</p>";
                 }
 
@@ -341,9 +342,9 @@
 
     // ensure that this page cannot be access directly
     if(!(isset($_POST["uname"])) && !(isset($_POST["lname"])) && !(isset($_POST["email"])) && !(isset($_POST["phone number"])) && 
-    // !(isset($_POST["street"]))&& 
-    // !(isset($_POST["suburb"])) && 
-    // !(isset($_POST["state"])) && 
+    !(isset($_POST["street"]))&& 
+    !(isset($_POST["suburb"])) && 
+    !(isset($_POST["state"])) && 
     !(isset($_POST["postcode"])) && !(isset($_POST["contact"]))  && !(isset($_POST["book"])) && !(isset($_POST["type[]"]))) {
         header ("location:payment.php");
     }
@@ -373,7 +374,7 @@
     $_SESSION['quantity'] = (isset($quantity)? $quantity: "");
     $_SESSION['comment'] = (isset($comment)? $comment: "");
     $_SESSION['book'] = (isset($book)? $book: "");
-
+    $_SESSION['lastid'] = (isset($last_id)? $last_id: "");
 
 
 

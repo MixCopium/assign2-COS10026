@@ -25,16 +25,24 @@
     <!-- get data from session of process_order.php -->
     <?php
     session_start();
-    $firstname = $_SESSION['firstname'];
-    $lastname = $_SESSION['lastname'];
-    $email = $_SESSION['email'];
-    $phoneNum = $_SESSION['pnum'];
-    $address = $_SESSION['address'];
-    $state = $_SESSION['state'];
-    $postcode = $_SESSION['postcode'];
-    $book = $_SESSION['book'];
-    $quantity = $_SESSION['quantity'];
-    $total = $_SESSION['tootp'];
+
+    $ $_SESSION["lastid"]
+
+    // $firstname = $_SESSION['firstname'];
+    // $lastname = $_SESSION['lastname'];
+    // $email = $_SESSION['email'];
+    // $phoneNum = $_SESSION['pnum'];
+    // $address = $_SESSION['address'];
+    // $state = $_SESSION['state'];
+    // $postcode = $_SESSION['postcode'];
+    // $book = $_SESSION['book'];
+    // $quantity = $_SESSION['quantity'];
+    // $total = $_SESSION['tootp'];
+
+
+    
+
+
     ?>
 
     <div>
@@ -127,7 +135,7 @@
     </div>
     </div>
   </main>
-  <?php include 'includes/footer.inc'; ?>
+  <?php include 'includes/footer.inc' ?>
 </body>
 
 </html>
