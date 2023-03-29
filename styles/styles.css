@@ -587,10 +587,21 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
      font-size: 1.7em;
    }
 
-   /* Increase font-size of placeholder   */
-   #enquire input::placeholder {
-     font-size: 1.4em;
-   }
+    /* Increase font-size of placeholder   */
+    #enquire input::placeholder {
+      font-size: 1.4em;
+    }
+ 
+    /* Set the input field to look kinda opaque    */
+    /* #enquire .input_text {
+    
+      width: 5%;
+      
+      align-self: center;
+      margin-left: 2%;
+      text-align: center;
+      font-size: 1.5em;
+    } */
 
    /* Set the input field to look kinda opaque    */
    #enquire .input_text {
@@ -612,12 +623,16 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
      margin-bottom: 2%;
    }
 
-   /* Testing table */
-   #enquire table,
-   th,
-   td {
-     border: 1px solid black;
-   }
+    #enquire .quantity_align {
+      margin-left: 4%;
+    }
+
+    
+
+    /* Testing table */
+/* #enquire table, th, td {
+  border: 1px solid black;
+} */
 
    #enquire table th {
      background-color: lightgrey;
@@ -644,8 +659,16 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
      width: 14%;
      font-size: 2em;
      padding: 1%;
-
    }
+   
+    #enquire .book {
+      width: 33%;
+      padding: 0.5em;
+      border-radius: 10px;
+      margin-bottom: 2%;
+      margin-left: 2%;
+     
+    }
 
    #enquire .actual_product {
      font-size: 1.5em;

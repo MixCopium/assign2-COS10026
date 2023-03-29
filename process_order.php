@@ -43,6 +43,10 @@
         array_push($errSpot,"lastname");
     }
 
+    if(strlen($_POST["pcon"])!=0) {
+        $pcon = $_POST["pcon"];
+    }
+
     if(strlen($_POST["email"])!=0) {
         $email = sanitise_input($_POST["email"]);
     } else {
@@ -57,30 +61,54 @@
         array_push($errSpot,"pnum");
     }
 
-    if(strlen($_POST["address"])!=0) {
-        $address = sanitise_input($_POST["address"]);
-    } else {
-        $errMsg .= "<p>Your address must be entered.</p>";
-        array_push($errSpot,"address");
+    if(strlen($_POST["book"])!=0) {
+        $book = $_POST["book"];
+        
     }
 
-    // if(isset($_POST["street"])) {
-    //     $street = sanitise_input($_POST["street"]);
-    // } else {
-    //     $errMsg .= "<p>Your street address must be entered.</p>";
-    // }
+    if(strlen($_POST["quantity"])!=0) {
+        $quantity = sanitise_input($_POST["quantity"]);
+    } else {
+        $errMsg .= "<p>You need to enter how many products do you want.</p>";
+        array_push($errSpot,"quantity");
+    }
 
-    // if(isset($_POST["suburb"])) {
-    //     $suburb = sanitise_input($_POST["suburb"]);
-    // } else {
-    //     $errMsg .= "<p>Your suburb must be entered.</p>";
-    // }
+    if(!is_numeric($quantity) && strlen($_POST["quantity"])!=0) {
+        $errMsg .= "<p>Your quantity need to be a number.</p>";
+        array_push($errSpot,"quantity");
+    }
+    
+   
+    if(strlen($_POST["street"])!=0) {
+        $street = sanitise_input($_POST["street"]);
+    } else {
+        $errMsg .= "<p>Your street address must be entered.</p>";
+        array_push($errSpot,"street");
+    }
 
-    // if(isset($_POST["state"]) && !strlen($_POST["state"])==0 ) {
-    //     $state = $_POST["state"];
-    // } else {
-    //     $errMsg .= "<p>Your state must be entered.</p>";
-    // }
+    if(strlen($_POST["suburb"])!=0) {
+        $suburb = sanitise_input($_POST["suburb"]);
+    } else {
+        $errMsg .= "<p>Your suburb must be entered.</p>";
+        array_push($errSpot,"suburb");
+    }
+
+    if(!strlen($_POST["state"])==0 || $_POST["state"]=="Select one") {
+        $state = $_POST["state"];
+    } else {
+        $errMsg .= "<p>Your state must be entered.</p>";
+        array_push($errSpot,"state");
+    }
+
+    if(strlen($street)>40) {
+        $errMsg .= "<p>Your address should be <40 characters.</p>";
+        array_push($errSpot,"street");
+    }
+
+    if(strlen($suburb)>20) {
+        $errMsg .= "<p>Your suburb should be <20 characters.</p>";
+        array_push($errSpot,"street");
+    }
 
     if(strlen($_POST["postcode"])!=0) {
         $postcode = sanitise_input($_POST["postcode"]);
@@ -110,7 +138,7 @@
         
     }
 
-    if(isset($_POST["comment"])) {
+    if(strlen($_POST["comment"])!=0) {
         $comment = sanitise_input($_POST["comment"]);
     } 
 
@@ -149,30 +177,17 @@
         $errMsg .= "<p>Your card CVV must be entered.</p>";
         array_push($errSpot,"cvv");
     }
+
+    if(!is_numeric($cvv) && strlen($_POST["CVV"])!=0) {
+        $errMsg .= "<p>Your card CVV must be numeric.</p>";
+        array_push($errSpot,"cvv");
+    }
     
-    if(strlen($_POST["Harry_potter_THBP"])!=0) {
-        $thbp = sanitise_input($_POST["Harry_potter_THBP"]);
-    } else {
-        $thbp=0;
+    if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
+        $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
+        array_push($errSpot,"cvv");
     }
-
-    if(strlen($_POST["Harry_potter_TCOS"])!=0) {
-        $tcos = sanitise_input($_POST["Harry_potter_TCOS"]);
-    }else {
-        $tcos=0;
-    }
-
-    if(strlen($_POST["Harry_potter_TPS"])!=0) {
-        $tps = sanitise_input($_POST["Harry_potter_TPS"]);
-    }else {
-        $tps=0;
-    }
-
-    if(strlen($_POST["Harry_potter_TOOTP"])!=0) {
-        $tootp = sanitise_input($_POST["Harry_potter_TOOTP"]);
-    }else {
-        $tootp=0;
-    }
+    
     // check the values
 
     
@@ -222,13 +237,7 @@
 
 
 
-    // if(strlen($street)>40) {
-    //     $errMsg .= "<p>Your address should be <40 characters.</p>";
-    // }
-
-    // if(strlen($suburb)>20) {
-    //     $errMsg .= "<p>Your suburb should be <20 characters.</p>";
-    // }
+    
 
     
 
@@ -243,14 +252,7 @@
         array_push($errSpot,"pnum");
     }
     
-    if(!($tps == 0 && $tootp == 0 && $thbp ==0 && $tcos==0)){
-        if(!(is_numeric($tps)&&is_numeric($tootp)&&is_numeric($thbp)&&is_numeric($tcos)) )  {
-            $errMsg .= "<p>Your product quantity must be numeric.</p>";
-            array_push($errSpot,"quantity");
-        }
-        
-    }
-
+    
 
     if(strlen($phoneNum)>10) {
         $errMsg .= "<p>Your phone number should be no longer than 10 digits.</p>";
@@ -280,27 +282,32 @@
 
                 $name = $firstname .' '. $lastname;
 
-                $order_detail = "Harry Potter and the Half-Blood Prince - J.K Rowling x$thbp, Harry Potter and the Philosophers Stone - J.K Rowling x$tps, Harry Potter and the Chamber of Secrets - J.K Rowling x$tcos, Harry Potter and the Order of the Phoenix - J.K Rowling x$tootp ";
+                
 
-                $order_cost = 99.99 * $tcos + 99.99 * $tps +99.99 * $thbp +99.99 * $tootp;
+                $order_cost = 99.99 * $quantity;
 
                 $query = "CREATE TABLE IF NOT EXISTS $sql_table (
                     ID int(11) AUTO_INCREMENT,
                     CUSTOMER_NAME varchar(255) NOT NULL,
                     EMAIL varchar(255) NOT NULL,
                     PHONE_NUMBER varchar(255) NOT NULL,
-                    CUST_ADDRESS varchar(255) NOT NULL,
+                    CUST_STREET varchar(255) NOT NULL,
+                    CUST_SUBURB varchar(255) NOT NULL,
+                    CUST_STATE varchar(255) NOT NULL,
                     POSTCODE varchar(255) NOT NULL,
+                    PREFERRED_CONTACT varchar(255) NOT NULL,
                     CARD_SERVICE varchar(255) NOT NULL,
                     CARD_HOLDER varchar(255) NOT NULL,
                     CARD_NUMBER varchar(255) NOT NULL,
                     EXPIRE_DATE varchar(255) NOT NULL,
                     CVV varchar(255) NOT NULL,
                     EXTRA varchar(255) NOT NULL,
-                    ORDER_DETAIL varchar(255) NOT NULL,
+                    ORDER_PRODUCT varchar(255) NOT NULL,
+                    ORDER_QUANTITY int,
                     ORDER_COST int,
                     ORDER_TIME datetime,
                     ORDER_STATUS varchar(255) NOT NULL,
+                    COMMENT varchar(255),
                     PRIMARY KEY  (ID)
                     )";
 
@@ -311,7 +318,7 @@
                         
                     
   
-                $add_query = "insert into $sql_table (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_ADDRESS, POSTCODE, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_DETAIL, ORDER_COST, ORDER_TIME,  ORDER_STATUS) values ('$name','$email','$phoneNum','$address','$postcode','$card','$cname','$cnum','$cexpire','$cvv','$type','$order_detail', '$order_cost', now(), 'PENDING')";
+                $add_query = "insert into $sql_table (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS, COMMENT) values ('$name','$email','$phoneNum','$street','$suburb','$state','$postcode','$pcon','$card','$cname','$cnum','$cexpire','$cvv','$type','$book','$quantity', '$order_cost', now(), 'PENDING', '$comment')";
 
                
                 $add_result = @mysqli_query($conn, $add_query);
@@ -346,7 +353,7 @@
     session_start();
     $_SESSION['espot'] = $errSpot;
     $_SESSION['err'] = $errMsg;
-    $_SESSION['state'] = $state;
+    
     $_SESSION['firstname'] = (isset($firstname) ? $firstname : "");
     $_SESSION['lastname'] = (isset($lastname) ? $lastname : "");
 
@@ -356,16 +363,16 @@
     $_SESSION['address'] = (isset($address)? $address: "");
     $_SESSION['postcode'] = (isset($postcode)? $postcode: "");
    
-    $_SESSION['thbp'] = (isset($thbp)? $thbp: "");
-    $_SESSION['tps'] = (isset($tps)? $tps: "");
-    $_SESSION['tcos'] = (isset($tcos)? $tcos: "");
-    $_SESSION['tootp'] = (isset($tootp)? $tootp: "");
+    
     $_SESSION['type'] = (isset($_POST['type'])? $_POST['type']: array());
     
-
-
-
-
+    $_SESSION['street'] = (isset($street)? $street: "");
+    $_SESSION['suburb'] = (isset($suburb)? $suburb: "");
+    $_SESSION['state'] = (isset($state)? $state: "");
+    $_SESSION['pcon'] = (isset($pcon)? $pcon: "");
+    $_SESSION['quantity'] = (isset($quantity)? $quantity: "");
+    $_SESSION['comment'] = (isset($comment)? $comment: "");
+    $_SESSION['book'] = (isset($book)? $book: "");
 
 
 
