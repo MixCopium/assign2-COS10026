@@ -24,9 +24,13 @@
   <main id="receipt">
     <!-- get data from session of process_order.php -->
     <?php
+    if (!isset($_SERVER['HTTP_REFERER'])) {
+      header('location:payment.php');        //redirect to payment.php if attempted to access directly
+      exit;
+  }
     session_start();
 
-    $ $_SESSION["lastid"]
+    $id = $_SESSION["lastid"];
 
     // $firstname = $_SESSION['firstname'];
     // $lastname = $_SESSION['lastname'];
@@ -39,8 +43,54 @@
     // $quantity = $_SESSION['quantity'];
     // $total = $_SESSION['tootp'];
 
+    require_once ("settings.php");
+            
+    $conn = @mysqli_connect($host,
+        $user,
+        $pwd,
+        $sql_db
+    );
 
-    
+            if (!$conn) {
+                echo "<p>Database connection failure</p>";
+            } else {
+                $sql_table = "orders";
+                $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
+                $result = @mysqli_query($conn, $query);
+                if(!$result) {
+                  echo "<p>Something is wrong with ",$query,"</p>";
+              } else {
+                  
+                  while ($row = mysqli_fetch_assoc($result)) {
+                      $cust_name = $row["CUSTOMER_NAME"];
+                      $email = $row["EMAIL"];
+                      $pnum= $row["PHONE_NUMBER"];
+                      $street = $row["CUST_STREET"];
+                      $suburb = $row["CUST_SUBURB"];
+                      $state = $row["CUST_STATE"];
+                      $postcode = $row["POSTCODE"];
+                      $pcon = $row["PREFERRED_CONTACT"];
+                      $card = $row["CARD_SERVICE"];
+                      $cname = $row["CARD_HOLDER"];
+                      $cnum = $row["CARD_NUMBER"];
+                      $cexpire = $row["EXPIRE_DATE"];
+                      $cvv = $row["CVV"];
+                      $extra = $row["EXTRA"];
+                      $order_product = $row["ORDER_PRODUCT"];
+                      $order_quantity = $row["ORDER_QUANTITY"];
+                      $order_cost = $row["ORDER_COST"];
+                      $order_time = $row["ORDER_TIME"];
+                      $order_status = $row["ORDER_STATUS"];
+                      
+                  }    
+
+                  
+
+                  mysqli_free_result($result);
+              }
+              mysqli_close($conn);
+            }
+            
 
 
     ?>
@@ -56,9 +106,9 @@
             <br>
             <div class="row">
               <div>
-                <h1>Thank you for your Purchase</h1>
-                <h2>Here is your Receipt<br>
-                  <span class="small">Order #<?php echo $_SESSION['order_number']; ?></span>
+                <h1>Receipt</h1>
+                <h2>
+                  <span class="small">Order #<?php echo $id; ?></span>
                 </h2>
               </div>
             </div>
@@ -66,22 +116,31 @@
           <hr>
           <div class="row">
             <div>
+            <h3>Billed To:</h3> 
               <address>
-                <strong>Billed To:</strong><br>
-                <?php echo $firstname . ' ' . $lastname; ?><br>
-                <?php echo $address . ' ' . $state . ' ' . $postcode; ?><br>
-                <?php echo $phoneNum; ?><br>
+                
+                <?php echo "Customer: $cust_name"; ?><br>
+                <?php echo "Address: $street, $suburb, $state"; ?><br>
+                <?php echo "Postcode: $postcode"; ?><br>
+                <?php echo "Phone Number: $pnum"; ?><br>
+                <?php echo "Email: $email"; ?><br>
+                <?php echo "Preferred Contact: $pcon"; ?><br>
               </address>
             </div>
           </div>
           <div class="row">
             <div>
+            <br>
+            <h3>Payment Method:</h3> 
               <address>
-                <strong>Payment Method:</strong><br>
-                <?php echo $card_type . ' ending **** ' . $last_four_number; ?><br>
+                
+                
+                <?php echo "Card Service: $card"; ?><br>
+                <?php echo "Card Holder: $cname"; ?><br>
+                <?php echo  $card == "AE" ? "Card Number: ***********".$cnum[11].$cnum[12].$cnum[13].$cnum[14] : "Card Number: ************".$cnum[12].$cnum[13].$cnum[14].$cnum[15]; ?><br>
+                <?php echo "Expire Date: $cexpire"; ?><br>
                 <!-- output email from session -->
-                <?php echo $email; ?><br>
-                <!-- trangbeo@fatto.com<br> -->
+                
               </address>
             </div>
             <div class="textright">
@@ -89,7 +148,7 @@
               <address>
                 <strong>Order Date:</strong><br>
                 <!-- output date from session -->
-                <?php echo date('F j, Y, g:i a'); ?><br><br>
+                <?php echo $order_time; ?><br><br>
               </address>
             </div>
           </div>
@@ -102,32 +161,20 @@
                     <td><strong>#</strong></td>
                     <td class="textcenter"><strong>BOOK</strong></td>
                     <td class="textcenter"><strong>QUANTITY</strong></td>
-                    <td class="textright"><strong>PRICE</strong></td>
-                    <td class="textright"><strong>SUBTOTAL</strong></td>
+                    <td class="textcenter"><strong>EXTRA</strong></td>
+                    <td class="textcenter"><strong>PRICE</strong></td>
+                    <td class="textcenter"><strong>SUBTOTAL</strong></td>
                   </tr>
                 </thead>
-                <tbody>
-                  <?php for ($i = 0; $i < count($book); $i++) : ?>
-                    <tr>
-                      <td><?php echo $i + 1; ?></td>
-                      <td><strong><?php echo $book[$i]; ?></strong></td>
-                      <td class="textcenter"><?php echo $quantity[$i]; ?></td>
-                      <td class="textcenter">$<?php echo $price[$i]; ?></td>
-                      <td class="textright">$<?php echo $quantity[$i] * $price[$i]; ?></td>
-                    </tr>
-                  <?php endfor; ?>
-                  <tr>
-                    <td colspan="3"></td>
-                    <td class="textright"><strong>Taxes</strong></td>
-                    <td class="textright"><strong>N/A</strong></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3">
-                    </td>
-                    <td class="textright"><strong>Total</strong></td>
-                    <td class="textright"><strong>$<?php echo $total; ?> </strong></td>
-                  </tr>
-                </tbody>
+                <tr>
+                  <td><?php echo $id; ?></td>
+                  <td><?php echo $order_product; ?></td>
+                  <td class="textcenter"><?php echo $order_quantity; ?></td>
+                  <td class="textcenter"><?php echo $extra; ?></td>
+                  <td class="textcenter"><?php echo "$99.99"; ?></td>
+                  <td class="textcenter"><?php echo "$$order_cost"; ?></td>
+
+                </tr>
               </table>
             </div>
           </div>
@@ -136,7 +183,7 @@
     </div>
     </div>
   </main>
-  <?php include 'includes/footer.inc' ?>
+  <?php include 'includes/footer.inc';session_unset(); session_destroy();   ?>
 </body>
 
 </html>

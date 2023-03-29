@@ -230,7 +230,7 @@
     //     array_push($errSpot,"lastname");
     // }
 
-    if(!preg_match("/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/", $cexpire)) {
+    if(!preg_match("/^(0[1-9]|1[0-2])\/?([0-9]{2})$/", $cexpire)) {
         $errMsg .= "<p>Your must provide appropriate expire date.</p>";
         array_push($errSpot,"cexpire");
     }
