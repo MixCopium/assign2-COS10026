@@ -67,14 +67,14 @@
             <fieldset class="part" id="fieldSet2">
               <label class="text_Float_left" for="sAdr"> Street Address</label>
               <input class="input_text_2" id="sAdr" type="text"
-                name="address" placeholder="Your Street Address" maxlength="40" required>
+                name="street" placeholder="Your Street Address" maxlength="40" required>
 
               <label class="text_Float_left" for="dAdr">Suburb/Town</label>
               <input class="input_text_2 in_range_stuff" id="dAdr" type="text"
-                name="District" placeholder="What District" maxlength="40" required>
+                name="suburb" placeholder="What District" maxlength="40" required>
   
               <label class="text_Float_left" for="cAdr">State</label>
-              <select name="State" id="cAdr" required>
+              <select name="state" id="cAdr" required>
                 <option value>Select one</option>
                 <option value="VIC">VIC</option>
                 <option value="NSW">NSW</option>
@@ -117,15 +117,24 @@
           <br>
           <br>
           <div class="part product_option">
-            <label class="choice_label ">Which book do you want to order:</label>
+            <label for="bookop" class="choice_label ">Which book do you want to order:</label>
   
-            <select class="book" name="book">
-              <option class="select_text" value="book_1">Harry Potter</option>
-              <option class="select_text" value="book_1">Linear Algebra</option>
-              <option class="select_text" value="book_1">Calculus</option>
+            <select id="bookop" class="book" name="book">
+              <option class="select_text" value="Harry Potter and the half-blood prince - J.K Rowling">Harry Potter and the half-blood prince - J.K Rowling</option>
+              <option class="select_text" value="Harry Potter and the Philosopher's Stone - J.K Rowling">Harry Potter and the Philosopher's Stone - J.K Rowling</option>
+              <option class="select_text" value="Harry Potter and the Chamber of Secrets - J.K Rowling">Harry Potter and the Chamber of Secrets - J.K Rowling</option>
+              <option class="select_text" value="Harry Potter and the Order of the Phoenix - J.K Rowling">Harry Potter and the Order of the Phoenix - J.K Rowling</option>
             </select>
+
+            
+              <label for="quantity" class="choice_label quantity_align">Quantity:</label>
+              <input class="input_text" id="quantity" type="text" name="quantity" maxlength="3" pattern="\d{3}">
+            
+          
           </div>
           
+          
+
           <!-- List of extra free stuff we give out for every order -->
   
           <div class="part">

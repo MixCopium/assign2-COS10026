@@ -615,11 +615,11 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 
   /* Select Book   */
   #enquire .book {
-    width: 15%;
+    width: 98%;
     padding: 0.5em;
     border-radius: 10px;
     margin-bottom: 4%;
-    margin-left: 2%;
+    margin-top: 2%;
   }
 
 /* attribute selector to adjust all text inputs font size */

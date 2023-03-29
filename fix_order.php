@@ -74,9 +74,24 @@ if(strlen($_SESSION['err'])==0) {
   <!-- Less crucial contact info: Address in general -->
           <div>
             <fieldset class="part" id="fieldSet2">
-              <label class="text_Float_left" for="Adr">Address</label>
-              <input class="input_text_2 <?php echo (in_array("address", $_SESSION['espot']) ? 'invalid' : '' )?>" id="Adr" type="text"
-                name="address" value="<?php echo $_SESSION['address']?>" placeholder="Your Address" maxlength="40" required>
+            <label class="text_Float_left" for="sAdr"> Street Address</label>
+              <input class="input_text_2 <?php echo (in_array("street", $_SESSION['espot']) ? 'invalid' : '' )?>" id="sAdr" type="text" name="street" value="<?php echo $_SESSION['street']?>"  placeholder="Your Street Address" maxlength="40" required>
+
+              <label class="text_Float_left" for="dAdr">Suburb/Town</label>
+              <input class="input_text_2 in_range_stuff <?php echo (in_array("suburb", $_SESSION['espot']) ? 'invalid' : '' )?>" id="dAdr" type="text" name="suburb" value="<?php echo $_SESSION['suburb']?>" placeholder="What District" maxlength="40" required>
+  
+              <label class="text_Float_left" for="cAdr">State</label>
+              <select name="state" id="cAdr" class="<?php echo (in_array("state", $_SESSION['espot']) ? 'invalid' : '' )?>" required>
+                <option value >Select one</option>
+                <option value="VIC" <?php echo ($_SESSION["state"] == "VIC" ? 'selected' : '' )?>>VIC</option>
+                <option value="NSW" <?php echo ($_SESSION["state"] == "NSW" ? 'selected' : '' )?>>NSW</option>
+                <option value="QLD" <?php echo ($_SESSION["state"] == "QLD" ? 'selected' : '' )?>>QLD</option>
+                <option value="NT" <?php echo ($_SESSION["state"] == "NT" ? 'selected' : '' )?>>NT</option>
+                <option value="WA" <?php echo ($_SESSION["state"] == "WA" ? 'selected' : '' )?>>WA</option>
+                <option value="SA" <?php echo ($_SESSION["state"] == "SA" ? 'selected' : '' )?>>SA</option>
+                <option value="TAS" <?php echo ($_SESSION["state"] == "TAS" ? 'selected' : '' )?>>TAS</option>
+                <option value="ACT" <?php echo ($_SESSION["state"] == "ACT" ? 'selected' : '' )?>>ACT</option>
+              </select>
   
               <label class="text_Float_left" for="pAdr">Postcode</label>
               <input class="input_text_2 <?php echo (in_array("postcode", $_SESSION['espot']) ? 'invalid' : '' )?>" id="pAdr" type="text"
@@ -84,8 +99,82 @@ if(strlen($_SESSION['err'])==0) {
                 maxlength="4" pattern="\d{6}" required>
   
             </fieldset>
+
+          </div>
+
+          <br>
+          <div class="part flex">
+            
+            <label class="choice_label">Preferred Contact</label>
+  
+            <div class="option_content">
+              <label class="precon_label" for="sp"> <input id="sp"
+                  type="radio" name="pcon" value="sphone" <?php echo ($_SESSION["pcon"] == "sphone" ? 'checked' : '' )?>  > Phone
+              </label>
+  
+              <label class="precon_label" for="sm"> <input id="sm"
+                  type="radio" name="pcon" value="smail" <?php echo ($_SESSION["pcon"] == "smail" ? 'checked' : '' )?>  > Email </label>
+  
+              <label class="precon_label" for="direct"> <input id="direct" type="radio" name="pcon" value="direct" <?php echo ($_SESSION["pcon"] == "direct" ? 'checked' : '' )?>  > Direct </label>
+            </div>
   
           </div>
+          <br>
+          <br>
+          <br>
+          <div class="part product_option">
+            <label for="bookop" class="choice_label ">Which book do you want to order:</label>
+  
+            <select id="bookop" class="book" name="book">
+              <option  value="Harry Potter and the half-blood prince - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the half-blood prince - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the half-blood prince - J.K Rowling</option>
+              <option  value="Harry Potter and the Philosopher's Stone - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Philosopher's Stone - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Philosopher's Stone - J.K Rowling</option>
+              <option  value="Harry Potter and the Chamber of Secrets - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Chamber of Secrets - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Chamber of Secrets - J.K Rowling</option>
+              <option  value="Harry Potter and the Order of the Phoenix - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Order of the Phoenix - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Order of the Phoenix - J.K Rowling</option>
+            </select>
+
+            
+              <label for="quantity" class="choice_label quantity_align">Quantity:</label>
+              <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="text" name="quantity" value="<?php echo $_SESSION['quantity']?>" maxlength="3" pattern="\d{3}">
+            
+          
+          </div>
+
+<!-- List of extra free stuff we give out for every order -->
+  
+<div class="part">
+  
+  <label class="choice_label">Choose extra goody (FREE):</label>
+
+  <div class="option_div">
+
+    <ul>
+      <li class="Option">
+        <label for="Opt_1"> <input class="checkbox" type="checkbox"
+            id="Opt_1" name="type[]" <?php echo (in_array("E-book included", $_SESSION['type']) ?  'checked' : '' )?> value="E-book included">E-book
+          included</label>
+      </li>
+
+      <li class="Option">
+        <label for="Opt_2"> <input class="checkbox" type="checkbox"
+            id="Opt_2" name="type[]"  <?php echo(in_array("Hardback", $_SESSION['type']) ?  'checked' : '' )?> value="Hardback">Hardback</label>
+      </li>
+
+      <li class="Option">
+        <label for="Opt_3"> <input class="checkbox" type="checkbox" 
+            id="Opt_3" name="type[]" <?php echo (in_array("Merch included", $_SESSION['type']) ? 'checked' : '' )?>  value="Merch included"> Merch
+          included</label>
+      </li>
+
+      <li class="Option">
+        <label for="Opt_4"> <input class="checkbox" type="checkbox"
+            id="Opt_4" name="type[]" <?php echo (in_array("none", $_SESSION['type']) ? 'checked' : '' )?> value="none"> None</label>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
   <!-- Radio select for choosing which type of card the customer want to use for payment -->
           <br>
           <div class="part flex">
@@ -133,84 +222,19 @@ if(strlen($_SESSION['err'])==0) {
               </div>
             </div>
 
-<!-- List of product for customer to choose by inputing the quantity of what they want -->
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="header_product_1">Product</th>
-                  <th class="header_product_2">Price</th>
-                  <th class="header_product_3">Quantity</th>
-                </tr>
-              </thead>
 
-              <tbody>
-<!-- Product 1 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Half-Blood Prince - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="THBP" type="text" name="Harry_potter_THBP" value="<?php echo $_SESSION['thbp']?>" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 2 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Philosopher's Stone - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="TPS" type="text" name="Harry_potter_TPS"value="<?php echo $_SESSION['tps']?>" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 3 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Chamber of Secrets - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="TCOS" type="text" name="Harry_potter_TCOS" value="<?php echo $_SESSION['tcos']?>" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-<!-- Product 4 -->
-                <tr>
-                  <td class="actual_product">Harry Potter and the Order of the Phoenix - J.K Rowling</td>
-                  <td class="actual_product_2">$99.99</td>
-                  <td class="actual_product"><input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="TOOTP" type="text" name="Harry_potter_TOOTP" value="<?php echo $_SESSION['tootp']?>" maxlength="3" pattern="\d{3}"></td>
-                </tr>
-              </tbody>
-            </table>
 
-            <br>
-
-<!-- List of extra free stuff we give out for every order -->
-  
-          <div class="part">
-  
-            <label class="choice_label">Choose extra goody (FREE):</label>
-  
-            <div class="option_div">
-  
-              <ul>
-                <li class="Option">
-                  <label for="Opt_1"> <input class="checkbox" type="checkbox"
-                      id="Opt_1" name="type[]" <?php echo (in_array("E-book included", $_SESSION['type']) ?  'checked' : '' )?> value="E-book included">E-book
-                    included</label>
-                </li>
-  
-                <li class="Option">
-                  <label for="Opt_2"> <input class="checkbox" type="checkbox"
-                      id="Opt_2" name="type[]"  <?php echo(in_array("Hardback", $_SESSION['type']) ?  'checked' : '' )?> value="Hardback">Hardback</label>
-                </li>
-  
-                <li class="Option">
-                  <label for="Opt_3"> <input class="checkbox" type="checkbox" 
-                      id="Opt_3" name="type[]" <?php echo (in_array("Merch included", $_SESSION['type']) ? 'checked' : '' )?>  value="Merch included"> Merch
-                    included</label>
-                </li>
-
-                <li class="Option">
-                  <label for="Opt_4"> <input class="checkbox" type="checkbox"
-                      id="Opt_4" name="type[]" <?php echo (in_array("none", $_SESSION['type']) ? 'checked' : '' )?> value="none"> None</label>
-                </li>
-              </ul>
-            </div>
+          <br>
+          <div>
+            <label class="text_Float_left" for="comment">Comment</label>
+            
+            <textarea id="comment" name="comment"
+              placeholder="What do you want to say?">
+              <?php echo $_SESSION['comment']?>
+             
+            </textarea>
           </div>
-  
-          <br>
-          <br>
-
           </div>
         </fieldset>
  <!-- Submit button  -->
