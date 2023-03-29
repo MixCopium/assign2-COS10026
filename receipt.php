@@ -85,6 +85,7 @@
               </address>
             </div>
             <div class="textright">
+              <div></div>
               <address>
                 <strong>Order Date:</strong><br>
                 <!-- output date from session -->
