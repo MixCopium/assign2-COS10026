@@ -177,9 +177,9 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
    }
 
    /* Add highlight for current page on nav bar */
-  .nav-link.active {
-    border-bottom: 3px solid #F7E319;
-  }
+   .nav-link.active {
+     border-bottom: 3px solid #F7E319;
+   }
 
    /* Style the form */
    .form_inline {
@@ -1283,4 +1283,37 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 
  #enquire #comment {
    margin-top: 2%;
+ }
+
+ #receipt h1,
+ h2 {
+   color: #333;
+ }
+
+ #receipt .customer-details,
+ #receipt .order-details {
+   margin-bottom: 20px;
+ }
+
+ #receipt table {
+  border-collapse: collapse;
+  width: 80%; /* Change the width of the table */
+}
+
+ #receipt td,
+ th {
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+ #receipt tr:nth-child(even) {
+   background-color: #f2f2f2;
+ }
+
+ #receipt th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #333;
+   color: white;
  }

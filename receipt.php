@@ -20,7 +20,7 @@
   </head>
     <body>
     <?php include 'includes/header.inc'; ?>
-    <main id="general_page">
+    <main id="receipt">
       <!-- get data from session of process_order.php -->
       <?php
       session_start();
@@ -37,40 +37,82 @@
       ?>
       
     
-    <article>
+      <article>
       <div>
-        <h1>Thank you for your order!</h1>
-        <p>Order date: <?php echo date("F j, Y, g:i a"); ?></p>
-      </div>
-      <div class="customer-details">
-        <h2>Customer Details</h2>
-        <p>Name: <?php echo $firstname . " " . $lastname; ?></p>
-        <p>Email: <?php echo $email; ?></p>
-        <p>Phone Number: <?php echo $phoneNum; ?></p>
-        <p>Address: <?php echo $address . " " . $state . " " . $postcode; ?></p>
-      </div>
-      <div class="order-details">
-        <h2>Order Details</h2>
-        <table>
-          <tr>
-            <td>Book:</td>
-            <td><?php echo $book; ?></td>
-          </tr>
-          <tr>
-            <td>Quantity:</td>
-            <td><?php echo $quantity; ?></td>
-          </tr>
-          <tr>
-            <td>Total:</td>
-            <td><?php echo $total; ?></td>
-          </tr>
-          <tr>
-            <td>Payment Method:</td>
-            <td>Credit Card</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+  <h1>Thank you for your order!</h1>
+  <?php
+
+// Check if the client has selected a time zone
+if (isset($_POST['timezone'])) {
+  // Set the time zone based on the client's selection
+  date_default_timezone_set($_POST['timezone']);
+}
+
+?>
+
+<!-- Display a form for the client to select their time zone -->
+<form method="post">
+  <label for="timezone">Select your time zone:</label>
+  <select name="timezone" id="timezone">
+    <?php
+    // Generate options for each time zone
+    foreach (timezone_identifiers_list() as $timezone) {
+      // Check if this is the default time zone
+      $selected = ($timezone == 'Australia/Melbourne') ? ' selected' : '';
+      echo '<option value="' . $timezone . '"' . $selected . '>' . $timezone . '</option>';
+    }
+    ?>
+  </select>
+  <input type="submit" value="Set Time Zone">
+</form>
+<div>
+  <p>Order date: <?php echo date('F j, Y, g:i a'); ?></p>
+</div>
+</p>
+</div>
+<div class="customer-details">
+  <h2>Customer Details</h2>
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><?php echo $firstname . ' ' . $lastname; ?></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><?php echo $email; ?></td>
+    </tr>
+    <tr>
+      <td>Phone Number:</td>
+      <td><?php echo $phoneNum; ?></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><?php echo $address . ', ' . $state . ' ' . $postcode; ?></td>
+    </tr>
+  </table>
+</div>
+
+<div class="order-details">
+  <h2>Order Details</h2>
+  <table>
+    <tr>
+      <td>Book:</td>
+      <td><?php echo $book; ?></td>
+    </tr>
+    <tr>
+      <td>Quantity:</td>
+      <td><?php echo $quantity; ?></td>
+    </tr>
+    <tr>
+      <td>Total:</td>
+      <td><?php echo $total; ?></td>
+    </tr>
+    <tr>
+      <td>Payment Method:</td>
+      <td>Credit Card</td>
+    </tr>
+  </table>
+</div>
     </article>
 </main>
     <?php include 'includes/footer.inc'; ?>
