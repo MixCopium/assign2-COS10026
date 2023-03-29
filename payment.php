@@ -37,13 +37,13 @@
               <div class="column">
                   <label class="text_Float_left" for="fName">First name</label>
                   <br>
-                  <input class="input_text_2" id="fName" type="text" name="uname" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="fName" type="text" name="uname" placeholder="e.g: Thinh" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
-                  <input class="input_text_2" id="lName" type="text" name="lname" placeholder="Dat Ky" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2" id="lName" type="text" name="lname" placeholder="Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
            </div>
   <!-- second row for contact: info to sell away :) (crucial) -->
@@ -53,7 +53,7 @@
               <label class="text_Float_left" for="email">Email</label>
               <br>
               <input class="input_text_2" type="email" id="email"
-                name="email" placeholder="lmao@lalaland.com" required>
+                name="email" placeholder="pebinh@student.swin.edu.au" required>
             </div>
   
             <div class="column2">
