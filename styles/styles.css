@@ -1285,7 +1285,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
    margin-top: 2%;
  }
 
- #receipt h1,
+ /* #receipt h1,
  h2 {
    color: #333;
  }
@@ -1297,7 +1297,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 
  #receipt table {
   border-collapse: collapse;
-  width: 80%; /* Change the width of the table */
+  width: 80%; /* Change the width of the table
 }
 
  #receipt td,
@@ -1316,4 +1316,73 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
    text-align: left;
    background-color: #333;
    color: white;
+ } */
+
+ /* #receipt body{margin-top:20px;
+  background:#eee;
+  } */
+
+ #receipt .receipt {
+   padding: 30px;
+ }
+
+
+ #receipt .receipt .small {
+   font-weight: 300;
+ }
+
+ #receipt .receipt hr {
+   margin-top: 10px;
+   border-color: #ddd;
+ }
+
+
+
+ #receipt .receipt .identity {
+   margin-top: 10px;
+   font-size: 1.1em;
+   font-weight: 300;
+ }
+
+ #receipt .receipt .identity strong {
+   font-weight: 600;
+ }
+
+
+ #receipt .grid {
+   position: relative;
+   width: 100%;
+   background: #fff;
+   color: #666666;
+   border-radius: 2px;
+   margin-bottom: 25px;
+   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ #receipt .textright {
+   text-align: right;
+ }
+
+ #receipt .textcenter {
+   text-align: center;
+ }
+
+ #receipt .tablestriped tbody tr:nth-of-type(odd) {
+   background-color: rgba(0, 0, 0, 0.05);
+ }
+
+ #receipt table.custom-table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+
+ #receipt table.custom-table th,
+ table.custom-table td {
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+ #receipt table.custom-table th {
+   background-color: #f2f2f2;
+   text-align: left;
  }
