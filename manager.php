@@ -22,14 +22,9 @@
 <body>
   <?php include 'includes/header.inc'; ?>
   <main id="manage">
-    <h1>Manage</h1>
+    <h1>Manager</h1>
     <article>
       <h2>Order Information</h2>
-
-
-
-
-
 
       </details>
       <!-- get data from session of process_order.php -->
