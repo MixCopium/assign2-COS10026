@@ -27,7 +27,7 @@
     if (!isset($_SERVER['HTTP_REFERER'])) {
       header('location:payment.php');        //redirect to payment.php if attempted to access directly
       exit;
-  }
+    }
     session_start();
 
     $id = $_SESSION["lastid"];
@@ -43,54 +43,54 @@
     // $quantity = $_SESSION['quantity'];
     // $total = $_SESSION['tootp'];
 
-    require_once ("settings.php");
-            
-    $conn = @mysqli_connect($host,
-        $user,
-        $pwd,
-        $sql_db
+    require_once("settings.php");
+
+    $conn = @mysqli_connect(
+      $host,
+      $user,
+      $pwd,
+      $sql_db
     );
 
-            if (!$conn) {
-                echo "<p>Database connection failure</p>";
-            } else {
-                $sql_table = "orders";
-                $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
-                $result = @mysqli_query($conn, $query);
-                if(!$result) {
-                  echo "<p>Something is wrong with ",$query,"</p>";
-              } else {
-                  
-                  while ($row = mysqli_fetch_assoc($result)) {
-                      $cust_name = $row["CUSTOMER_NAME"];
-                      $email = $row["EMAIL"];
-                      $pnum= $row["PHONE_NUMBER"];
-                      $street = $row["CUST_STREET"];
-                      $suburb = $row["CUST_SUBURB"];
-                      $state = $row["CUST_STATE"];
-                      $postcode = $row["POSTCODE"];
-                      $pcon = $row["PREFERRED_CONTACT"];
-                      $card = $row["CARD_SERVICE"];
-                      $cname = $row["CARD_HOLDER"];
-                      $cnum = $row["CARD_NUMBER"];
-                      $cexpire = $row["EXPIRE_DATE"];
-                      $cvv = $row["CVV"];
-                      $extra = $row["EXTRA"];
-                      $order_product = $row["ORDER_PRODUCT"];
-                      $order_quantity = $row["ORDER_QUANTITY"];
-                      $order_cost = $row["ORDER_COST"];
-                      $order_time = $row["ORDER_TIME"];
-                      $order_status = $row["ORDER_STATUS"];
-                      
-                  }    
+    if (!$conn) {
+      echo "<p>Database connection failure</p>";
+    } else {
+      $sql_table = "orders";
+      $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
+      $result = @mysqli_query($conn, $query);
+      if (!$result) {
+        echo "<p>Something is wrong with ", $query, "</p>";
+      } else {
 
-                  
+        while ($row = mysqli_fetch_assoc($result)) {
+          $cust_name = $row["CUSTOMER_NAME"];
+          $email = $row["EMAIL"];
+          $pnum = $row["PHONE_NUMBER"];
+          $street = $row["CUST_STREET"];
+          $suburb = $row["CUST_SUBURB"];
+          $state = $row["CUST_STATE"];
+          $postcode = $row["POSTCODE"];
+          $pcon = $row["PREFERRED_CONTACT"];
+          $card = $row["CARD_SERVICE"];
+          $cname = $row["CARD_HOLDER"];
+          $cnum = $row["CARD_NUMBER"];
+          $cexpire = $row["EXPIRE_DATE"];
+          $cvv = $row["CVV"];
+          $extra = $row["EXTRA"];
+          $order_product = $row["ORDER_PRODUCT"];
+          $order_quantity = $row["ORDER_QUANTITY"];
+          $order_cost = $row["ORDER_COST"];
+          $order_time = $row["ORDER_TIME"];
+          $order_status = $row["ORDER_STATUS"];
+        }
 
-                  mysqli_free_result($result);
-              }
-              mysqli_close($conn);
-            }
-            
+
+
+        mysqli_free_result($result);
+      }
+      mysqli_close($conn);
+    }
+
 
 
     ?>
@@ -116,9 +116,9 @@
           <hr>
           <div class="row">
             <div>
-            <h3>Billed To:</h3> 
+              <h3>Billed To:</h3>
               <address>
-                
+
                 <?php echo "Customer: $cust_name"; ?><br>
                 <?php echo "Address: $street, $suburb, $state"; ?><br>
                 <?php echo "Postcode: $postcode"; ?><br>
@@ -130,17 +130,17 @@
           </div>
           <div class="row">
             <div>
-            <br>
-            <h3>Payment Method:</h3> 
+              <br>
+              <h3>Payment Method:</h3>
               <address>
-                
-                
+
+
                 <?php echo "Card Service: $card"; ?><br>
                 <?php echo "Card Holder: $cname"; ?><br>
-                <?php echo  $card == "AE" ? "Card Number: ***********".$cnum[11].$cnum[12].$cnum[13].$cnum[14] : "Card Number: ************".$cnum[12].$cnum[13].$cnum[14].$cnum[15]; ?><br>
+                <?php echo  $card == "AE" ? "Card Number: ***********" . $cnum[11] . $cnum[12] . $cnum[13] . $cnum[14] : "Card Number: ************" . $cnum[12] . $cnum[13] . $cnum[14] . $cnum[15]; ?><br>
                 <?php echo "Expire Date: $cexpire"; ?><br>
                 <!-- output email from session -->
-                
+
               </address>
             </div>
             <div class="textright">
@@ -183,7 +183,9 @@
     </div>
     </div>
   </main>
-  <?php include 'includes/footer.inc';session_unset(); session_destroy();   ?>
+  <?php include 'includes/footer.inc';
+  session_unset();
+  session_destroy();   ?>
 </body>
 
 </html>

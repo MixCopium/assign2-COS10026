@@ -375,8 +375,3 @@
     $_SESSION['comment'] = (isset($comment)? $comment: "");
     $_SESSION['book'] = (isset($book)? $book: "");
     $_SESSION['lastid'] = (isset($last_id)? $last_id: "");
-
-
-
-
-?>

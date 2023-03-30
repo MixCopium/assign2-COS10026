@@ -7,15 +7,12 @@
     <meta name="keywords" content="HTML, simple, webpage">
     <meta name="author" content="Nguyen Manh Duc">
 
-     <!-- responsive setup -->
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- responsive setup -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- site img -->
-     <link rel="apple-touch-icon" sizes="180x180"
-        href="images/favico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="images/favico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="images/favico/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favico/favicon-16x16.png">
     <link rel="manifest" href="images/favico/site.webmanifest">
 
     <!-- style sheet linked -->
@@ -25,8 +22,8 @@
 </head>
 
 <body>
-<?php include 'includes/header.inc'; ?>   
-       <!-- main content -->
+    <?php include 'includes/header.inc'; ?>
+    <!-- main content -->
     <main id="about">
         <!-- page title -->
         <h1>About Us</h1>
@@ -37,8 +34,7 @@
             <h2>Member 1</h2>
             <!-- member img -->
             <figure>
-                <img class="profile_picture_1" src="images/about/NguyenDuc.jpg"
-                    alt="dummy">
+                <img class="profile_picture_1" src="images/about/NguyenDuc.jpg" alt="dummy">
             </figure>
 
             <!-- member detail -->
@@ -50,8 +46,7 @@
                     <dt>Personal details</dt>
                     <dd>Name: Nguyen Manh Duc</dd>
                     <dd>Student ID:103792724</dd>
-                    <dd>Email : <a href="mailto:103792724@student.swin.edu.au"
-                            target="_blank">103792724@student.swin.edu.au</a>
+                    <dd>Email : <a href="mailto:103792724@student.swin.edu.au" target="_blank">103792724@student.swin.edu.au</a>
                     </dd>
                     <dd>Hobbies: writing and painting, fantasy and thriller,
                         video games, reading and coding</dd>
@@ -66,7 +61,7 @@
                 <!-- time table title -->
                 <h2 class="swtb"><span class="ti">THIS IS</span> MY SWINBURNE
                     TIMETABLE!</h2>
-                    <!-- div to reposition table -->
+                <!-- div to reposition table -->
                 <div class="time">
                     <!-- table set up -->
                     <table class="center" id="swtb_1">
@@ -162,8 +157,7 @@
             <h2>Member 2</h2>
             <!-- member image -->
             <figure>
-                <img class="profile_picture_1" src="images/about/nobwannabe.jpg"
-                    alt="dummy">
+                <img class="profile_picture_1" src="images/about/nobwannabe.jpg" alt="dummy">
             </figure>
 
             <!-- member detail -->
@@ -175,8 +169,7 @@
                     <dt>Personal details</dt>
                     <dd>Name: Nguyen Ha Huy Hoang</dd>
                     <dd>Student ID:103487444</dd>
-                    <dd>Email : <a href="mailto:103792724@student.swin.edu.au"
-                            target="_blank">103487444@student.swin.edu.au</a>
+                    <dd>Email : <a href="mailto:103792724@student.swin.edu.au" target="_blank">103487444@student.swin.edu.au</a>
                     </dd>
                     <dd>Hobbies: Studying ML, GFL, and Linear Algebra. </dd>
                 </dl>
@@ -189,7 +182,7 @@
                 <!-- time table title -->
                 <h2 class="swtb"><span class="ti">THIS IS</span> MY SWINBURNE
                     TIMETABLE!</h2>
-                    <!-- time table reposition div -->
+                <!-- time table reposition div -->
                 <div class="time">
                     <!-- time table setup -->
                     <table class="center" id="swtb_2">
@@ -289,8 +282,7 @@
 
             <!-- member image -->
             <figure>
-                <img class="profile_picture_1" src="images/about/Boong.jpg"
-                    alt="dummy">
+                <img class="profile_picture_1" src="images/about/Boong.jpg" alt="dummy">
             </figure>
 
             <!-- member detail -->
@@ -302,13 +294,12 @@
                     <dt>Personal details</dt>
                     <dd>Name: Nguyen Gia Binh</dd>
                     <dd>Student ID:104219428</dd>
-                    <dd>Email : <a href="mailto:104219428@student.swin.edu.au"
-                            target="_blank">104219428@student.swin.edu.au</a>
+                    <dd>Email : <a href="mailto:104219428@student.swin.edu.au" target="_blank">104219428@student.swin.edu.au</a>
                     </dd>
                     <dd>Hobbies: Canivorous plant collecting, taking care of Tarantula</dd>
                 </dl>
 
-            <!-- button to jump to member time table -->
+                <!-- button to jump to member time table -->
                 <a href="#swtb_3" class="btn">Look at my Swinburne timetable</a>
             </section>
             <!-- time table section -->
@@ -316,7 +307,7 @@
                 <!-- time table title -->
                 <h2 class="swtb"><span class="ti">THIS IS</span> MY SWINBURNE
                     TIMETABLE!</h2>
-                    <!-- time table reposition -->
+                <!-- time table reposition -->
                 <div class="time">
                     <!-- time table setup -->
                     <table class="center" id="swtb_3">
@@ -411,11 +402,10 @@
 
             <!-- member image -->
             <figure>
-              
-                    <img class="profile_picture_1" src="images/about/Oivia.JPG"
-                    alt="Duc Thinh Nguyen">
-                
-                
+
+                <img class="profile_picture_1" src="images/about/Oivia.JPG" alt="Duc Thinh Nguyen">
+
+
             </figure>
 
             <!-- member detail -->
@@ -427,8 +417,7 @@
                     <dt>Personal details</dt>
                     <dd>Name: Duc Thinh Nguyen</dd>
                     <dd>Student ID:103792724</dd>
-                    <dd>Email : <a href="mailto:103805486@student.swin.edu.au"
-                            target="_blank">103805486@student.swin.edu.au</a>
+                    <dd>Email : <a href="mailto:103805486@student.swin.edu.au" target="_blank">103805486@student.swin.edu.au</a>
                     </dd>
                     <dd>Hobbies: Listening to music, reading books, and discovering new technology.</dd>
                 </dl>
@@ -442,7 +431,7 @@
 
                 <!-- time table title -->
                 <h2 class="swtb"><span class="ti">Here is my</span> Schedule</h2>
-                
+
                 <!-- time table reposition -->
                 <div class="time">
 
@@ -532,8 +521,8 @@
                             <td></td>
                         </tr>
                     </table>
-                        </div>
-                    
+                </div>
+
             </section>
         </article>
 
@@ -541,7 +530,7 @@
 
 
     </main>
-    <?php include 'includes/footer.inc'; ?>   
+    <?php include 'includes/footer.inc'; ?>
 </body>
 
 </html>
