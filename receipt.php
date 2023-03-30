@@ -24,7 +24,7 @@
   <main id="receipt">
     <!-- get data from session of process_order.php -->
     <?php
-    if (!isset($_SESSION["lastid"])) {
+    if (!isset($_SERVER['HTTP_REFERER'])) {
       header('location:payment.php');        //redirect to payment.php if attempted to access directly
       exit;
   }

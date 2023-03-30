@@ -25,6 +25,13 @@
     <h1>Manage</h1>
     <article>
             <h2>Order Information</h2>
+
+
+
+
+    
+
+  </details>
     <!-- get data from session of process_order.php -->
     <?php
     
@@ -66,6 +73,40 @@
                 if(isset($_GET["status"])) {
                     $action_status = $_GET["status"];
                 }
+                
+                if(isset($_GET["filname"])) {
+                    $filter_name = $_GET["filname"];
+                    
+                } else {
+                    $filter_name = "";
+                }
+
+                if(isset($_GET["filter_book"])) {
+                    $filter_book= $_GET["filter_book"];
+                    
+                } else {
+                    $filter_book= "";
+                }
+
+                if(isset($_GET["filter_status"])) {
+                    $filter_status = $_GET["filter_status"];
+                    
+                } else {
+                    $filter_status = "";
+                }
+                $sort_query="";
+                if(isset($_GET["sort_cost"])&&strlen($_GET["sort_cost"])!=0) {
+                    $sort_cost = $_GET["sort_cost"];
+                    if($sort_cost === "sutd") {
+                        $sort_query = "ORDER BY ORDER_COST DESC";
+                    } else if($sort_cost === "sdtu") {
+                        $sort_query = "ORDER BY ORDER_COST ASC";
+                    }
+
+                    
+                } else {
+                    $sort_cost = "";
+                }
 
                 if($action!=""){
                     switch ($action) {
@@ -82,9 +123,58 @@
                     }
                 }    
 
-                
+                echo '
+                <details>
+                <summary>Filter</summary>
+                <form method="get" action="manager.php">
+                    <fieldset>
+                        <label class="filter" for="filter_name">Name:</label>
+                          <input class="input_filter" id="filter_name" type="text"
+                            name="filname" value="'.$filter_name.'" maxlength="40">
+                            <label class="filter" for="filter_product">Product:</label>
+                            <select id="filter_product" class="book" name="filter_book">
+                                <option  value="Harry Potter and the half-blood prince - J.K Rowling" '. ($filter_book == "Harry Potter and the half-blood prince - J.K Rowling" ? 'selected' : '' ).'>Harry Potter and the half-blood prince - J.K Rowling</option>
+                                <option  value="Harry Potter and the Philosopher\'s Stone - J.K Rowling" '.($filter_book == "Harry Potter and the Philosopher\'s Stone - J.K Rowling" ? 'selected' : '' ).'>Harry Potter and the Philosopher\'s Stone - J.K Rowling</option>
+                                <option  value="Harry Potter and the Chamber of Secrets - J.K Rowling"'. ($filter_book == "Harry Potter and the Chamber of Secrets - J.K Rowling" ? 'selected' : '' ).'>Harry Potter and the Chamber of Secrets - J.K Rowling</option>
+                                <option  value="Harry Potter and the Order of the Phoenix - J.K Rowling"'. ($filter_book == "Harry Potter and the Order of the Phoenix - J.K Rowling" ? 'selected' : '' ).'>Harry Potter and the Order of the Phoenix - J.K Rowling</option>
+                                <option  value=""'. ($filter_book == "" ? 'selected' : '' ).'>All</option>
+                              </select>
 
-                $query = "select ID, CUSTOMER_NAME, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table";
+                              <label class="filter" for="filter_status">Status:</label>
+                              <select name="filter_status" id="filter_status">
+                            
+                                <option value="Pening" '.($filter_status == "Pending" ? 'selected' : '' ).'>Pending</option>
+
+                                <option value="Fulfilled" '.($filter_status == "Fulfilled" ? 'selected' : '' ).'>Fulfilled</option>
+                                <option value="Paid" '.($filter_status == "Paid" ? 'selected' : '' ).'>Paid</option>
+                                <option value="Archived" '.($filter_status == "Archived" ? 'selected' : '' ).'>Archived</option>
+                                <option value="" '.($filter_status == "" ? 'selected' : '' ).'>All</option>
+                              </select>
+
+                              <label class="filter" for="sort_cost">Sort by cost:</label>
+                              <select name="sort_cost" id="sort_cost">
+                            
+                                <option value="" '.($sort_cost == "" ? 'selected' : '' ).'>Default</option>
+
+                                <option value="sutd" '.($sort_cost == "sutd" ? 'selected' : '' ).'>Sort DESC</option>
+                                <option value="sdtu" '.($sort_cost == "sdtu" ? 'selected' : '' ).'>Sort ASC</option>
+                                
+                              </select>
+
+                              <input type="submit" id="submit" 
+                                value="Filter">
+                    </fieldset>
+
+                </form>
+                </details>
+                
+                ';
+
+                $query = "select ID, CUSTOMER_NAME, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table Where CUSTOMER_NAME like '$filter_name%' && ORDER_PRODUCT like '$filter_book%'&& ORDER_STATUS like '$filter_status%' ";
+
+                if($sort_cost!="") {
+                    $query .= $sort_query;
+                }
                 $result = @mysqli_query($conn, $query);
                 if(!$result) {
                   echo "<p>Something is wrong with ",$query,"</p>";
@@ -180,7 +270,7 @@
     </article>
    
   </main>
-  <?php include 'includes/footer.inc';session_unset(); session_destroy();   ?>
+  <?php include 'includes/footer.inc' ?>
 </body>
 
 </html>
