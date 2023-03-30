@@ -53,6 +53,37 @@
                 echo "<p>Database connection failure</p>";
             } else {
                 $sql_table = "orders";
+                if(isset($_GET["action"])) {
+                    $action = $_GET["action"];
+                } else {
+                    $action = "";
+                }
+
+                if(isset($_GET["id"])) {
+                    $action_id = $_GET["id"];
+                }
+
+                if(isset($_GET["status"])) {
+                    $action_status = $_GET["status"];
+                }
+
+                if($action!=""){
+                    switch ($action) {
+                        case("drop"):
+                            $drop_query = "delete FROM $sql_table WHERE ID = $action_id";
+                            $drop_result = @mysqli_query($conn, $drop_query); 
+                            break;
+                        case("update"):
+                            $update_query = "update $sql_table SET ORDER_STATUS = '$action_status' WHERE ID = $action_id";
+                            $update_result = @mysqli_query($conn, $update_query); 
+                            break;
+                        default:
+                            break;
+                    }
+                }    
+
+                
+
                 $query = "select ID, CUSTOMER_NAME, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table";
                 $result = @mysqli_query($conn, $query);
                 if(!$result) {
@@ -70,13 +101,13 @@
                       
 
                       echo '
-                        <form id="drop_'.$id.'" method="get" action="manage.php" hidden>
+                        <form id="drop_'.$id.'" method="get" action="manager.php" hidden>
                          <input type="text" name="action"  value="drop">
                          <input type="text" name="id"  value="'.$id.'">
                         </form>
                       ';
                       echo '
-                        <form id="update_'.$id.'" method="get" action="manage.php" hidden>
+                        <form id="update_'.$id.'" method="get" action="manager.php" hidden>
                          <input type="text" name="action"  value="update">
                          <input type="text" name="id"  value="'.$id.'">
                         </form>
