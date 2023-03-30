@@ -115,11 +115,8 @@
               <option class="select_text" value="Harry Potter and the Order of the Phoenix - J.K Rowling">Harry Potter and the Order of the Phoenix - J.K Rowling</option>
             </select>
 
-
             <label for="quantity" class="choice_label quantity_align">Quantity:</label>
-            <input class="input_text" id="quantity" type="text" name="quantity" maxlength="3" pattern="\d{3}">
-
-
+            <input class="input_text" id="quantity" type="number" name="quantity" min="1" max="99" step="1">
           </div>
 
 
@@ -196,7 +193,7 @@
 
             <div class="column2">
               <label class="text_Float_left" for="cvv">CVV</label>
-              <input class="input_text_2" id="cvv" type="text" name="CVV" placeholder="e.g: 123" maxlength="3" pattern="\d{3}" required>
+              <input class="input_text_2" id="cvv" type="number" name="CVV" placeholder="e.g: 123" min="100" max="999" step="1" required>
             </div>
           </div>
 
