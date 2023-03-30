@@ -56,7 +56,7 @@
       echo "<p>Database connection failure</p>";
     } else {
       $sql_table = "orders";
-      $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
+      $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
       $result = @mysqli_query($conn, $query);
       if (!$result) {
         echo "<p>Something is wrong with ", $query, "</p>";
@@ -74,7 +74,6 @@
           $card = $row["CARD_SERVICE"];
           $cname = $row["CARD_HOLDER"];
           $cnum = $row["CARD_NUMBER"];
-          $cexpire = $row["EXPIRE_DATE"];
           $cvv = $row["CVV"];
           $extra = $row["EXTRA"];
           $order_product = $row["ORDER_PRODUCT"];
@@ -138,7 +137,7 @@
                 <?php echo "Card Service: $card"; ?><br>
                 <?php echo "Card Holder: $cname"; ?><br>
                 <?php echo  $card == "AE" ? "Card Number: ***********" . $cnum[11] . $cnum[12] . $cnum[13] . $cnum[14] : "Card Number: ************" . $cnum[12] . $cnum[13] . $cnum[14] . $cnum[15]; ?><br>
-                <?php echo "Expire Date: $cexpire"; ?><br>
+
                 <!-- output email from session -->
 
               </address>
