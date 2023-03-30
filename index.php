@@ -7,20 +7,21 @@
   <meta name="description" content="A simple index page">
   <meta name="keywords" content="HTML, simple, webpage">
   <meta name="author" content="Nguyen Duc Thinh">
-   <!-- responsive setup -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favico/favicon-16x16.png">
-    <link rel="manifest" href="images/favico/site.webmanifest">
-    <!-- style sheet link -->
-    <link rel="stylesheet" href="./styles/enhancements.css">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <title>Homepage</title>
-  </head>
-  <body>
-  <?php include 'includes/header.inc'; ?>   
-    <!-- main content -->
+  <!-- responsive setup -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favico/favicon-16x16.png">
+  <link rel="manifest" href="images/favico/site.webmanifest">
+  <!-- style sheet link -->
+  <link rel="stylesheet" href="./styles/enhancements.css">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title>Homepage</title>
+</head>
+
+<body>
+  <?php include 'includes/header.inc'; ?>
+  <!-- main content -->
   <main id="index">
 
     <!-- animation banner -->
@@ -28,14 +29,14 @@
       <div class="featured_banner_image"></div>
     </div>
 
-    
-      
+
+
     <!-- page title -->
     <h1>Hogwart Bookstore</h1>
-    
+
     <article class="section_white">
       <!-- article title -->
-      
+
       <h2 class="section_title">What do we have here <br><a href="https://youtu.be/-eHqmRASj14">Link to our team presentation</a></h2>
 
       <!-- section 1: product page introduction -->
@@ -51,7 +52,7 @@
             e-commerce brands of the world, selling books from adventure fiction
             books to real-life scientific books. A million of brilliant books
             are waiting for you to discover!!!</p>
-            <!-- button with link the the introduced web -->
+          <!-- button with link the the introduced web -->
           <a href="product.html" class="btn modi">Learn more</a>
         </div>
       </section>
@@ -66,8 +67,8 @@
             information, customers can browse a vast selection of books and make their purchases with confidence.
             Additionally, fast shipping and reliable delivery services ensure that books arrive in a timely manner,
             making the online purchase process both fast and convenient.</p>
-            <!-- button linked to the enquire page -->
-            <a href="enquire.html" class="btn modi">Learn more</a>
+          <!-- button linked to the enquire page -->
+          <a href="enquire.html" class="btn modi">Learn more</a>
         </div>
 
         <!-- image column -->
@@ -114,7 +115,7 @@
   </main>
 
   <!-- footer with small font + centered -->
-  <?php include 'includes/footer.inc'; ?>  
+  <?php include 'includes/footer.inc'; ?>
 </body>
 
 </html>

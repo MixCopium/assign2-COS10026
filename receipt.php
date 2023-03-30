@@ -27,7 +27,7 @@
     if (!isset($_SERVER['HTTP_REFERER'])) {
       header('location:payment.php');        //redirect to payment.php if attempted to access directly
       exit;
-  }
+    }
     session_start();
 
     $id = $_SESSION["lastid"];
@@ -78,9 +78,9 @@
           <hr>
           <div class="row">
             <div>
-            <h3>Billed To:</h3> 
+              <h3>Billed To:</h3>
               <address>
-                
+
                 <?php echo "Customer: $cust_name"; ?><br>
                 <?php echo "Address: $street, $suburb, $state"; ?><br>
                 <?php echo "Postcode: $postcode"; ?><br>
@@ -92,17 +92,17 @@
           </div>
           <div class="row">
             <div>
-            <br>
-            <h3>Payment Method:</h3> 
+              <br>
+              <h3>Payment Method:</h3>
               <address>
-                
-                
+
+
                 <?php echo "Card Service: $card"; ?><br>
                 <?php echo "Card Holder: $cname"; ?><br>
-                <?php echo  $card == "AE" ? "Card Number: ***********".$cnum[11].$cnum[12].$cnum[13].$cnum[14] : "Card Number: ************".$cnum[12].$cnum[13].$cnum[14].$cnum[15]; ?><br>
-                <?php echo "Expire Date: $cexpire"; ?><br>
+                <?php echo  $card == "AE" ? "Card Number: ***********" . $cnum[11] . $cnum[12] . $cnum[13] . $cnum[14] : "Card Number: ************" . $cnum[12] . $cnum[13] . $cnum[14] . $cnum[15]; ?><br>
+
                 <!-- output email from session -->
-                
+
               </address>
             </div>
             <div class="textright">
@@ -145,7 +145,9 @@
     </div>
     </div>
   </main>
-  <?php include 'includes/footer.inc';session_unset(); session_destroy();   ?>
+  <?php include 'includes/footer.inc';
+  session_unset();
+  session_destroy();   ?>
 </body>
 
 </html>
