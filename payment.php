@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="A simple enquire page">
+  <meta name="description" content="A simple payment page">
   <meta name="keywords" content="HTML, simple, webpage">
   <meta name="author" content="Nguyen Gia Binh, Nguyen Ha Huy Hoang, Nguyen Duc Thinh">
   <!-- responsive setup -->
@@ -18,12 +18,12 @@
   <!-- css style link -->
   <link rel="stylesheet" href="styles/enhancements.css">
   <link rel="stylesheet" href="styles/styles.css">
-  <title>Enquire</title>
+  <title>payment</title>
 </head>
 
 <body>
   <?php include 'includes/header.inc'; ?>
-  <main id="enquire">
+  <main id="payment">
     <article class="form">
       <h2>Give us your money!!!</h2>
       <form method="post" action="process_order.php" novalidate>
