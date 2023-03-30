@@ -319,10 +319,10 @@
                     
   
                 $add_query = "insert into $sql_table (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS, COMMENT) values ('$name','$email','$phoneNum','$street','$suburb','$state','$postcode','$pcon','$card','$cname','$cnum','$cexpire','$cvv','$type','$book','$quantity', '$order_cost', now(), 'PENDING', '$comment')";
-
-               
+                
                 $add_result = @mysqli_query($conn, $add_query);
-
+                date_default_timezone_set("Australia/Sydney");
+                $date_of_query =  date("Y-m-d h:i:sa");
                 
 
                 if(!$add_result ) {
@@ -361,12 +361,12 @@
     $_SESSION['lastname'] = (isset($lastname) ? $lastname : "");
     $_SESSION['email'] = (isset($email) ? $email : "");
     $_SESSION['pnum'] = (isset($phoneNum) ? $phoneNum : "");
-    $_SESSION['address'] = (isset($address)? $address: "");
+    // $_SESSION['address'] = (isset($address)? $address: "");
     $_SESSION['postcode'] = (isset($postcode)? $postcode: "");
    
     
     $_SESSION['type'] = (isset($_POST['type'])? $_POST['type']: array());
-    
+    $_SESSION['type_str'] = (isset($type)? $type: "");
     $_SESSION['street'] = (isset($street)? $street: "");
     $_SESSION['suburb'] = (isset($suburb)? $suburb: "");
     $_SESSION['state'] = (isset($state)? $state: "");
@@ -377,6 +377,12 @@
     $_SESSION['lastid'] = (isset($last_id)? $last_id: "");
 
 
-
-
+    $_SESSION['date'] = (isset($date_of_query)? $date_of_query: "");
+    $_SESSION['card'] = (isset($card)? $card: "");
+    $_SESSION['cname'] = (isset($cname)? $cname: "");
+    $_SESSION['cexpire'] = (isset($cexpire)? $cexpire: "");
+    $_SESSION['cnum'] = (isset($cnum)? $cnum: "");
+    $_SESSION['cvv'] = (isset($cvv)? $cvv: "");
+    $_SESSION['cost'] = (isset($order_cost)? $order_cost: "");
+    $_SESSION['date'] = (isset($date_of_query)? $date_of_query: "");
 ?>

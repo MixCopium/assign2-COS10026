@@ -32,64 +32,26 @@
 
     $id = $_SESSION["lastid"];
 
-    // $firstname = $_SESSION['firstname'];
-    // $lastname = $_SESSION['lastname'];
-    // $email = $_SESSION['email'];
-    // $phoneNum = $_SESSION['pnum'];
-    // $address = $_SESSION['address'];
-    // $state = $_SESSION['state'];
-    // $postcode = $_SESSION['postcode'];
-    // $book = $_SESSION['book'];
-    // $quantity = $_SESSION['quantity'];
-    // $total = $_SESSION['tootp'];
-
-    require_once ("settings.php");
-            
-    $conn = @mysqli_connect($host,
-        $user,
-        $pwd,
-        $sql_db
-    );
-
-            if (!$conn) {
-                echo "<p>Database connection failure</p>";
-            } else {
-                $sql_table = "orders";
-                $query = "select ID, CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table where id=$id";
-                $result = @mysqli_query($conn, $query);
-                if(!$result) {
-                  echo "<p>Something is wrong with ",$query,"</p>";
-              } else {
-                  
-                  while ($row = mysqli_fetch_assoc($result)) {
-                      $cust_name = $row["CUSTOMER_NAME"];
-                      $email = $row["EMAIL"];
-                      $pnum= $row["PHONE_NUMBER"];
-                      $street = $row["CUST_STREET"];
-                      $suburb = $row["CUST_SUBURB"];
-                      $state = $row["CUST_STATE"];
-                      $postcode = $row["POSTCODE"];
-                      $pcon = $row["PREFERRED_CONTACT"];
-                      $card = $row["CARD_SERVICE"];
-                      $cname = $row["CARD_HOLDER"];
-                      $cnum = $row["CARD_NUMBER"];
-                      $cexpire = $row["EXPIRE_DATE"];
-                      $cvv = $row["CVV"];
-                      $extra = $row["EXTRA"];
-                      $order_product = $row["ORDER_PRODUCT"];
-                      $order_quantity = $row["ORDER_QUANTITY"];
-                      $order_cost = $row["ORDER_COST"];
-                      $order_time = $row["ORDER_TIME"];
-                      $order_status = $row["ORDER_STATUS"];
-                      
-                  }    
-
-                  
-
-                  mysqli_free_result($result);
-              }
-              mysqli_close($conn);
-            }
+    $cust_name = $_SESSION['firstname'] ." ". $_SESSION['lastname'];
+    $email = $_SESSION['email'];
+    $pnum= $_SESSION['pnum'];
+    $street =  $_SESSION['street'];
+    $suburb =  $_SESSION['suburb'];
+    $state = $_SESSION['state'];
+    $postcode = $_SESSION['postcode'];
+    $pcon =  $_SESSION['pcon'];
+    $card = $_SESSION['card'];
+    $cname = $_SESSION['cname'];
+    $cnum =  $_SESSION['cnum'];
+    $cexpire = $_SESSION['cexpire'];
+    $cvv =   $_SESSION['cvv'];
+    $extra =  $_SESSION['type_str'];
+    $order_product =  $_SESSION['book'];
+    $order_quantity =   $_SESSION['quantity'];
+    $order_cost = $_SESSION['cost'];
+    $order_time = $_SESSION['date'];
+    $order_status = "PENDING";                
+    
             
 
 
