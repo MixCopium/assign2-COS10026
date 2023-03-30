@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="description" content="A simple enquire page">
   <meta name="keywords" content="HTML, simple, webpage">
-  <meta name="author" content="Nguyen Gia Binh">
+  <meta name="author" content="Nguyen Gia Binh, Nguyen Ha Huy Hoang, Nguyen Duc Thinh">
   <!-- responsive setup -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- logo link -->
@@ -178,7 +178,7 @@
 
             <div class="column">
               <label class="text_Float_left" for="cName">Card holder</label>
-              <input class="input_text_2" id="cName" type="text" name="Card_name" placeholder="Nguyen Quang Bao Han" maxlength="25" pattern="[a-zA-Z\s]*" required>
+              <input class="input_text_2" id="cName" type="text" name="Card_name" placeholder="Nguyen Gia Binh" maxlength="25" pattern="[a-zA-Z\s]*" required>
             </div>
 
             <div class="column2">
@@ -191,7 +191,7 @@
 
             <div class="column">
               <label class="text_Float_left" for="ex_Date">Expire Date</label>
-              <input class="input_text_2" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7" pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
+              <input class="input_text_2" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YY" maxlength="5" pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
             </div>
 
             <div class="column2">
