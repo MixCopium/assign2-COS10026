@@ -101,7 +101,7 @@
                 <?php echo "Card Holder: $cname"; ?><br>
                 <?php echo  $card == "AE" ? "Card Number: ***********" . $cnum[11] . $cnum[12] . $cnum[13] . $cnum[14] : "Card Number: ************" . $cnum[12] . $cnum[13] . $cnum[14] . $cnum[15]; ?><br>
 
-                <!-- output email from session -->
+               
 
               </address>
             </div>
