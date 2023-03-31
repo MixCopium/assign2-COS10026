@@ -6,7 +6,7 @@
   <!-- requirement head template -->
   <meta name="description" content="Receipt Page">
   <meta name="keywords" content="HTML, PHP, webpage">
-  <meta name="author" content="Nguyen Duc Thinh, Nguyen Ha Huy Hoang">
+  <meta name="author" content="Nguyen Duc Thinh, Nguyen Ha Huy Hoang,Nguyen Manh Duc">
   <!-- responsive setup -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favico/apple-touch-icon.png">
