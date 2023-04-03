@@ -278,8 +278,8 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
    /* basic settings for table of the whole webpage accodring to the requirements */
 
    #product table,
-   td,
-   th {
+   #product td,
+   #product th {
      border: 1px solid black !important;
    }
 
@@ -626,8 +626,8 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
 
    /* Testing table */
    #enquire table,
-   th,
-   td {
+   #enquire th,
+   #enquire td {
      border: 1px solid black;
    }
 
@@ -1271,12 +1271,47 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
    }
 
 
-   #manage table th, td {
+   #manage table th, #manage table td {
     padding: 1%;
     width: 5%;
     text-align: center;
     
    }
+
+   #manage table, #manage th, #manage td {
+    border: black solid 1px;
+    -webkit-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+    
+   }
+
+   #manage  th {
+    background-color: #000;
+    color: #fff;
+    
+   }
+
+   #manage  .drop:hover {
+    background-color: #c70000;
+    color: #fff;
+    
+   }
+
+   #manage  .update:hover {
+    background-color: #00a908;
+    color: #fff;
+    
+   }
+
+   #manage details {
+    margin-bottom: 2%;
+   }
+
+   /* #manage .filter {
+    margin: 0% 1% 0% 1%;
+   } */
 
    /* footer font size adjust for requirement */
    footer p {

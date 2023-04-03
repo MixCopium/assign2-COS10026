@@ -2209,7 +2209,7 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     /* border: 1px solid black; */
   }
 
-  #general_page article {
+  #manage article {
     float: left;
     display: flex;
     flex-direction: column;
@@ -2217,15 +2217,64 @@ description: product.html, index.html, enquire.html, about.html, enhancements.ht
     align-items: center;
     width: 95%;
     padding-top: 5vh;
-    height: 80vh;
+    padding: 1%;
     background: #fbfbf2;
     background-repeat: no-repeat;
     background-size: 200%;
     background-position: 10% 30%;
     margin-bottom: 5%;
-    overflow: auto;
+    /* overflow: auto; */
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     /* border: 1px solid black; */
+  }
+
+
+  #manage table th, #manage table td {
+   padding: 1%;
+   width: 5%;
+   text-align: center;
+   
+  }
+
+  #manage table, #manage th, #manage td {
+   border: black solid 1px;
+   -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+   
+  }
+
+  #manage fieldset {
+    display: flex;
+    flex-direction: column;
+
+  }
+  #manage .input_filter , #manage #submit{
+    margin: 1% 0% 1% 0%;
+    
+  }
+
+  #manage  th {
+   background-color: #000;
+   color: #fff;
+   
+  }
+
+  #manage  .drop:hover {
+   background-color: #c70000;
+   color: #fff;
+   
+  }
+
+  #manage  .update:hover {
+   background-color: #00a908;
+   color: #fff;
+   
+  }
+
+  #manage details {
+   margin-bottom: 2%;
   }
 
   /* footer font size adjust */

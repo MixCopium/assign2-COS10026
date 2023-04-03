@@ -19,11 +19,11 @@
         $firstname = sanitise_input($_POST["uname"]);
     } 
     
-    if (!preg_match('/^\pL+$/u', $firstname) && strlen($firstname)!=0) {
+    if (!preg_match('/^[a-zA-Z\s]+$/', $firstname) && strlen($firstname)!=0) {
         $errMsg .= "<p>Your firstname cannot have number inside it.</p>";
         array_push($errSpot,"firstname");
     }
-    else if(strlen($firstname)==0) {
+    else if(strlen($firstname)==0 && trim($firstname)=="") {
         
         $errMsg .= "<p>Your firstname must be entered.</p>";
         array_push($errSpot,"firstname");
@@ -33,11 +33,11 @@
         $lastname = sanitise_input($_POST["lname"]);
     } 
     
-    if (!preg_match('/^\pL+$/u', $lastname) && strlen($lastname)!=0) {
+    if (!preg_match('/^[a-zA-Z\s]+$/', $lastname)  && strlen($lastname)!=0) {
         $errMsg .= "<p>Your lastname cannot have number inside it.</p>";
         array_push($errSpot,"lastname");
     }
-    else if(strlen($lastname)==0) {
+    else if(strlen($lastname)==0 && trim($lastname)=="") {
         
         $errMsg .= "<p>Your lastname must be entered.</p>";
         array_push($errSpot,"lastname");
@@ -62,7 +62,7 @@
     }
 
     if(strlen($_POST["book"])!=0) {
-        $book = $_POST["book"];
+        $book = sanitise_input($_POST["book"]);
         
     }
 
@@ -152,10 +152,19 @@
 
     if(strlen($_POST["Card_name"])!=0) {
         $cname = sanitise_input($_POST["Card_name"]);
-    }else {
+    }
+
+    if (!preg_match('/^[a-zA-Z\s]+$/', $cname)  && strlen($cname)!=0) {
+        $errMsg .= "<p>Your card name cannot have number inside.</p>";
+        array_push($errSpot,"cname");
+    }
+    else if(strlen($cname)==0 && trim($cname)=="") {
+        
         $errMsg .= "<p>Your card name must be entered.</p>";
         array_push($errSpot,"cname");
     }
+
+
 
     if(isset($_POST["Card_number"])) {
         $cnum = sanitise_input($_POST["Card_number"]);
@@ -183,12 +192,64 @@
         array_push($errSpot,"cvv");
     }
     
-    if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
-        $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
-        array_push($errSpot,"cvv");
+    
+
+
+    switch($state) {
+        case("NSW"):
+            if(($postcode<1000) || ($postcode>2599 && $postcode<2619) || ($postcode>2899 && $postcode<2921)|| ($postcode>2999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("ACT"):
+            if(($postcode<200) || ($postcode>299 && $postcode<2600) || ($postcode>2618 && $postcode<2900)|| ($postcode>2920)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("VIC"):
+            if(($postcode<3000) || ($postcode>3999 && $postcode<8000) || ($postcode>8999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("QLD"):
+            if(($postcode<4000) || ($postcode>4999 && $postcode<9000) || ($postcode>9999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("SA"):
+            if(($postcode<5000) || ($postcode>5799 && $postcode<5800) || ($postcode>5999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("WA"):
+            if(($postcode<6000) || ($postcode>6797 && $postcode<6800) || ($postcode>6999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("TAS"):
+            if(($postcode<7000) || ($postcode>7799 && $postcode<7800) || ($postcode>7999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
+        case("NT"):
+            if(($postcode<800) || ($postcode>999)) {
+                $errMsg .= "<p>Your postcode must approriate with your state.</p>";
+                array_push($errSpot,"postcode"); 
+            }
+            break;
     }
+
     
     // check the values
+
+
 
     
     switch($card){
@@ -197,12 +258,22 @@
                 $errMsg .= "<p>Your card number must start with 4 and have 16 characters.</p>";
                 array_push($errSpot,"cnum");
             }
+
+            if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
+                $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
+                array_push($errSpot,"cvv");
+            }
             break;
 
         case("Mastercard"):
             if(!preg_match('/^([5-5][1-5][0-9]{14})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 51 to 55 and have 16 characters.</p>";
                 array_push($errSpot,"cnum");
+                
+            }
+            if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
+                $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
+                array_push($errSpot,"cvv");
             }
             break;
 
@@ -210,6 +281,10 @@
             if(!preg_match('/^([3-3][4-4][0-9]{13}|[3-3][7-7][0-9]{13})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 34 or 37 and have 15 characters.</p>";
                 array_push($errSpot,"cnum");
+            }
+            if(strlen($cvv)!=4 && strlen($_POST["CVV"])!=0) {
+                $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
+                array_push($errSpot,"cvv");
             }
             break;
     }
@@ -220,7 +295,7 @@
     //     array_push($errSpot,"firstname");
     // }
 
-    // if (!preg_match('/^\pL+$/u', $lastname) && strlen($lastname)!=0) {
+    // if (!preg_match('/^[a-zA-Z\s]+$/', $lastname) && strlen($lastname)!=0) {
     //     $errMsg .= "<p>Your name cannot have number inside it.</p>";
     //     array_push($errSpot,"lastname");
     // }

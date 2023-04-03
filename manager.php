@@ -115,18 +115,18 @@
                           <input class="input_filter" id="filter_name" type="text"
                             name="filname" value="' . $filter_name . '" maxlength="40">
                             <label class="filter" for="filter_product">Product:</label>
-                            <select id="filter_product" class="book" name="filter_book">
+                            <select id="filter_product" class="input_filter" name="filter_book">
                                 <option  value="Harry Potter and the half-blood prince - J.K Rowling" ' . ($filter_book == "Harry Potter and the half-blood prince - J.K Rowling" ? 'selected' : '') . '>Harry Potter and the half-blood prince - J.K Rowling</option>
-                                <option  value="Harry Potter and the Philosopher\'s Stone - J.K Rowling" ' . ($filter_book == "Harry Potter and the Philosopher\'s Stone - J.K Rowling" ? 'selected' : '') . '>Harry Potter and the Philosopher\'s Stone - J.K Rowling</option>
+                                <option  value="Harry Potter and the Philosopher" ' . ($filter_book == "Harry Potter and the Philosopher" ? 'selected' : '') . '>Harry Potter and the Philosopher\'s Stone - J.K Rowling</option>
                                 <option  value="Harry Potter and the Chamber of Secrets - J.K Rowling"' . ($filter_book == "Harry Potter and the Chamber of Secrets - J.K Rowling" ? 'selected' : '') . '>Harry Potter and the Chamber of Secrets - J.K Rowling</option>
                                 <option  value="Harry Potter and the Order of the Phoenix - J.K Rowling"' . ($filter_book == "Harry Potter and the Order of the Phoenix - J.K Rowling" ? 'selected' : '') . '>Harry Potter and the Order of the Phoenix - J.K Rowling</option>
                                 <option  value=""' . ($filter_book == "" ? 'selected' : '') . '>All</option>
                               </select>
 
                               <label class="filter" for="filter_status">Status:</label>
-                              <select name="filter_status" id="filter_status">
+                              <select name="filter_status" id="filter_status" class="input_filter">
                             
-                                <option value="Pening" ' . ($filter_status == "Pending" ? 'selected' : '') . '>Pending</option>
+                                <option value="Pending" ' . ($filter_status == "Pending" ? 'selected' : '') . '>Pending</option>
 
                                 <option value="Fulfilled" ' . ($filter_status == "Fulfilled" ? 'selected' : '') . '>Fulfilled</option>
                                 <option value="Paid" ' . ($filter_status == "Paid" ? 'selected' : '') . '>Paid</option>
@@ -135,7 +135,7 @@
                               </select>
 
                               <label class="filter" for="sort_cost">Sort by cost:</label>
-                              <select name="sort_cost" id="sort_cost">
+                              <select class = "input_filter" name="sort_cost" id="sort_cost">
                             
                                 <option value="" ' . ($sort_cost == "" ? 'selected' : '') . '>Default</option>
 
@@ -225,8 +225,8 @@
                             <option value="Paid" ' . ($order_status == "Paid" ? 'selected' : '') . '>Paid</option>
                             <option value="Archived" ' . ($order_status == "Archived" ? 'selected' : '') . '>Archived</option>
                           </select></td>
-                        <td><input type="submit" value="Drop" class="no_button_style" form="drop_' . $id . '"></td>
-                        <td><input type="submit" value="Update" class="no_button_style" form="update_' . $id . '"></td>
+                        <td class="drop"><input type="submit" value="Drop" class="no_button_style" form="drop_' . $id . '"></td>
+                        <td class="update" ><input type="submit" value="Update" class="no_button_style" form="update_' . $id . '"></td>
                     </tr> 
                     
                     ';

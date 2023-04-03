@@ -45,7 +45,7 @@ if(strlen($_SESSION['err'])==0) {
               <div class="column">
                   <label class="text_Float_left " for="fName">First name</label>
                   <br>
-                  <input class="input_text_2 <?php echo (in_array("lastname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="fName" type="text" name="uname" value="<?php echo $_SESSION['firstname']?>" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2 <?php echo (in_array("firstname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="fName" type="text" name="uname" value="<?php echo $_SESSION['firstname']?>" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
