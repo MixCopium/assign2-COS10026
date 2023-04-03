@@ -200,7 +200,7 @@ if(strlen($_SESSION['err'])==0) {
   
               <div class="column">
                   <label class="text_Float_left" for="cName">Card holder</label>
-                  <input class="input_text_2 <?php echo (in_array("cname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="cName" type="text" name="Card_name" placeholder="Nguyen Quang Bao Han" maxlength="25" pattern="[a-zA-Z\s]*" required>
+                  <input class="input_text_2 <?php echo (in_array("cname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="cName" type="text" name="Card_name" placeholder="Nguyen Ha Huy Hoang" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
   
               <div class="column2">
