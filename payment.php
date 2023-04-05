@@ -110,10 +110,10 @@
             <label for="bookop" class="choice_label ">Which book do you want to order:</label>
 
             <select id="bookop" class="book" name="book">
-              <option class="select_text" value="Harry Potter and the half-blood prince - J.K Rowling">Harry Potter and the half-blood prince - J.K Rowling</option>
-              <option class="select_text" value="Harry Potter and the Philosopher's Stone - J.K Rowling">Harry Potter and the Philosopher's Stone - J.K Rowling</option>
-              <option class="select_text" value="Harry Potter and the Chamber of Secrets - J.K Rowling">Harry Potter and the Chamber of Secrets - J.K Rowling</option>
-              <option class="select_text" value="Harry Potter and the Order of the Phoenix - J.K Rowling">Harry Potter and the Order of the Phoenix - J.K Rowling</option>
+              <option class="select_text" value="Harry Potter and the half-blood prince - J.K Rowling">Harry Potter and the half-blood prince - J.K Rowling  $99.99</option>
+              <option class="select_text" value="Harry Potter and the Philosopher's Stone - J.K Rowling">Harry Potter and the Philosopher's Stone - J.K Rowling  $99.99</option>
+              <option class="select_text" value="Harry Potter and the Chamber of Secrets - J.K Rowling">Harry Potter and the Chamber of Secrets - J.K Rowling  $99.99</option>
+              <option class="select_text" value="Harry Potter and the Order of the Phoenix - J.K Rowling">Harry Potter and the Order of the Phoenix - J.K Rowling  $99.99</option>
             </select>
 
             <label for="quantity" class="choice_label quantity_align">Quantity:</label>
