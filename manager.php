@@ -32,176 +32,73 @@
           $pwd,
           $sql_db
         );
-    
+
+        if (!$conn) {
+          echo "<p>Database connection failure</p>";
+        } else {
+          $sql_table = "orders";
+          if (isset($_GET["action"])) {
+            $action = $_GET["action"];
+          } else {
+            $action = "";
+          }
+  
+          if (isset($_GET["id"])) {
+            $action_id = $_GET["id"];
+          }
+  
+          if (isset($_GET["status"])) {
+            $action_status = $_GET["status"];
+          }
+  
+          if (isset($_GET["filname"])) {
+            $filter_name = $_GET["filname"];
+          } else {
+            $filter_name = "";
+          }
+  
+          if (isset($_GET["filter_book"])) {
+            $filter_book = $_GET["filter_book"];
+          } else {
+            $filter_book = "";
+          }
+  
+          if (isset($_GET["filter_status"])) {
+            $filter_status = $_GET["filter_status"];
+          } else {
+            $filter_status = "";
+          }
+          $sort_query = "";
+          if (isset($_GET["sort_cost"]) && strlen($_GET["sort_cost"]) != 0) {
+            $sort_cost = $_GET["sort_cost"];
+            if ($sort_cost === "sutd") {
+              $sort_query = "ORDER BY ORDER_COST DESC";
+            } else if ($sort_cost === "sdtu") {
+              $sort_query = "ORDER BY ORDER_COST ASC";
+            }
+          } else {
+            $sort_cost = "";
+          }
+  
+          if ($action != "") {
+            switch ($action) {
+              case ("drop"):
+                $drop_query = "delete FROM $sql_table WHERE ID = $action_id";
+                $drop_result = @mysqli_query($conn, $drop_query);
+                break;
+              case ("update"):
+                $update_query = "update $sql_table SET ORDER_STATUS = '$action_status' WHERE ID = $action_id";
+                $update_result = @mysqli_query($conn, $update_query);
+                break;
+              default:
+                break;
+            }
+          }
+        }
+    include_once("enhancements3.php");
     ?>
 
-    <article>
-      <h2>Report</h2>
-      <br>
-        <div>
-          <form method="get" action="manager.php">
-            <fieldset>
-            <?php
-            if (isset($_GET["sd"])) {
-              $sd = $_GET["sd"];
-            } else {
-              $sd = "";
-            }
-            if (isset($_GET["ed"])) {
-              $ed = $_GET["ed"];
-            } else {
-              $ed = "";
-            }
-
-            if (!$conn) {
-              echo "<p>Database connection failure</p>";
-            } else {
-              $sql_table = "orders";
-              if (isset($_GET["action"])) {
-                $action = $_GET["action"];
-              } else {
-                $action = "";
-              }
-      
-              if (isset($_GET["id"])) {
-                $action_id = $_GET["id"];
-              }
-      
-              if (isset($_GET["status"])) {
-                $action_status = $_GET["status"];
-              }
-      
-              if (isset($_GET["filname"])) {
-                $filter_name = $_GET["filname"];
-              } else {
-                $filter_name = "";
-              }
-      
-              if (isset($_GET["filter_book"])) {
-                $filter_book = $_GET["filter_book"];
-              } else {
-                $filter_book = "";
-              }
-      
-              if (isset($_GET["filter_status"])) {
-                $filter_status = $_GET["filter_status"];
-              } else {
-                $filter_status = "";
-              }
-              $sort_query = "";
-              if (isset($_GET["sort_cost"]) && strlen($_GET["sort_cost"]) != 0) {
-                $sort_cost = $_GET["sort_cost"];
-                if ($sort_cost === "sutd") {
-                  $sort_query = "ORDER BY ORDER_COST DESC";
-                } else if ($sort_cost === "sdtu") {
-                  $sort_query = "ORDER BY ORDER_COST ASC";
-                }
-              } else {
-                $sort_cost = "";
-              }
-      
-              if ($action != "") {
-                switch ($action) {
-                  case ("drop"):
-                    $drop_query = "delete FROM $sql_table WHERE ID = $action_id";
-                    $drop_result = @mysqli_query($conn, $drop_query);
-                    break;
-                  case ("update"):
-                    $update_query = "update $sql_table SET ORDER_STATUS = '$action_status' WHERE ID = $action_id";
-                    $update_result = @mysqli_query($conn, $update_query);
-                    break;
-                  default:
-                    break;
-                }
-              }
-            }
-
-            echo '
-            <label class="filter" for="start_date">Between:</label>
-            <input class="input_filter" id="start_date" type="date"
-              name="sd" value="' . $sd . '" >
-            
-
-              <label class="filter" for="end_date">and:</label>
-              <input class="input_filter" id="end_date" type="date"
-                name="ed" value="' . $ed . '" >
-
-                <input type="submit" id="submit" 
-                                value="Apply">
-            ';
-          
-          ?>
-            </fieldset>
-
-          
-          </form>
-        </div>
-      <br>
-        <table>
-          <tr>
-            <th>Most popular</th>
-            <th>Fulfilled</th>
-            <th>Average Order per Day</th>
-          </tr>   
-          <tr>
-            <td>
-              <?php
-                if (!$conn) {
-                  echo "<p>Database connection failure</p>";
-                } else {
-                  $sql_table = "orders";
-                  $report_query_1 = "SELECT ORDER_PRODUCT FROM (SELECT COUNT(ID) as count, ORDER_PRODUCT FROM orders" .($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").  " GROUP BY ORDER_PRODUCT order BY count DESC limit 1 ) a";
-
-                  $report_result_1 = @mysqli_query($conn, $report_query_1 );
-                  while ($row = mysqli_fetch_assoc($report_result_1)) {
-                    echo $row["ORDER_PRODUCT"];
-                    // echo $report_query_1;
-                  }
-                  
-                }
-                
-              ?>
-            </td>
-            <td>
-              <?php
-                if (!$conn) {
-                  echo "<p>Database connection failure</p>";
-                } else {
-                  $sql_table = "orders";
-                  $report_query_2 = "SELECT Count(ORDER_PRODUCT) as count FROM $sql_table WHERE ORDER_STATUS='fulfilled'".($sd!="" ? " AND CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($ed!="" ? " AND CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").";";
-
-                  $report_result_2 = @mysqli_query($conn, $report_query_2 );
-                  while ($row = mysqli_fetch_assoc($report_result_2)) {
-                    echo $row["count"];
-                    // echo $report_query_2;
-                  }
-                  
-                }
-                
-              ?>
-            </td>
-            <td>
-              <?php
-                if (!$conn) {
-                  echo "<p>Database connection failure</p>";
-                } else {
-                  $sql_table = "orders";
-                  $report_query_3 = "SELECT (count/(DATEDIFF(CAST(".($ed!="" ? "'$ed'" : " Now() ")." as date),CAST(".($sd!="" ? "'$sd'" : " MIN(ORDER_TIME) ")." as date)) + 1)) as avg FROM (SELECT COUNT(ID) as count, ORDER_TIME FROM orders ".($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ")." ) a;";
-
-                  $report_result_3 = @mysqli_query($conn, $report_query_3 );
-                  while ($row = mysqli_fetch_assoc($report_result_3)) {
-                    echo $row["avg"];
-                    // echo $report_query_3;
-                  }
-                  
-                }
-                
-              ?>
-            </td>
-          </tr>
-
-        </table>
-    </article>
+    
 
     <article>
       <h2>Order Information</h2>
