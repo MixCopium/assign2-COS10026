@@ -188,8 +188,12 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
   } */
 
    /*  */
-   .form_inline {
+   header .form_inline {
      margin-right: 5%;
+     display: flex;
+     align-items: center;
+     
+
    }
 
 
