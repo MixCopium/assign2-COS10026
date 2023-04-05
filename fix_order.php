@@ -141,7 +141,7 @@ if(strlen($_SESSION['err'])==0) {
 
             <!-- check if the input of quantity is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label for="quantity" class="choice_label quantity_align">Quantity:</label>
-              <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="text" name="quantity" value="<?php echo $_SESSION['quantity']?>" maxlength="3" pattern="\d{3}">
+              <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="text" name="quantity" value="<?php echo $_SESSION['quantity']?>"  min="1" max="99" step="1" pattern="\d{3}">
             
           
           </div>
@@ -220,7 +220,7 @@ if(strlen($_SESSION['err'])==0) {
                <!-- highlight error -->
               <div class="column">
                <label class="text_Float_left" for="ex_Date">Expire Date</label>
-               <input class="input_text_2 <?php echo (in_array("cexpire", $_SESSION['espot']) ? 'invalid' : '' )?>" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
+               <input class="input_text_2 <?php echo (in_array("cexpire", $_SESSION['espot']) ? 'invalid' : '' )?>" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
               </div>
              <!-- highlight error -->
               <div class="column2">
