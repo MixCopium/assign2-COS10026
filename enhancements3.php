@@ -19,12 +19,12 @@
            
 
             echo '
-            <label class="filter" for="start_date">Between:</label>
+            <label class="filter" for="start_date">From:</label>
             <input class="input_filter" id="start_date" type="date"
               name="sd" value="' . $sd . '" >
             
 
-              <label class="filter" for="end_date">and:</label>
+              <label class="filter" for="end_date">to:</label>
               <input class="input_filter" id="end_date" type="date"
                 name="ed" value="' . $ed . '" >
 
