@@ -468,48 +468,6 @@ description: product.html, index.html, payment.html, about.html, enhancements.ht
     margin-bottom: 2%;
   }
 
-/* Table */
-#payment table, th, td {
-  border: 1px solid black;
-}
-
- #payment table th {
-  background-color: lightgrey;
- }
-
- #payment table tr td {
-  height: 60px;
-  padding:0.5%;
- }
-
- #payment table .header_product_1 {
-  width:75%;
-  font-size: 1.6em;
-  
- }
-
- #payment table .header_product_2 {
-  width:10%;
-  font-size: 1.6em;
-  
- }
-
- #payment table .header_product_3 {
-  padding: 1%;
-  width:14%;
-  font-size: 1.5em;
-  
- }
-
- #payment .actual_product {
-  font-size: 1.5em;
- }
-
- #payment .actual_product_2 {
-  font-size: 1.2em;
-  text-align: center;
- }
-
   /*2 equal collums*/
 
   #payment * {
@@ -1581,49 +1539,6 @@ description: product.html, index.html, payment.html, about.html, enhancements.ht
     align-self: center;
     margin-bottom: 2%;
   }
-
-/* Table */
-#payment table, th, td {
-  border: 1px solid black;
-}
-
- #payment table th {
-  background-color: lightgrey;
- }
-
- #payment table tr td {
-  height: 50px;
- }
-
- #payment table .header_product_1 {
-  width:75%;
-  font-size: 1em;
-  
- }
-
- #payment table .header_product_2 {
-  width:10%;
-  font-size: 1em;
-  
- }
-
- #payment table .header_product_3 {
-  padding: 1%;
-  width:14%;
-  font-size: 1em;
-  
- }
-
- #payment .actual_product {
-  font-size: 1em;
-  padding: 1%;
- }
-
- #payment .actual_product_2 {
-  font-size: 0.8em;
-  text-align: center;
- }
-
                                                   
   /*2 equal collums*/
 
