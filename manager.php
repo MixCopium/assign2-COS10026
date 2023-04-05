@@ -24,6 +24,9 @@
   <main id="manage">
     <h1>Manager</h1>
       <?php
+
+
+        // connect to the database
         require_once("settings.php");
 
         $conn = @mysqli_connect(
@@ -36,38 +39,43 @@
         if (!$conn) {
           echo "<p>Database connection failure</p>";
         } else {
+          
           $sql_table = "orders";
+
+          // get action information from hidden form input
           if (isset($_GET["action"])) {
             $action = $_GET["action"];
           } else {
             $action = "";
           }
-  
+          // get id of the order from hidden form input
           if (isset($_GET["id"])) {
             $action_id = $_GET["id"];
           }
-  
+          // get status information from hidden form input
           if (isset($_GET["status"])) {
             $action_status = $_GET["status"];
           }
-  
+          // get filtered name information from the filter input
           if (isset($_GET["filname"])) {
             $filter_name = $_GET["filname"];
           } else {
             $filter_name = "";
           }
-  
+          // get filtered book name information from the filter input
           if (isset($_GET["filter_book"])) {
             $filter_book = $_GET["filter_book"];
           } else {
             $filter_book = "";
           }
-  
+          // get filtered input information from the filter input
           if (isset($_GET["filter_status"])) {
             $filter_status = $_GET["filter_status"];
           } else {
             $filter_status = "";
           }
+
+          // get sort action from filter input
           $sort_query = "";
           if (isset($_GET["sort_cost"]) && strlen($_GET["sort_cost"]) != 0) {
             $sort_cost = $_GET["sort_cost"];
@@ -79,7 +87,8 @@
           } else {
             $sort_cost = "";
           }
-  
+          
+          // prepare and run query based on input action from hidden form
           if ($action != "") {
             switch ($action) {
               case ("drop"):
@@ -95,6 +104,8 @@
             }
           }
         }
+
+    // report table
     include_once("enhancements3.php");
     ?>
 
@@ -104,78 +115,22 @@
       <h2>Order Information</h2>
 
       </details>
-      <!-- get data from session of process_order.php -->
+      
       <?php
 
       
-
+      // check if this part can access the database
       if (!$conn) {
         echo "<p>Database connection failure</p>";
       } else {
-        $sql_table = "orders";
-        if (isset($_GET["action"])) {
-          $action = $_GET["action"];
-        } else {
-          $action = "";
-        }
-
-        if (isset($_GET["id"])) {
-          $action_id = $_GET["id"];
-        }
-
-        if (isset($_GET["status"])) {
-          $action_status = $_GET["status"];
-        }
-
-        if (isset($_GET["filname"])) {
-          $filter_name = $_GET["filname"];
-        } else {
-          $filter_name = "";
-        }
-
-        if (isset($_GET["filter_book"])) {
-          $filter_book = $_GET["filter_book"];
-        } else {
-          $filter_book = "";
-        }
-
-        if (isset($_GET["filter_status"])) {
-          $filter_status = $_GET["filter_status"];
-        } else {
-          $filter_status = "";
-        }
-        $sort_query = "";
-        if (isset($_GET["sort_cost"]) && strlen($_GET["sort_cost"]) != 0) {
-          $sort_cost = $_GET["sort_cost"];
-          if ($sort_cost === "sutd") {
-            $sort_query = "ORDER BY ORDER_COST DESC";
-          } else if ($sort_cost === "sdtu") {
-            $sort_query = "ORDER BY ORDER_COST ASC";
-          }
-        } else {
-          $sort_cost = "";
-        }
-
-        if ($action != "") {
-          switch ($action) {
-            case ("drop"):
-              $drop_query = "delete FROM $sql_table WHERE ID = $action_id";
-              $drop_result = @mysqli_query($conn, $drop_query);
-              break;
-            case ("update"):
-              $update_query = "update $sql_table SET ORDER_STATUS = '$action_status' WHERE ID = $action_id";
-              $update_result = @mysqli_query($conn, $update_query);
-              break;
-            default:
-              break;
-          }
-        }
-
+        
+      //  print filter form
         echo '
                 <details>
                 <summary>Filter</summary>
                 <form method="get" action="manager.php">
                     <fieldset>
+                    
                         <label class="filter" for="filter_name">Name:</label>
                           <input class="input_filter" id="filter_name" type="text"
                             name="filname" value="' . $filter_name . '" maxlength="40">
@@ -217,18 +172,21 @@
                 </details>
                 
                 ';
-
+        // sql to get information from the database including for filter
         $query = "select ID, CUSTOMER_NAME, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table Where CUSTOMER_NAME like '$filter_name%' && ORDER_PRODUCT like '$filter_book%'&& ORDER_STATUS like '$filter_status%' ";
 
+        // add sort sql if sort is set
         if ($sort_cost != "") {
           $query .= $sort_query;
         }
+        // run sql
         $result = @mysqli_query($conn, $query);
         if (!$result) {
           echo "<p>Something is wrong with ", $query, "</p>";
         } else {
 
           while ($row = mysqli_fetch_assoc($result)) {
+            // get value from the run sql
             $id = $row["ID"];
             $cust_name = $row["CUSTOMER_NAME"];
             $order_product = $row["ORDER_PRODUCT"];
@@ -237,7 +195,7 @@
             $order_time = $row["ORDER_TIME"];
             $order_status = $row["ORDER_STATUS"];
 
-
+            // print hidden from with pre-defined value from 1 page interaction
             echo '
                         <form id="drop_' . $id . '" method="get" action="manager.php" hidden>
                          <input type="text" name="action"  value="drop">
@@ -265,8 +223,10 @@
                   </tr>
                   
                   ';
+          // run the sql again to get the information
           $result = @mysqli_query($conn, $query);
           while ($row = mysqli_fetch_assoc($result)) {
+            // get the value out
             $id = $row["ID"];
             $cust_name = $row["CUSTOMER_NAME"];
             $order_product = $row["ORDER_PRODUCT"];
@@ -274,6 +234,8 @@
             $order_cost = $row["ORDER_COST"];
             $order_time = $row["ORDER_TIME"];
             $order_status = $row["ORDER_STATUS"];
+
+            // print all the record into a table
             echo '
                     <tr>
                         <td>' . $id . '</td>
@@ -298,6 +260,7 @@
           }
 
 
+          // disconnect to database
           mysqli_free_result($result);
         }
         mysqli_close($conn);

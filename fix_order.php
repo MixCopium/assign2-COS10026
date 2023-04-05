@@ -26,28 +26,32 @@
 
 <body>
 <?php include 'includes/header.inc'; session_start(); 
+// redirect if access directly
 if(strlen($_SESSION['err'])==0) {
     header ("location:payment.php");
 }?>     
-    <main id="enquire">
-
+    <main id="payment">
+      <!--  -->
+      <h1>Payment</h1>
+      <!-- show error messages -->
       <article class="form warning" >
         <h2>Warning</h2>
         <?php echo $_SESSION['err'] ?>
       </article>
       <article class="form">
         <h2>Give us your money!!!</h2>
+        <!-- form with validation turned off -->
         <form  method="post" action="process_order.php" novalidate>
           <fieldset class="part">
   <!-- first row for contact: Name (crucial) -->
             <div class="row_01">
-  
+              <!-- check if the input of firstname is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <div class="column">
                   <label class="text_Float_left " for="fName">First name</label>
                   <br>
                   <input class="input_text_2 <?php echo (in_array("firstname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="fName" type="text" name="uname" value="<?php echo $_SESSION['firstname']?>" placeholder="e.g: Nguyen" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
-  
+              <!-- check if the input of lastname is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <div class="column2">
                   <label class="text_Float_left" for="lName">Last name</label>
                   <br>
@@ -57,14 +61,14 @@ if(strlen($_SESSION['err'])==0) {
            
   <!-- second row for contact: info to sell away :) (crucial) -->
           <div class="row2">
-  
+            <!-- check if the input of email is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
             <div class="column">
               <label class="text_Float_left" for="email">Email</label>
               <br>
               <input class="input_text_2 <?php echo (in_array("email", $_SESSION['espot']) ? 'invalid' : '' )?>" type="email" id="email"
                 name="email" value="<?php echo $_SESSION['email']?>" placeholder="lmao@lalaland.com" required>
             </div>
-  
+            <!-- check if the input of phone number is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
             <div class="column2">
               <label class="text_Float_left" for="Pnumb">Phone number</label>
               <br>
@@ -74,12 +78,14 @@ if(strlen($_SESSION['err'])==0) {
   <!-- Less crucial contact info: Address in general -->
           <div>
             <fieldset class="part" id="fieldSet2">
+
+            <!-- check if the input of street is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
             <label class="text_Float_left" for="sAdr"> Street Address</label>
               <input class="input_text_2 <?php echo (in_array("street", $_SESSION['espot']) ? 'invalid' : '' )?>" id="sAdr" type="text" name="street" value="<?php echo $_SESSION['street']?>"  placeholder="Your Street Address" maxlength="40" required>
-
+            <!-- check if the input of suburb is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label class="text_Float_left" for="dAdr">Suburb/Town</label>
               <input class="input_text_2 in_range_stuff <?php echo (in_array("suburb", $_SESSION['espot']) ? 'invalid' : '' )?>" id="dAdr" type="text" name="suburb" value="<?php echo $_SESSION['suburb']?>" placeholder="What District" maxlength="40" required>
-  
+            <!-- check if the input of state is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label class="text_Float_left" for="cAdr">State</label>
               <select name="state" id="cAdr" class="<?php echo (in_array("state", $_SESSION['espot']) ? 'invalid' : '' )?>" required>
                 <option value >Select one</option>
@@ -92,7 +98,7 @@ if(strlen($_SESSION['err'])==0) {
                 <option value="TAS" <?php echo ($_SESSION["state"] == "TAS" ? 'selected' : '' )?>>TAS</option>
                 <option value="ACT" <?php echo ($_SESSION["state"] == "ACT" ? 'selected' : '' )?>>ACT</option>
               </select>
-  
+              <!-- check if the input of postcode is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label class="text_Float_left" for="pAdr">Postcode</label>
               <input class="input_text_2 <?php echo (in_array("postcode", $_SESSION['espot']) ? 'invalid' : '' )?>" id="pAdr" type="text"
                 name="postcode" value="<?php echo $_SESSION['postcode']?>" placeholder="Bet you need to look it up online!!!"
@@ -104,7 +110,7 @@ if(strlen($_SESSION['err'])==0) {
 
           <br>
           <div class="part flex">
-            
+            <!--  the previous selection will still be kept-->
             <label class="choice_label">Preferred Contact</label>
   
             <div class="option_content">
@@ -123,6 +129,7 @@ if(strlen($_SESSION['err'])==0) {
           <br>
           <br>
           <div class="part product_option">
+            <!--  the previous selection will still be kept-->
             <label for="bookop" class="choice_label ">Which book do you want to order:</label>
   
             <select id="bookop" class="book" name="book">
@@ -132,7 +139,7 @@ if(strlen($_SESSION['err'])==0) {
               <option  value="Harry Potter and the Order of the Phoenix - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Order of the Phoenix - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Order of the Phoenix - J.K Rowling</option>
             </select>
 
-            
+            <!-- check if the input of quantity is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label for="quantity" class="choice_label quantity_align">Quantity:</label>
               <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="text" name="quantity" value="<?php echo $_SESSION['quantity']?>" maxlength="3" pattern="\d{3}">
             
@@ -142,7 +149,7 @@ if(strlen($_SESSION['err'])==0) {
 <!-- List of extra free stuff we give out for every order -->
   
 <div class="part">
-  
+  <!--  the previous selection will still be kept-->
   <label class="choice_label">Choose extra goody (FREE):</label>
 
   <div class="option_div">
@@ -197,12 +204,12 @@ if(strlen($_SESSION['err'])==0) {
           <br>
                                          <!-- Card information  -->
           <div class="row_01">
-  
+              <!-- highlight error -->
               <div class="column">
                   <label class="text_Float_left" for="cName">Card holder</label>
                   <input class="input_text_2 <?php echo (in_array("cname", $_SESSION['espot']) ? 'invalid' : '' )?>" id="cName" type="text" name="Card_name" placeholder="Nguyen Ha Huy Hoang" maxlength="25" pattern="[a-zA-Z\s]*" required>
               </div>
-  
+             <!-- highlight error -->
               <div class="column2">
                <label class="text_Float_left" for="cNumb">Card number</label>
                <input class="input_text_2 <?php echo (in_array("cnum", $_SESSION['espot']) ? 'invalid' : '' )?>" id="cNumb" type="text" name="Card_number" placeholder="e.g: 12xx xxxx xxxx" maxlength="16"  pattern="\d{12}">
@@ -210,12 +217,12 @@ if(strlen($_SESSION['err'])==0) {
            </div>
 
            <div class="row2">
-  
+               <!-- highlight error -->
               <div class="column">
                <label class="text_Float_left" for="ex_Date">Expire Date</label>
                <input class="input_text_2 <?php echo (in_array("cexpire", $_SESSION['espot']) ? 'invalid' : '' )?>" id="ex_Date" type="text" name="card_expire_date" placeholder="MM/YYYY" maxlength="7"  pattern="^((0[1-9])|(1[0-2]))\/((2000)|(20[0-3][0-9]))$">
               </div>
-
+             <!-- highlight error -->
               <div class="column2">
                <label class="text_Float_left" for="cvv">CVV</label>
                <input class="input_text_2 <?php echo (in_array("cvv", $_SESSION['espot']) ? 'invalid' : '' )?>" id="cvv" type="text" name="CVV" placeholder="e.g: 123" maxlength="3" pattern="\d{3}" required>
@@ -228,7 +235,7 @@ if(strlen($_SESSION['err'])==0) {
           <br>
           <div>
             <label class="text_Float_left" for="comment">Comment</label>
-            
+            <!-- keep previous comment -->
             <textarea id="comment" name="comment"
               placeholder="What do you want to say?">
               <?php echo $_SESSION['comment']?>
@@ -245,6 +252,7 @@ if(strlen($_SESSION['err'])==0) {
       </form>
       </article>
     </main>
+    <!-- destroy the session -->
     <?php include 'includes/footer.inc'; session_unset(); session_destroy(); ?>  
 </body>
 

@@ -31,7 +31,7 @@
       exit;
     }
     
-
+    // check get order information from process_order
     $id = $_SESSION["lastid"];
 
     $cust_name = $_SESSION['firstname'] ." ". $_SESSION['lastname'];
@@ -80,6 +80,7 @@
           <hr>
           <div class="row">
             <div>
+              <!-- print the customer information -->
               <h3>Billed To:</h3>
               <address>
 
@@ -92,13 +93,14 @@
               </address>
             </div>
           </div>
+          <!-- print payment information -->
           <div class="row">
             <div>
               <br>
               <h3>Payment Method:</h3>
               <address>
 
-
+                <!-- majority of the credit card number will be hidden -->
                 <?php echo "Card Service: $card"; ?><br>
                 <?php echo "Card Holder: $cname"; ?><br>
                 <?php echo  $card == "AE" ? "Card Number: ***********" . $cnum[11] . $cnum[12] . $cnum[13] . $cnum[14] : "Card Number: ************" . $cnum[12] . $cnum[13] . $cnum[14] . $cnum[15]; ?><br>
@@ -131,6 +133,7 @@
                   </tr>
                 </thead>
                 <tr>
+                  <!-- print order information -->
                   <td><?php echo $id; ?></td>
                   <td><?php echo $order_product; ?></td>
                   <td class="textcenter"><?php echo $order_quantity; ?></td>
@@ -148,6 +151,7 @@
     </div>
   </main>
   <?php include 'includes/footer.inc';
+  // destroy the session
   session_unset();
   session_destroy();   ?>
 </body>

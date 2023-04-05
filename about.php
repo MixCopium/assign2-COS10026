@@ -27,6 +27,17 @@
     <main id="about">
         <!-- page title -->
         <h1>About Us</h1>
+        <!-- list of team members -->
+        <article class="aboutpage teamc">
+            <h2>TEAM MEMBERS</h2>
+            <ol class="team">
+                <li>Nguyen Ha Huy Hoang - 103487444</li>
+                <li>Nguyen Duc Thinh - 103805486</li>
+                <li>Nguyen Manh Duc - 103792724</li>
+                <li>Nguyen Gia Binh - 104219428</li>
+            </ol>
+        </article>
+
 
         <!-- member 1 article -->
         <article class="aboutpage">
@@ -416,7 +427,7 @@
                 <dl>
                     <dt>Personal details</dt>
                     <dd>Name: Duc Thinh Nguyen</dd>
-                    <dd>Student ID:103792724</dd>
+                    <dd>Student ID:103805486</dd>
                     <dd>Email : <a href="mailto:103805486@student.swin.edu.au" target="_blank">103805486@student.swin.edu.au</a>
                     </dd>
                     <dd>Hobbies: Listening to music, reading books, and discovering new technology.</dd>

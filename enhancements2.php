@@ -1,6 +1,6 @@
 <?php
              require_once ("settings.php");
-            
+            // conncet to the book database
              $conn = @mysqli_connect($host,
                  $user,
                  $pwd,
@@ -16,19 +16,20 @@
                 
 
                 
-
+                // get all information from the product table
                 $query = "select * from $sql_table";
 
                 
                 
                 
                 
-                
+                // get the information
                 $result = @mysqli_query($conn, $query);
                 if(!$result ) {
                     echo "<p class=\"wrong\">something is wrong with ",$query,"</p>";
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        // yeild all the values into local values
                         $id = $row["ID"];
                         $bname = $row["BOOK_NAME"];
                         $author = $row["AUTHOR"];
@@ -47,6 +48,8 @@
                         $source_au = $row["SOURCE_AUTHOR"];
                         
                 ?>
+
+                <!-- print all the production information -->
                 <section class="book_profile">
                 <!-- book's cover image -->
                 <div class="cover_container ">

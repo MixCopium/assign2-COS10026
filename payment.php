@@ -24,6 +24,7 @@
 <body>
   <?php include 'includes/header.inc'; ?>
   <main id="payment">
+  <h1>Payment</h1>
     <article class="form">
       <h2>Give us your money!!!</h2>
       <form method="post" action="process_order.php" novalidate>

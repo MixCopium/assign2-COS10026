@@ -11,105 +11,108 @@
     
 
     // get the input value
-
+    // error messages
     $errMsg = "";
+    // save error into this array for later error demonstation in fix order
     $errSpot=array();
-
+    // get firstname from payment
     if(isset($_POST["uname"])) {
         $firstname = sanitise_input($_POST["uname"]);
     } 
-    
+    // check if firstname is alphabetic
     if (!preg_match('/^[a-zA-Z\s]+$/', $firstname) && strlen($firstname)!=0) {
         $errMsg .= "<p>Your firstname cannot have number inside it.</p>";
         array_push($errSpot,"firstname");
     }
+    // check if there is any blank space
     else if(strlen($firstname)==0 && trim($firstname)=="") {
         
         $errMsg .= "<p>Your firstname must be entered.</p>";
         array_push($errSpot,"firstname");
     }
-
+    // get lastname from payment
     if(isset($_POST["lname"])) {
         $lastname = sanitise_input($_POST["lname"]);
     } 
-    
+    // check if lastname is alphabetic
     if (!preg_match('/^[a-zA-Z\s]+$/', $lastname)  && strlen($lastname)!=0) {
         $errMsg .= "<p>Your lastname cannot have number inside it.</p>";
         array_push($errSpot,"lastname");
     }
+    // check if there is any blank space
     else if(strlen($lastname)==0 && trim($lastname)=="") {
         
         $errMsg .= "<p>Your lastname must be entered.</p>";
         array_push($errSpot,"lastname");
     }
-
+    // get prefered contact
     if(strlen($_POST["pcon"])!=0) {
         $pcon = $_POST["pcon"];
     }
-
+    // get email from payment
     if(strlen($_POST["email"])!=0) {
         $email = sanitise_input($_POST["email"]);
     } else {
         $errMsg .= "<p>Your email must be entered.</p>";
         array_push($errSpot,"email");
     }
-
+    // get phone number from payment
     if(strlen($_POST["phone_number"])!=0) {
         $phoneNum = sanitise_input($_POST["phone_number"]);
     } else {
         $errMsg .= "<p>Your phone number must be entered.</p>";
         array_push($errSpot,"pnum");
     }
-
+    // get ordered book from payment
     if(strlen($_POST["book"])!=0) {
         $book = sanitise_input($_POST["book"]);
         
     }
-
+    // get order quantity from payment
     if(strlen($_POST["quantity"])!=0) {
         $quantity = sanitise_input($_POST["quantity"]);
     } else {
         $errMsg .= "<p>You need to enter how many products do you want.</p>";
         array_push($errSpot,"quantity");
     }
-
+    // check if quantity is numeric
     if(!is_numeric($quantity) && strlen($_POST["quantity"])!=0) {
         $errMsg .= "<p>Your quantity need to be a number.</p>";
         array_push($errSpot,"quantity");
     }
     
-   
+    // get street form payment
     if(strlen($_POST["street"])!=0) {
         $street = sanitise_input($_POST["street"]);
     } else {
         $errMsg .= "<p>Your street address must be entered.</p>";
         array_push($errSpot,"street");
     }
-
+    // get suburb from payment
     if(strlen($_POST["suburb"])!=0) {
         $suburb = sanitise_input($_POST["suburb"]);
     } else {
         $errMsg .= "<p>Your suburb must be entered.</p>";
         array_push($errSpot,"suburb");
     }
-
+    // get state from payment
     if(!strlen($_POST["state"])==0 || $_POST["state"]=="Select one") {
         $state = $_POST["state"];
     } else {
         $errMsg .= "<p>Your state must be entered.</p>";
         array_push($errSpot,"state");
     }
-
+    // check if street has less than 40 words
     if(strlen($street)>40) {
         $errMsg .= "<p>Your address should be <40 characters.</p>";
         array_push($errSpot,"street");
     }
-
+    // check if surburb less than 20 words
     if(strlen($suburb)>20) {
         $errMsg .= "<p>Your suburb should be <20 characters.</p>";
         array_push($errSpot,"street");
     }
-
+    // get postcode from payment
     if(strlen($_POST["postcode"])!=0) {
         $postcode = sanitise_input($_POST["postcode"]);
         
@@ -129,7 +132,7 @@
     // } else {
     //     $errMsg .= "<p>Your book must be choosen.</p>";
     // }
-
+    // get order type from payment
     if(isset($_POST["type"])) {
         
         $type = implode(',', $_POST['type']);
@@ -137,27 +140,28 @@
         $errMsg .= "<p>Your order type must be entered.</p>";
         
     }
-
+    // get comment from payment
     if(strlen($_POST["comment"])!=0) {
         $comment = sanitise_input($_POST["comment"]);
     } 
 
-
+    // get card brand from payment
     if(isset($_POST["card"])) {
         $card = sanitise_input($_POST["card"]);
     } else {
         $errMsg .= "<p>Your book must be choosen.</p>";
         
     }
-
+    // get card holder name from payment
     if(strlen($_POST["Card_name"])!=0) {
         $cname = sanitise_input($_POST["Card_name"]);
     }
-
+    // check if card holder name is alphabetic
     if (!preg_match('/^[a-zA-Z\s]+$/', $cname)  && strlen($cname)!=0) {
         $errMsg .= "<p>Your card name cannot have number inside.</p>";
         array_push($errSpot,"cname");
     }
+    // check if it is blank space
     else if(strlen($cname)==0 && trim($cname)=="") {
         
         $errMsg .= "<p>Your card name must be entered.</p>";
@@ -165,28 +169,28 @@
     }
 
 
-
+    // get card number from payment
     if(isset($_POST["Card_number"])) {
         $cnum = sanitise_input($_POST["Card_number"]);
     } else {
         $errMsg .= "<p>Your card numbers must be entered.</p>";
         array_push($errSpot,"cnum");
     }
-
+    // get card expire date from payment
     if(isset($_POST["card_expire_date"])) {
         $cexpire = sanitise_input($_POST["card_expire_date"]);
     } else {
         $errMsg .= "<p>Your card expire date must be entered.</p>";
         array_push($errSpot,"cexpire");
     }
-
+    // get cvv from payment
     if(strlen($_POST["CVV"])!=0) {
         $cvv = sanitise_input($_POST["CVV"]);
     } else {
         $errMsg .= "<p>Your card CVV must be entered.</p>";
         array_push($errSpot,"cvv");
     }
-
+    // check if cvv is numeric
     if(!is_numeric($cvv) && strlen($_POST["CVV"])!=0) {
         $errMsg .= "<p>Your card CVV must be numeric.</p>";
         array_push($errSpot,"cvv");
@@ -194,7 +198,7 @@
     
     
 
-
+    // check postcode based on state
     switch($state) {
         case("NSW"):
             if(($postcode<1000) || ($postcode>2599 && $postcode<2619) || ($postcode>2899 && $postcode<2921)|| ($postcode>2999)) {
@@ -251,14 +255,15 @@
 
 
 
-    
+    // check cvv and card number base on card brand
     switch($card){
         case("Visa"):
+            // visa card must have 16 numbers start with 4
             if(!preg_match('/^([4-4][0-9]{15})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 4 and have 16 characters.</p>";
                 array_push($errSpot,"cnum");
             }
-
+            // visa card only has 3 cvv numbers
             if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
                 $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
                 array_push($errSpot,"cvv");
@@ -266,11 +271,13 @@
             break;
 
         case("Mastercard"):
+            // Mastercard has 16 number start from 51 to 55
             if(!preg_match('/^([5-5][1-5][0-9]{14})$/', $cnum)){
-                $errMsg .= "<p>Your card number must start with 51 to 55 and have 16 characters.</p>";
+                $errMsg .= "<p>Your card number must start from 51 to 55 and have 16 characters.</p>";
                 array_push($errSpot,"cnum");
                 
             }
+            // Mastercard card only has 3 cvv numbers
             if(strlen($cvv)!=3 && strlen($_POST["CVV"])!=0) {
                 $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
                 array_push($errSpot,"cvv");
@@ -278,10 +285,12 @@
             break;
 
         case("AE"):
+            // america express must start with 34 or 27 and only has 15 numbers 
             if(!preg_match('/^([3-3][4-4][0-9]{13}|[3-3][7-7][0-9]{13})$/', $cnum)){
                 $errMsg .= "<p>Your card number must start with 34 or 37 and have 15 characters.</p>";
                 array_push($errSpot,"cnum");
             }
+            // America Express has 4 cvv numbers
             if(strlen($cvv)!=4 && strlen($_POST["CVV"])!=0) {
                 $errMsg .= "<p>Your card CVV must have 3 digits.</p>";
                 array_push($errSpot,"cvv");
@@ -305,6 +314,8 @@
     //     array_push($errSpot,"lastname");
     // }
 
+
+    // check if card expire date follow the mm/yy format
     if(!preg_match("/^(0[1-9]|1[0-2])\/?([0-9]{2})$/", $cexpire)) {
         $errMsg .= "<p>Your must provide appropriate expire date.</p>";
         array_push($errSpot,"cexpire");
@@ -315,19 +326,19 @@
     
 
     
-
+    // check if post code has 4 number or not
     if (strlen($postcode) != 4 && $postcode!=""){
         $errMsg .= "<p>Your postcode must be exactly 4 digits.</p>";
         array_push($errSpot,"postcode");
-    }
-
+    }   
+    // check if phone number is numeric
     if(!is_numeric($phoneNum) && $phoneNum!="") {
         
         $errMsg .= "<p>Your phone number must be numeric.</p>";
         array_push($errSpot,"pnum");
     }
     
-    
+    // check if phone number is less that 10 digit or not
 
     if(strlen($phoneNum)>10) {
         $errMsg .= "<p>Your phone number should be no longer than 10 digits.</p>";
@@ -336,6 +347,7 @@
 
     // redirect to proper page after checking 
     if ($errMsg!="" ) {
+        // if there is error in the payment input
         header ("location:fix_order.php");
     } else {
 
@@ -354,13 +366,14 @@
                 $sql_table = "orders";
                 
                 
-
+                // prepare customer name for database information push
                 $name = $firstname .' '. $lastname;
 
                 
-
+                // calculation of order cost
                 $order_cost = 99.99 * $quantity;
 
+                // create table if table does not exist
                 $query = "CREATE TABLE IF NOT EXISTS $sql_table (
                     ID int(11) AUTO_INCREMENT,
                     CUSTOMER_NAME varchar(255) NOT NULL,
@@ -386,20 +399,22 @@
                     PRIMARY KEY  (ID)
                     )";
 
-                
+                // create table
                 $result = mysqli_query($conn, $query);
 
                 
                         
                     
-  
+                // query to add data to to the database
                 $add_query = "insert into $sql_table (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS, COMMENT) values ('$name','$email','$phoneNum','$street','$suburb','$state','$postcode','$pcon','$card','$cname','$cnum','$cexpire','$cvv','$type','$book','$quantity', '$order_cost', now(), 'PENDING', '$comment')";
-                
+                // add data
                 $add_result = @mysqli_query($conn, $add_query);
+
+                // get current date and time to forward to receipt
                 date_default_timezone_set("Australia/Sydney");
                 $date_of_query =  date("Y-m-d h:i:sa");
                 
-
+                    
                 if(!$add_result ) {
                     echo "<p class=\"wrong\">something is wrong with ",$add_query,"</p>";
                 } else {
