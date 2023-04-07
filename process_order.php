@@ -1,4 +1,12 @@
 <?php
+    // ensure that this page cannot be access directly
+    if(!(isset($_POST["uname"])) && !(isset($_POST["lname"])) && !(isset($_POST["email"])) && !(isset($_POST["phone number"])) && 
+    !(isset($_POST["street"]))&& 
+    !(isset($_POST["suburb"])) && 
+    !(isset($_POST["state"])) && 
+    !(isset($_POST["postcode"])) && !(isset($_POST["contact"]))  && !(isset($_POST["book"])) && !(isset($_POST["type[]"]))) {
+        header ("location:payment.php");
+    }
 
     // sanitise function that remove space, backslashes, and HTML
     function sanitise_input ($data) {
@@ -430,15 +438,7 @@
     }
 
 
-    // ensure that this page cannot be access directly
-    if(!(isset($_POST["uname"])) && !(isset($_POST["lname"])) && !(isset($_POST["email"])) && !(isset($_POST["phone number"])) && 
-    !(isset($_POST["street"]))&& 
-    !(isset($_POST["suburb"])) && 
-    !(isset($_POST["state"])) && 
-    !(isset($_POST["postcode"])) && !(isset($_POST["contact"]))  && !(isset($_POST["book"])) && !(isset($_POST["type[]"]))) {
-        header ("location:payment.php");
-    }
-
+    
 
     // transfer data to other pages
     session_start();

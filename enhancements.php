@@ -29,9 +29,15 @@
         <!-- list of enhancements -->
         <article>
             <h2>This is the list of enhancements we have made:</h2>
+            <p>Assignment 1:</p>
             <ol>
                 <li>The first enhancement we made is the <b>responsive design</b> for all web page.</li>
-                <li>The second enhancement we made is the <b>special-use pseudo elements</b> to create the sliders in the <a href="./product.html">product page</a>. </li>
+                <li>The second enhancement we made is the <b>special-use pseudo elements</b> to create the sliders in the <a href="product.php">product page</a>. </li>
+            </ol>
+            <p>Assignment 2:</p>
+            <ol>
+                <li>The first enhancement we made is the <b>Report</b> in <a href="manager.php">Manage page</a>.</li>
+                <li>The second enhancement we made is the <b>product database</b> and print them from the database in <a href="product.php">product page</a>. </li>
             </ol>
         </article>
     </main>

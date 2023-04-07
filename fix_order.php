@@ -141,7 +141,7 @@ if(strlen($_SESSION['err'])==0) {
 
             <!-- check if the input of quantity is already correct or not, if not then the input will be highlighted and the previous input still be kept for easier fix -->
               <label for="quantity" class="choice_label quantity_align">Quantity:</label>
-              <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="text" name="quantity" value="<?php echo $_SESSION['quantity']?>"  min="1" max="99" step="1" pattern="\d{3}">
+              <input class="input_text <?php echo (in_array("quantity", $_SESSION['espot']) ? 'invalid' : '' )?>" id="quantity" type="number" name="quantity" value="<?php echo $_SESSION['quantity']?>"  min="1" max="99" step="1" pattern="\d{3}">
             
           
           </div>

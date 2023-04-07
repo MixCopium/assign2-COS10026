@@ -17,17 +17,19 @@
             } else {
               $ed = "";
             }
-
+            date_default_timezone_set("Australia/Sydney");
+                $current_date =  date("Y-m-d");
+                
            
             // print the filter input with previous value kept
             echo '
             <label class="filter" for="start_date">From:</label>
-            <input class="input_filter" id="start_date" type="date"
+            <input class="input_filter" id="start_date" type="date" max="'.$current_date.'"
               name="sd" value="' . $sd . '" >
             
 
               <label class="filter" for="end_date">to:</label>
-              <input class="input_filter" id="end_date" type="date"
+              <input class="input_filter" id="end_date" type="date" max="'.$current_date.'"
                 name="ed" value="' . $ed . '" >
 
                 <input type="submit" id="submit" 
@@ -55,7 +57,7 @@
                 } else {
                   $sql_table = "orders";
                   // sql to get the most popular product from the database (change with different dates entered)
-                  $report_query_1 = "SELECT ORDER_PRODUCT FROM (SELECT COUNT(ID) as count, ORDER_PRODUCT FROM orders" .($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").  " GROUP BY ORDER_PRODUCT order BY count DESC limit 1 ) a";
+                  $report_query_1 = "SELECT ORDER_PRODUCT FROM (SELECT COUNT(ID)*ORDER_QUANTITY as count, ORDER_PRODUCT FROM orders" .($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").  " GROUP BY ORDER_PRODUCT order BY count DESC limit 1 ) a";
 
                   $report_result_1 = @mysqli_query($conn, $report_query_1 );
                   while ($row = mysqli_fetch_assoc($report_result_1)) {
