@@ -53,7 +53,7 @@
             books to real-life scientific books. A million of brilliant books
             are waiting for you to discover!!!</p>
           <!-- button with link the the introduced web -->
-          <a href="product.html" class="btn modi">Learn more</a>
+          <a href="product.php" class="btn modi">Learn more</a>
         </div>
       </section>
 
@@ -68,7 +68,7 @@
             Additionally, fast shipping and reliable delivery services ensure that books arrive in a timely manner,
             making the online purchase process both fast and convenient.</p>
           <!-- button linked to the enquire page -->
-          <a href="enquire.html" class="btn modi">Learn more</a>
+          <a href="enquire.php" class="btn modi">Learn more</a>
         </div>
 
         <!-- image column -->
@@ -91,7 +91,7 @@
           <h2>Passionate and Reliable Developer Team</h2>
           <p>Have a nice meeting without our developer team, whose are not only enthusiastic but also resopnsible in developing this website. Feel free to contact us whenever you want!!</p>
           <!-- button with link to the about page -->
-          <a href="about.html" class="btn modi">Learn more</a>
+          <a href="about.php" class="btn modi">Learn more</a>
         </div>
       </section>
 
@@ -103,7 +103,7 @@
           <h2>Strive for Further Enhancements</h2>
           <p>Our developers are eager study and develop more advanced technique to further develop this website. To understand more about what we have applied in our website so far, please visit our Enhancements page. You are welcome!</p>
           <!-- button with link to the enhancements page -->
-          <a href="enhancements.html" class="btn modi">Learn more</a>
+          <a href="enhancements.php" class="btn modi">Learn more</a>
         </div>
 
         <!-- image column -->

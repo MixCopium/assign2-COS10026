@@ -61,7 +61,7 @@
                         prince</h3>
                     <h4 class="rcm_author">J.K Rowling</h4>
                     <p class="rcm_price">$99.99</p>
-                    <a class="rcm_button" href="product.html">See
+                    <a class="rcm_button" href="product.php">See
                         More</a>
                 </div>
 
@@ -76,7 +76,7 @@
                         prince</h3>
                     <h4 class="rcm_author">J.K Rowling</h4>
                     <p class="rcm_price">$99.99</p>
-                    <a class="rcm_button" href="product.html">See
+                    <a class="rcm_button" href="product.php">See
                         More</a>
                 </div>
 

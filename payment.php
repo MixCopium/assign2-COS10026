@@ -18,7 +18,7 @@
   <!-- css style link -->
   <link rel="stylesheet" href="styles/enhancements.css">
   <link rel="stylesheet" href="styles/styles.css">
-  <title>payment</title>
+  <title>Payment</title>
 </head>
 
 <body>
