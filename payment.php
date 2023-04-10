@@ -116,7 +116,7 @@
 
             <select id="bookop" class="book" name="book">
               <option <?php echo (($_POST["book_order"] == "Harry Potter and the half-blood prince ") ? "selected" : "") ?> class="select_text" value="Harry Potter and the half-blood prince - J.K Rowling">Harry Potter and the half-blood prince - J.K Rowling  $99.99</option>
-              <option <?php echo (str_contains($_POST["book_order"], "Harry Potter and the Philosopher") ? "selected" : "") ?> class="select_text" value="Harry Potter and the Philosophers Stone - J.K Rowling">Harry Potter and the Philosopher's Stone - J.K Rowling  $99.99</option>
+              <option <?php echo (($_POST["book_order"] == "Harry Potter and the Philosophers Stone") ? "selected" : "") ?> class="select_text" value="Harry Potter and the Philosophers Stone - J.K Rowling">Harry Potter and the Philosopher's Stone - J.K Rowling  $99.99</option>
               <option <?php echo (($_POST["book_order"] == "Harry Potter and the Chamber of Secrets ") ? "selected" : "") ?> class="select_text" value="Harry Potter and the Chamber of Secrets - J.K Rowling">Harry Potter and the Chamber of Secrets - J.K Rowling  $99.99</option>
               <option <?php echo (($_POST["book_order"] === "Harry Potter and the Order of the Phoenix ") ? "selected" : "") ?> class="select_text" value="Harry Potter and the Order of the Phoenix - J.K Rowling">Harry Potter and the Order of the Phoenix - J.K Rowling  $99.99</option>
             </select>
