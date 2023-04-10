@@ -40,7 +40,7 @@
           echo "<p>Database connection failure</p>";
         } else {
           
-          $sql_table = "orders";
+          
 
           // get action information from hidden form input
           if (isset($_GET["action"])) {
@@ -92,11 +92,12 @@
           if ($action != "") {
             switch ($action) {
               case ("drop"):
-                $drop_query = "delete FROM $sql_table WHERE ID = $action_id";
+                $drop_query = "delete FROM orders2 WHERE ORDER_ID = $action_id";
                 $drop_result = @mysqli_query($conn, $drop_query);
                 break;
               case ("update"):
-                $update_query = "update $sql_table SET ORDER_STATUS = '$action_status' WHERE ID = $action_id";
+                $update_query = "update orders2 SET ORDER_STATUS = '$action_status' WHERE ORDER_ID = $action_id";
+                // echo $update_query;
                 $update_result = @mysqli_query($conn, $update_query);
                 break;
               default:
@@ -173,8 +174,8 @@
                 
                 ';
         // sql to get information from the database including for filter
-        $query = "select ID, CUSTOMER_NAME, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from $sql_table Where CUSTOMER_NAME like '$filter_name%' && ORDER_PRODUCT like '$filter_book%'&& ORDER_STATUS like '$filter_status%' ";
-
+        $query = "select ORDER_ID as ORDER_ID, customers.CUSTOMER_NAME as CUSTOMER_NAME, products.BOOK_NAME as ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS from orders2 INNER JOIN customers on customers.CUSTOMER_ID = orders2.CUSTOMER_ID INNER JOIN products on products.PRODUCT_ID = orders2.PRODUCT_ID Where customers.CUSTOMER_NAME like '$filter_name%' && products.BOOK_NAME like '$filter_book%'&& orders2.ORDER_STATUS like '$filter_status%'";
+        // echo $query;
         // add sort sql if sort is set
         if ($sort_cost != "") {
           $query .= $sort_query;
@@ -187,10 +188,12 @@
 
           while ($row = mysqli_fetch_assoc($result)) {
             // get value from the run sql
-            $id = $row["ID"];
+            $id = $row["ORDER_ID"];
+            // echo $id;
             $cust_name = $row["CUSTOMER_NAME"];
             $order_product = $row["ORDER_PRODUCT"];
             $order_quantity = $row["ORDER_QUANTITY"];
+            
             $order_cost = $row["ORDER_COST"];
             $order_time = $row["ORDER_TIME"];
             $order_status = $row["ORDER_STATUS"];
@@ -227,7 +230,8 @@
           $result = @mysqli_query($conn, $query);
           while ($row = mysqli_fetch_assoc($result)) {
             // get the value out
-            $id = $row["ID"];
+            $id = $row["ORDER_ID"];
+            
             $cust_name = $row["CUSTOMER_NAME"];
             $order_product = $row["ORDER_PRODUCT"];
             $order_quantity = $row["ORDER_QUANTITY"];
@@ -246,20 +250,20 @@
                         <td>
                           <select name="status" form="update_' . $id . '">
                             
-                            <option value="Pening" ' . ($order_status == "Pending" ? 'selected' : '') . '>Pending</option>
+                            <option value="Pending" ' . ($order_status == "Pending" ? 'selected' : '') . '>Pending</option>
 
                             <option value="Fulfilled" ' . ($order_status == "Fulfilled" ? 'selected' : '') . '>Fulfilled</option>
                             <option value="Paid" ' . ($order_status == "Paid" ? 'selected' : '') . '>Paid</option>
                             <option value="Archived" ' . ($order_status == "Archived" ? 'selected' : '') . '>Archived</option>
                           </select></td>
-                        <td class="drop"><input type="submit" value="Drop" class="no_button_style" form="drop_' . $id . '"></td>
-                        <td class="update" ><input type="submit" value="Update" class="no_button_style" form="update_' . $id . '"></td>
+                        <td class="drop"><label class="label_du" for="drop_sub_'.$id.'"><img class="manage_icon" src="./images/manage/cancel.png" alt="drop"></label> <input id=drop_sub type="submit" value="Drop" class="no_button_style" form="drop_' . $id . '"></td>
+                        <td class="update" ><label class="label_du" for="update_sub_'.$id.'"><img class="manage_icon" src="./images/manage/edit.png" alt="update"></label><input id="update_sub" type="submit" value="Update"  class="no_button_style" form="update_' . $id . '"></td>
                     </tr> 
                     
                     ';
           }
 
-
+          
           // disconnect to database
           mysqli_free_result($result);
         }
@@ -271,7 +275,7 @@
       </table>
 
     </article>
-
+      
   </main>
   <?php include 'includes/footer.inc' ?>
 </body>

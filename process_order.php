@@ -371,7 +371,7 @@
                 echo "<p>Database connection failure</p>";
             } else {
 
-                $sql_table = "orders";
+                
                 
                 
                 // prepare customer name for database information push
@@ -379,11 +379,27 @@
 
                 
                 // calculation of order cost
-                $order_cost = 99.99 * $quantity;
+                // $order_cost = 99.99 * $quantity;
 
                 // create table if table does not exist
-                $query = "CREATE TABLE IF NOT EXISTS $sql_table (
-                    ID int(11) AUTO_INCREMENT,
+                // $query = "
+                
+                
+            
+                
+                    
+                    
+
+                    
+                //     ";
+
+                // // create table
+                // $result = mysqli_query($conn, $query);
+
+                $errors = [];
+
+                $table1 = "CREATE TABLE IF NOT EXISTS customers (
+                    CUSTOMER_ID int(11) AUTO_INCREMENT,
                     CUSTOMER_NAME varchar(255) NOT NULL,
                     EMAIL varchar(255) NOT NULL,
                     PHONE_NUMBER varchar(255) NOT NULL,
@@ -392,29 +408,78 @@
                     CUST_STATE varchar(255) NOT NULL,
                     POSTCODE varchar(255) NOT NULL,
                     PREFERRED_CONTACT varchar(255) NOT NULL,
+                    PRIMARY KEY  (CUSTOMER_ID)
+                    
+                    );";
+                
+                $table2 = "CREATE TABLE IF NOT EXISTS orders2 (
+                    ORDER_ID int(11) AUTO_INCREMENT,
+                    CUSTOMER_ID int(11),
                     CARD_SERVICE varchar(255) NOT NULL,
                     CARD_HOLDER varchar(255) NOT NULL,
                     CARD_NUMBER varchar(255) NOT NULL,
                     EXPIRE_DATE varchar(255) NOT NULL,
                     CVV varchar(255) NOT NULL,
                     EXTRA varchar(255) NOT NULL,
-                    ORDER_PRODUCT varchar(255) NOT NULL,
+                    PRODUCT_ID int(11),
                     ORDER_QUANTITY int,
-                    ORDER_COST int,
+                    ORDER_COST float,
                     ORDER_TIME datetime,
                     ORDER_STATUS varchar(255) NOT NULL,
                     COMMENT varchar(255),
-                    PRIMARY KEY  (ID)
-                    )";
-
-                // create table
-                $result = mysqli_query($conn, $query);
-
+                    PRIMARY KEY  (ORDER_ID),
+                    FOREIGN KEY (CUSTOMER_ID) REFERENCES customers(CUSTOMER_ID),
+                    FOREIGN KEY (PRODUCT_ID) REFERENCES products(PRODUCT_ID)
+                    );";
                 
+
+
+
+                $add1 = "
+                
+
+
+
+
+                insert into customers (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT) 
+                select * from (select '$name','$email', '$phoneNum','$street','$suburb','$state','$postcode','$pcon' ) as tmp
+                WHERE NOT EXISTS (SELECT * from customers where CUSTOMER_NAME = '$name' and EMAIL = '$email' and PHONE_NUMBER ='$phoneNum' and CUST_STREET = '$street' and CUST_SUBURB = '$suburb' and CUST_STATE = '$state' and POSTCODE ='$postcode' and PREFERRED_CONTACT='$pcon') limit 1;                
+
+                ";
+
+
+                $tables = [$table1, $table2, $add1];
+                
+                
+                foreach($tables as $k => $sql){
+                    $query = @$conn->query($sql);
+                
+                    if(!$query)
+                       $errors[] = "Query $k : Creation failed ($conn->error)";
+                    else
+                       $errors[] = "Query $k : Creation done";
+                }
+                
+                
+                foreach($errors as $msg) {
+                   echo "$msg <br>";
+                }                
                         
                     
                 // query to add data to to the database
-                $add_query = "insert into $sql_table (CUSTOMER_NAME, EMAIL, PHONE_NUMBER, CUST_STREET, CUST_SUBURB, CUST_STATE, POSTCODE, PREFERRED_CONTACT, CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, ORDER_PRODUCT, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS, COMMENT) values ('$name','$email','$phoneNum','$street','$suburb','$state','$postcode','$pcon','$card','$cname','$cnum','$cexpire','$cvv','$type','$book','$quantity', '$order_cost', now(), 'PENDING', '$comment')";
+
+                
+
+                
+
+
+                $add_query = "
+                
+                insert into orders2 (CUSTOMER_ID , CARD_SERVICE, CARD_HOLDER,  CARD_NUMBER, EXPIRE_DATE, CVV, EXTRA, PRODUCT_ID, ORDER_QUANTITY,  ORDER_COST, ORDER_TIME,  ORDER_STATUS, COMMENT) values ((select CUSTOMER_ID as CUSTOMER_ID from customers where CUSTOMER_NAME = '$name' and EMAIL = '$email' and PHONE_NUMBER ='$phoneNum' and CUST_STREET = '$street' and CUST_SUBURB = '$suburb' and CUST_STATE = '$state' and POSTCODE ='$postcode' and PREFERRED_CONTACT='$pcon'),'$card','$cname','$cnum','$cexpire','$cvv','$type',(SELECT PRODUCT_ID from products where '$book' LIKE CONCAT(BOOK_NAME, '%') ),'$quantity', (SELECT PRICE*$quantity from products where '$book' LIKE CONCAT(BOOK_NAME,'%')), now(), 'Pending', '$comment');
+
+                ";
+                echo $add_query;
+                
                 // add data
                 $add_result = @mysqli_query($conn, $add_query);
 
@@ -428,6 +493,22 @@
                 } else {
                     $last_id = mysqli_insert_id($conn);
                     echo "<p class\"ok\">Successfully added new order record</p>";
+                }
+
+                $get_query = "
+                
+                select ORDER_COST from orders2 where ORDER_ID = '$last_id'
+
+                ";
+                $get_result = @mysqli_query($conn, $get_query);
+
+                if(!$get_result ) {
+                    echo "<p class=\"wrong\">something is wrong with ",$get_query,"</p>";
+                } else {
+                    
+                    while ($row = mysqli_fetch_assoc($get_result)) {
+                        $order_cost = $row["ORDER_COST"];
+                    }
                 }
 
                 mysqli_close($conn);

@@ -1255,7 +1255,8 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
    }
 
    #manage table, #manage th, #manage td {
-    border: black solid 1px;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
     -webkit-transition: all 0.5s ease-in-out;
      -o-transition: all 0.5s ease-in-out;
      -moz-transition: all 0.5s ease-in-out;
@@ -1263,9 +1264,26 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
     
    }
 
+   #manage table {
+    border-collapse: collapse;
+   }
+
    #manage  th {
     background-color: #000;
     color: #fff;
+    
+   }
+
+   #manage  .update img, #manage  .drop img {
+    -webkit-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+   }
+
+   #manage  .drop {
+    background-color: #fff1f1;
+    
     
    }
 
@@ -1275,12 +1293,28 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
     
    }
 
+   #manage  .drop:hover img {
+    
+    filter: brightness(0) invert(1);
+    
+   }
+   #manage  .update {
+    background-color: #ecfeed;
+    
+    
+   }
+
    #manage  .update:hover {
     background-color: #00a908;
     color: #fff;
     
    }
 
+   #manage  .update:hover img {
+    
+    filter: brightness(0) invert(1);
+    
+   }
    #manage details {
     margin-bottom: 2%;
    }
@@ -1379,6 +1413,10 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
    font-weight: 600;
  }
 
+ #manage #report, #manage #report td {
+  border: black solid 1px;
+ }
+
 
  #receipt .grid {
    position: relative;
@@ -1426,4 +1464,14 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+#manage .label_du {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.manage_icon {
+  width: 15%;
+  margin-bottom: 2%;
 }

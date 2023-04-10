@@ -134,7 +134,7 @@ if(strlen($_SESSION['err'])==0) {
   
             <select id="bookop" class="book" name="book">
               <option  value="Harry Potter and the half-blood prince - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the half-blood prince - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the half-blood prince - J.K Rowling</option>
-              <option  value="Harry Potter and the Philosopher's Stone - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Philosopher's Stone - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Philosopher's Stone - J.K Rowling</option>
+              <option  value="Harry Potter and the Philosophers Stone - J.K Rowling" <?php echo (str_contains($_SESSION["book"], "Harry Potter and the Philosopher") ? "selected" : "") ?>>Harry Potter and the Philosopher's Stone - J.K Rowling</option>
               <option  value="Harry Potter and the Chamber of Secrets - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Chamber of Secrets - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Chamber of Secrets - J.K Rowling</option>
               <option  value="Harry Potter and the Order of the Phoenix - J.K Rowling" <?php echo ($_SESSION["book"] == "Harry Potter and the Order of the Phoenix - J.K Rowling" ? 'selected' : '' )?>>Harry Potter and the Order of the Phoenix - J.K Rowling</option>
             </select>

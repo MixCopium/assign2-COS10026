@@ -30,7 +30,7 @@
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
                         // yeild all the values into local values
-                        $id = $row["ID"];
+                        $id = $row["PRODUCT_ID"];
                         $bname = $row["BOOK_NAME"];
                         $author = $row["AUTHOR"];
                         $price = $row["PRICE"];
@@ -94,7 +94,10 @@
                     <h2><?php echo $bname ?> - <?php echo $author?>
                     </h2>
                     <h3>$<?php echo $price ?></h3>
-                    <a href="payment.php">Make Purchase</a>
+                    <form method="post" action="payment.php" id="<?php echo $id ?>_order" hidden>
+                        <input type="text" name="book_order" value="<?php echo $bname ?>">
+                    </form>
+                    <input type="submit" value="Make Purchase" form="<?php echo $id ?>_order">
 
                     <!-- specifications about the book -->
                     <!--  (hidden in summary)  -->

@@ -37,7 +37,8 @@
             <p>Assignment 2:</p>
             <ol>
                 <li>The first enhancement we made is the <b>Report</b> in <a href="manager.php">Manage page</a>.</li>
-                <li>The second enhancement we made is the <b>product database</b> and print them from the database in <a href="product.php">product page</a>. </li>
+                <li>The second enhancement we made is the <b>product database</b> and print them from the database in <a href="product.php">product page</a>.  </li>
+                <li>The relationships between Products, Customers and Orders table have been established.</li>
             </ol>
         </article>
     </main>

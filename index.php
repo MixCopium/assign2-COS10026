@@ -37,7 +37,7 @@
     <article class="section_white">
       <!-- article title -->
 
-      <h2 class="section_title">What do we have here <br><a href="https://youtu.be/-eHqmRASj14">Link to our team presentation</a></h2>
+      <h2 class="section_title">What do we have here <br><a href="https://youtu.be/-eHqmRASj14">Assignment 1: Link to our team presentation</a><br><a href="https://youtu.be/gdcBZ2j3Ejc">Assignment 2: Link to our team presentation</a></h2>
 
       <!-- section 1: product page introduction -->
       <section class="row">

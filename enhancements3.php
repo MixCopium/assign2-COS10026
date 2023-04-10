@@ -43,11 +43,11 @@
           </form>
         </div>
       <br>
-        <table>
+        <table id="report">
           <tr>
             <th>Most popular</th>
             <th>Fulfilled</th>
-            <th>Average Order per Day</th>
+            <th>Average Sale</th>
           </tr>   
           <tr>
             <td>
@@ -55,13 +55,24 @@
                 if (!$conn) {
                   echo "<p>Database connection failure</p>";
                 } else {
-                  $sql_table = "orders";
+                  
                   // sql to get the most popular product from the database (change with different dates entered)
-                  $report_query_1 = "SELECT ORDER_PRODUCT FROM (SELECT COUNT(ID)*ORDER_QUANTITY as count, ORDER_PRODUCT FROM orders" .($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").  " GROUP BY ORDER_PRODUCT order BY count DESC limit 1 ) a";
-
+                  $report_query_1 = "SELECT BOOK_NAME FROM (SELECT COUNT(ORDER_ID)*ORDER_QUANTITY as count, products.BOOK_NAME as BOOK_NAME FROM orders2 INNER JOIN products on products.PRODUCT_ID = orders2.PRODUCT_ID " .($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").  " GROUP BY orders2.PRODUCT_ID order BY count DESC limit 1 ) a";
+                  // echo $report_query_1;
+                  $report_result_1 = @mysqli_query($conn, $report_query_1 );
+                  // echo $report_result_1;
+                  if (! mysqli_fetch_assoc($report_result_1)) {
+                    echo "no order in this period";
+                  }
                   $report_result_1 = @mysqli_query($conn, $report_query_1 );
                   while ($row = mysqli_fetch_assoc($report_result_1)) {
-                    echo $row["ORDER_PRODUCT"];
+                    
+                    
+                      echo $row["BOOK_NAME"];
+
+                    
+                
+                    
                     // echo $report_query_1;
                   }
                   
@@ -74,9 +85,9 @@
                 if (!$conn) {
                   echo "<p>Database connection failure</p>";
                 } else {
-                  $sql_table = "orders";
+                  
                   // sql to get the number of fulfilled order from the database (change with different dates entered)
-                  $report_query_2 = "SELECT Count(ORDER_PRODUCT) as count FROM $sql_table WHERE ORDER_STATUS='fulfilled'".($sd!="" ? " AND CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($ed!="" ? " AND CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").";";
+                  $report_query_2 = "SELECT Count(products.BOOK_NAME) as count FROM orders2 INNER JOIN products on products.PRODUCT_ID = orders2.PRODUCT_ID WHERE ORDER_STATUS='fulfilled'".($sd!="" ? " AND CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($ed!="" ? " AND CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ").";";
 
                   $report_result_2 = @mysqli_query($conn, $report_query_2 );
                   while ($row = mysqli_fetch_assoc($report_result_2)) {
@@ -93,15 +104,25 @@
                 if (!$conn) {
                   echo "<p>Database connection failure</p>";
                 } else {
-                  $sql_table = "orders";
+                  
                   // sql to get the average order the website receive per day from the database (change with different dates entered)
-                  $report_query_3 = "SELECT (count/(DATEDIFF(CAST(".($ed!="" ? "'$ed'" : " Now() ")." as date),CAST(".($sd!="" ? "'$sd'" : " MIN(ORDER_TIME) ")." as date)) + 1)) as avg FROM (SELECT COUNT(ID) as count, ORDER_TIME FROM orders ".($sd!="" || $ed!="" ? " WHERE " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ")." ) a;";
+                  $report_query_3 = "SELECT (count*sum/(DATEDIFF(CAST(".($ed!="" ? "'$ed'" : " Now() ")." as date),CAST(".($sd!="" ? "'$sd'" : " MIN(ORDER_TIME) ")." as date)) + 1)) as avg FROM (SELECT COUNT(ORDER_ID) as count, ORDER_TIME, SUM(ORDER_QUANTITY) as sum FROM orders2 Where ORDER_STATUS = 'paid' ".($sd!="" || $ed!="" ? " AND " : " ").($sd!="" ? " CAST(ORDER_TIME as date) >= CAST('$sd' as date) " : " ").($sd!="" && $ed!="" ? " AND " : " ").($ed!="" ? " CAST(ORDER_TIME as date) <= CAST('$ed' as date) " : " ")." ) a;";
+
+
 
                   $report_result_3 = @mysqli_query($conn, $report_query_3 );
                   while ($row = mysqli_fetch_assoc($report_result_3)) {
-                    echo $row["avg"];
+                    if(isset($row["avg"])) {
+                      echo $row["avg"];
+                    }
+                    
+                    else {
+                      echo "0";
+                    }
+                      
                     // echo $report_query_3;
                   }
+                 
                   
                 }
                 
